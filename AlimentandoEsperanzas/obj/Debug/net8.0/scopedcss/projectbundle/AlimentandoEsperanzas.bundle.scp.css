@@ -1,0 +1,49 @@
+/* _content/AlimentandoEsperanzas/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-nd0gfamfxi] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-nd0gfamfxi] {
+  color: #0077cc;
+}
+
+.btn-primary[b-nd0gfamfxi] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-nd0gfamfxi], .nav-pills .show > .nav-link[b-nd0gfamfxi] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-nd0gfamfxi] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-nd0gfamfxi] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-nd0gfamfxi] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-nd0gfamfxi] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-nd0gfamfxi] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
