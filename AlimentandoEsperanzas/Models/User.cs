@@ -13,7 +13,11 @@ public partial class User
 
     public string Email { get; set; } = null!;
 
+    public string Password { get; set; } = null!;
+
     public string IdNumber { get; set; } = null!;
+
+    public int IdentificationType { get; set; }
 
     public int PhoneNumber { get; set; }
 
@@ -22,6 +26,10 @@ public partial class User
     public int Role { get; set; }
 
     public virtual ICollection<Actionlog> Actionlogs { get; set; } = new List<Actionlog>();
+
+    public virtual ICollection<Errorlog> Errorlogs { get; set; } = new List<Errorlog>();
+
+    public virtual Idtype IdentificationTypeNavigation { get; set; } = null!;
 
     public virtual Role RoleNavigation { get; set; } = null!;
 

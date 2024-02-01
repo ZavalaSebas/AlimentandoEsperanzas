@@ -62,7 +62,7 @@ namespace AlimentandoEsperanzas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DonationId,DonorId,Amount,Email,DonationTypeId,Date,PaymentMethodId,CategoryId,Comments")] Donation donation)
+        public async Task<IActionResult> Create([Bind("DonationId,DonorId,Amount,DonationTypeId,Date,PaymentMethodId,CategoryId,Comments")] Donation donation)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace AlimentandoEsperanzas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DonationId,DonorId,Amount,Email,DonationTypeId,Date,PaymentMethodId,CategoryId,Comments")] Donation donation)
+        public async Task<IActionResult> Edit(int id, [Bind("DonationId,DonorId,Amount,DonationTypeId,Date,PaymentMethodId,CategoryId,Comments")] Donation donation)
         {
             if (id != donation.DonationId)
             {

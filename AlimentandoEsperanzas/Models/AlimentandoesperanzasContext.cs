@@ -26,6 +26,14 @@ public partial class AlimentandoesperanzasContext : DbContext
 
     public virtual DbSet<Donor> Donors { get; set; }
 
+    public virtual DbSet<Errorlog> Errorlogs { get; set; }
+
+    public virtual DbSet<Idtype> Idtypes { get; set; }
+
+    public virtual DbSet<Item> Items { get; set; }
+
+    public virtual DbSet<Itemcategory> Itemcategories { get; set; }
+
     public virtual DbSet<Paymentmethod> Paymentmethods { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -95,7 +103,6 @@ public partial class AlimentandoesperanzasContext : DbContext
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.DonationTypeId).HasColumnName("DonationTypeID");
             entity.Property(e => e.DonorId).HasColumnName("DonorID");
-            entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.PaymentMethodId).HasColumnName("PaymentMethodID");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Donations)
@@ -137,6 +144,8 @@ public partial class AlimentandoesperanzasContext : DbContext
 
             entity.ToTable("donor");
 
+            entity.HasIndex(e => e.IdentificationType, "FK_DONOR_TYPEID");
+
             entity.Property(e => e.DonorId).HasColumnName("DonorID");
             entity.Property(e => e.Comments).HasMaxLength(100);
             entity.Property(e => e.Date).HasColumnType("datetime");
@@ -144,6 +153,66 @@ public partial class AlimentandoesperanzasContext : DbContext
             entity.Property(e => e.IdNumber).HasMaxLength(30);
             entity.Property(e => e.LastName).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
+
+            entity.HasOne(d => d.IdentificationTypeNavigation).WithMany(p => p.Donors)
+                .HasForeignKey(d => d.IdentificationType)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DONOR_TYPEID");
+        });
+
+        modelBuilder.Entity<Errorlog>(entity =>
+        {
+            entity.HasKey(e => e.ErrorLogId).HasName("PRIMARY");
+
+            entity.ToTable("errorlog");
+
+            entity.HasIndex(e => e.UserId, "FK_ERROR_USERS");
+
+            entity.Property(e => e.ErrorLogId).HasColumnName("ErrorLogID");
+            entity.Property(e => e.Date).HasColumnType("datetime");
+            entity.Property(e => e.ErrorMessage).HasMaxLength(255);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Errorlogs)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK_ERROR_USERS");
+        });
+
+        modelBuilder.Entity<Idtype>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("idtype");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Description).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<Item>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("item");
+
+            entity.HasIndex(e => e.Category, "FK_Category_Item");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Description).HasMaxLength(255);
+
+            entity.HasOne(d => d.CategoryNavigation).WithMany(p => p.Items)
+                .HasForeignKey(d => d.Category)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Category_Item");
+        });
+
+        modelBuilder.Entity<Itemcategory>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("itemcategory");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Description).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Paymentmethod>(entity =>
@@ -178,12 +247,20 @@ public partial class AlimentandoesperanzasContext : DbContext
 
             entity.HasIndex(e => e.Role, "FK_USERS_ROLE");
 
+            entity.HasIndex(e => e.IdentificationType, "FK_USER_TYPEID");
+
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.IdNumber).HasMaxLength(30);
             entity.Property(e => e.LastName).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Password).HasMaxLength(255);
+
+            entity.HasOne(d => d.IdentificationTypeNavigation).WithMany(p => p.Users)
+                .HasForeignKey(d => d.IdentificationType)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_USER_TYPEID");
 
             entity.HasOne(d => d.RoleNavigation).WithMany(p => p.Users)
                 .HasForeignKey(d => d.Role)

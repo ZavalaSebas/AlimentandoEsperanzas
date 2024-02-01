@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WsEByPLevGi762kh2Z+QYbGekb6iQR/OJz5/UZ/yvw9BtJXgNgob90JOWo6np48DBdZI9yJ73amls9P9qsCv1Q==",
+  "dgSpecHash": "rM9kTSEZp5GfRw505NJ04m6yUooZahAYV7hsHr7qUwDU7T6/NcdFmTYjFPqEPFE37HgtlCu/0Qe3AQTuFfrfdw==",
   "success": true,
-  "projectFilePath": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
+  "projectFilePath": "C:\\Users\\sebas\\Desktop\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sebas\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\sebas\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

@@ -15,6 +15,8 @@ public partial class Donor
 
     public string IdNumber { get; set; } = null!;
 
+    public int IdentificationType { get; set; }
+
     public int PhoneNumber { get; set; }
 
     public DateTime Date { get; set; }
@@ -22,4 +24,6 @@ public partial class Donor
     public string? Comments { get; set; }
 
     public virtual ICollection<Donation> Donations { get; set; } = new List<Donation>();
+
+    public virtual Idtype IdentificationTypeNavigation { get; set; } = null!;
 }

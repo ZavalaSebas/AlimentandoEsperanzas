@@ -11,8 +11,6 @@ public partial class Donation
 
     public double Amount { get; set; }
 
-    public string Email { get; set; } = null!;
-
     public int DonationTypeId { get; set; }
 
     public DateTime Date { get; set; }
