@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<AlimentandoEsperanzas.Models.Donationtype>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tipo de Donación";
 }
 <div class="lime-header">
-<h1><a class="navbar-brand">Tipo de Donación</a></h1>
+    <h1><a class="navbar-brand">Tipo de Donación</a></h1>
+    <div class="text-right">
+        <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a>
+    </div>
 </div>
-
 
 <head>
     <meta charset="utf-8">
@@ -38,42 +40,66 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+        <style>
+            .dataTables_filter input {
+                height: 40px;
+                font-size: 16px;
+                padding: 6px 12px;
+                width: 400px; /* ajusta el ancho según tus necesidades */
+            }
+
+            .custom-toolbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 15px;
+            }
+        </style>
 </head>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DonationType1)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonationType1)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DonationTypeId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.DonationTypeId">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.DonationTypeId">Eliminar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <div class="table-responsive">
+                    <table id="donationTable" class="table table-bordered table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Nombre del Tipo de Donación</th>
+                                <th class="text-right">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.DonationType1)</td>
+                                    <td class="text-right">
+                                        <a asp-action="Edit" asp-route-id="@item.DonationTypeId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
+                                        <a asp-action="Details" asp-route-id="@item.DonationTypeId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
+                                        <a asp-action="Delete" asp-route-id="@item.DonationTypeId" class="btn btn-danger" style="color:black;"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<p>
-    <button type="button" class="btn btn-outline-primary"><a asp-action="Create">Agregar nuevo</a></button>
-</p>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json"></script>
+    <script>
+        $(document).ready(function () {
+            $('#donationTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
+}

@@ -719,3 +719,4 @@ C:\Users\sball\OneDrive\Escritorio\Proyecto Sistemas y desarrollo\AlimentandoEsp
 C:\Users\sball\OneDrive\Escritorio\Proyecto Sistemas y desarrollo\AlimentandoEsperanzasV2\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.pdb
 C:\Users\sball\OneDrive\Escritorio\Proyecto Sistemas y desarrollo\AlimentandoEsperanzasV2\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.genruntimeconfig.cache
 C:\Users\sball\OneDrive\Escritorio\Proyecto Sistemas y desarrollo\AlimentandoEsperanzasV2\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\ref\AlimentandoEsperanzas.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.sourcelink.json
