@@ -7,29 +7,118 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AlimentandoEsperanzas.styles.css" asp-append-version="true" />
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--<link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../../../../lime/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../lime/theme/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet">
+    <link href="../../../../lime/theme/assets/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <!-- Theme Styles -->
+    <link href="../../../../lime/theme/assets/css/lime.min.css" rel="stylesheet">
+    <link href="../../../../lime/theme/assets/css/custom.css" rel="stylesheet">
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AlimentandoEsperanzas</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+
+    @* Sidebar *@
+    <div class="lime-sidebar">
+        <div class="lime-sidebar-inner slimscroll">
+            <ul class="accordion-menu">
+                <li class="sidebar-title">
+                    Menú
+                </li>
+                <li>
+                    <a asp-controller="Donations" asp-action="Index"><i class="material-icons">attach_money</i>Donación</a>
+                </li>
+                <li>
+                    <a asp-controller="Donors" asp-action="Index"><i class="material-icons">group</i>Donantes</a>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="Privacy"><i class="material-icons">person</i>Perfil</a>
+                </li>
+                <li>
+                    <a asp-controller="Items" asp-action="Index"><i class="material-icons">inventory</i>Inventario</a>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="Privacy"><i class="material-icons">bar_chart</i>Reportes</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    @* Themes *@
+    <div class="theme-settings-sidebar">
+        <div class="theme-settings-inner">
+            <h3 class="theme-sidebar-title">Tema</h3>
+            <p class="themes-info">Seleccione un tema</p>
+
+            <a class="theme-item active" href="#">
+                <img src="../../assets/images/themes/1.png" alt="">
+                <h4 class="theme-title">Clásico</h4>
+            </a>
+            <a class="theme-item" href="../admin2/index.html">
+
+                <img src="../../assets/images/themes/2.png" alt="">
+                <h4 class="theme-title">Modo oscuro</h4>
+            </a>
+        </div>
+    </div>
+
+    @*  Header *@
+    <div class="lime-header">
+        <nav class="navbar navbar-expand-lg">
+
+            @* Navbar-expand *@
+            <section class="material-design-hamburger navigation-toggle">
+                <a href="javascript:void(0)" class="button-collapse material-design-hamburger__icon">
+                    <span class="material-design-hamburger__layer"></span>
+                </a>
+            </section>
+
+            <a class="navbar-brand" href="#">Alimentando Esperanzas</a>
+
+            @* Settings *@
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle theme-settings-link" href="#">
+                        <i class="material-icons">layers</i>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">more_vert</i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="dropdown-item" href="#">Cuenta</a></li>
+                        <li><a class="dropdown-item" href="#">Configuración</a></li>
+                        <li class="divider"></li>
+                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+
                     </ul>
-                </div>
-            </div>
+                </li>
+
+            </ul>
         </nav>
-    </header>
+    </div>
+
+    @* Page slide*@
+    <div class="lime-container">
+        <div class="lime-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-title">
+                            <nav aria-label="breadcrumb">
+
+                            </nav>
+
+                        </div>
+                    </div>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -41,9 +130,28 @@
             &copy; 2024 - AlimentandoEsperanzas - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Javascripts -->
+    <script src="./lime/theme/assets/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="./lime/theme/assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="./lime/theme/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lime/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="./lime/theme/assets/plugins/chartjs/chart.min.js"></script>
+    <script src="./lime/theme/assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="./lime/theme/assets/plugins/toastr/toastr.min.js"></script>
+    <script src="./lime/theme/assets/js/lime.min.js"></script>
+    <script src="./lime/theme/assets/js/pages/dashboard.js"></script>
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
