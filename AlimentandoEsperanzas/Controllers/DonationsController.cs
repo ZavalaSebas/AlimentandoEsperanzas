@@ -66,9 +66,17 @@ namespace AlimentandoEsperanzas.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(donation);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                        _context.Add(donation);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                }
+                catch(Exception ex)
+                {
+                    return View(donation);
+                }
+                
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", donation.CategoryId);
             ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId", donation.DonationTypeId);
