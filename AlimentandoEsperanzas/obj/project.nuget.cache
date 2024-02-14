@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rSHZeqpj60iwJ+q1S9b6L3AhA+cKxbyzx4bzqhVXNW1wZ+vXAJ0nIIRtb4md50/Z47rG4Od7k51TXtNC4NH0wA==",
+  "dgSpecHash": "BAEn2IacsJJNX3/BJSf7NUxTPWrmuQ0jQUdcjazlskUn3Mo9WepiWu1cG6xity0k32/WfNO+MeyZaat/DeEI8A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\AE\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

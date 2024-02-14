@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\OneDrive\\Desktop\\AE\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj": {}
+    "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\OneDrive\\Desktop\\AE\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj": {
+    "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Desktop\\AE\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
         "projectName": "AlimentandoEsperanzas",
-        "projectPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\AE\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
+        "projectPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\AE\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
