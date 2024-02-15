@@ -70,6 +70,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                         _context.Add(donation);
                         await _context.SaveChangesAsync();
+                        TempData["Mensaje"] = "Se ha agregado exitosamente.";
                         return RedirectToAction(nameof(Index));
                 }
                 catch(Exception ex)
@@ -123,6 +124,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Update(donation);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Se ha actualizado exitosamente.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -178,6 +180,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 
