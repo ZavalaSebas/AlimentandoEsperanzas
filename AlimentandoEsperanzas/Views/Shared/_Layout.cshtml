@@ -45,6 +45,23 @@
                 <li>
                     <a asp-controller="Home" asp-action="Privacy"><i class="material-icons">bar_chart</i>Reportes</a>
                 </li>
+                <li>
+                    <a href="#"><i class="material-icons">build</i>Mantenimiento<i class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a asp-controller="Categories" asp-action="Index">Categoria de Donación</a>
+                        </li>
+                        <li>
+                            <a asp-controller="DonationTypes" asp-action="Index">Tipo de Donación</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Paymentmethods" asp-action="Index">Método de Pago</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Idtypes" asp-action="Index">Tipo de Identificación</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
