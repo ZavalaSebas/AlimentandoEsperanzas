@@ -96,7 +96,6 @@ D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\static
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\scopedcss\bundle\AlimentandoEsperanzas.styles.css
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\scopedcss\projectbundle\AlimentandoEsperanzas.bundle.scp.css
-D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.csproj.CopyComplete
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\refint\AlimentandoEsperanzas.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.pdb
@@ -961,3 +960,4 @@ C:\Users\ASUS\OneDrive\Desktop\AE\AlimentandoEsperanzas\AlimentandoEsperanzas\ob
 C:\Users\ASUS\OneDrive\Desktop\AE\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.pdb
 C:\Users\ASUS\OneDrive\Desktop\AE\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.genruntimeconfig.cache
 C:\Users\ASUS\OneDrive\Desktop\AE\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\ref\AlimentandoEsperanzas.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\Alimenta.1337EB6D.Up2Date
