@@ -28,6 +28,7 @@ public partial class Donor
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [StringLength(20, MinimumLength = 6, ErrorMessage = "El número de teléfono debe tener entre 6 y 20 caracteres")]
+[RegularExpression("^[0-9]*$", ErrorMessage = "El número de teléfono solo puede contener números.")]
     public string PhoneNumber { get; set; }
 
 
