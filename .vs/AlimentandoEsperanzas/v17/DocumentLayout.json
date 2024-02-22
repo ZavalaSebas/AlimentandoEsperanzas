@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "D:\\Proyectos\\AlimentandoEsperanzas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\controllers\\donorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\controllers\\donorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\controllers\\donationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\controllers\\donationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\models\\donor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\models\\donor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\models\\donation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\models\\donation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\views\\donations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\views\\donations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\views\\donations\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\views\\donations\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,67 +38,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Donor.cs",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Models\\Donor.cs",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Models\\Donor.cs",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Models\\Donor.cs",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Models\\Donor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAB0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T02:21:06.172Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DonationsController.cs",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\DonationsController.cs",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Controllers\\DonationsController.cs",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\DonationsController.cs",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Controllers\\DonationsController.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAwwEEAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T02:15:17.938Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DonorsController.cs",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\DonorsController.cs",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Controllers\\DonorsController.cs",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\DonorsController.cs",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Controllers\\DonorsController.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAwwDsAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T02:15:29.908Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Donation.cs",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Models\\Donation.cs",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Models\\Donation.cs",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Models\\Donation.cs",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Models\\Donation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T02:14:06.633Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Donations\\Create.cshtml",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Views\\Donations\\Create.cshtml",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Donations\\Create.cshtml",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Views\\Donations\\Create.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Donations\\Index.cshtml",
+              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Views\\Donations\\Index.cshtml",
+              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Donations\\Index.cshtml",
+              "RelativeToolTip": "AlimentandoEsperanzas\\Views\\Donations\\Index.cshtml",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAqwGYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-15T02:13:55.243Z",
+              "WhenOpened": "2024-02-22T01:41:38.802Z",
               "EditorCaption": ""
             }
           ]

@@ -47,7 +47,7 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Donors/Create
         public IActionResult Create()
         {
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id");
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description");
             return View();
         }
 

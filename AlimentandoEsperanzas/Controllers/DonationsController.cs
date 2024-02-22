@@ -50,10 +50,10 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Donations/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
-            ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId");
-            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "DonorId");
-            ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethodId");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1");
+            ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationType1");
+            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "Name");
+            ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethod1");
             return View();
         }
 
