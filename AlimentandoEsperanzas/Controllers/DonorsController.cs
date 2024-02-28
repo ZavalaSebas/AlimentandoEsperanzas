@@ -47,7 +47,7 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Donors/Create
         public IActionResult Create()
         {
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id");
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description");
             return View();
         }
 
@@ -58,12 +58,13 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DonorId,Name,LastName,Email,IdNumber,IdentificationType,PhoneNumber,Date,Comments")] Donor donor)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Add(donor);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Se ha agregado exitosamente.";
                     return RedirectToAction(nameof(Index));
                 }
                 catch(Exception ex)
@@ -71,7 +72,7 @@ namespace AlimentandoEsperanzas.Controllers
                     return View(donor);
                 }
                 
-            }
+            //}
             ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", donor.IdentificationType);
             return View(donor);
         }
@@ -111,6 +112,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Update(donor);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Se ha actualizado exitosamente.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -160,6 +162,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

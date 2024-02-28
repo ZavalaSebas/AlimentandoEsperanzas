@@ -27,8 +27,10 @@ public partial class Donor
     public int IdentificationType { get; set; }
 
     [Required(ErrorMessage = "Este dato es requerido")]
-    [StringLength(8)] 
-    public int PhoneNumber { get; set; }
+    [StringLength(20, MinimumLength = 6, ErrorMessage = "El número de teléfono debe tener entre 6 y 20 caracteres")]
+[RegularExpression("^[0-9]*$", ErrorMessage = "El número de teléfono solo puede contener números.")]
+    public string PhoneNumber { get; set; }
+
 
     [Required(ErrorMessage = "Este dato es requerido")]
     public DateTime Date { get; set; }
