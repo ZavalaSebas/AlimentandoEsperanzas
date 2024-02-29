@@ -61,6 +61,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Add(idtype);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Categoría agregada exitosamente";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
@@ -105,6 +106,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Update(idtype);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Categoría actualizada exitosamente";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -152,6 +154,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Categoría eliminada exitosamente";
             return RedirectToAction(nameof(Index));
         }
 

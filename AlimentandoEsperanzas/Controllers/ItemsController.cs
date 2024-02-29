@@ -47,7 +47,7 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
-            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id");
+            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Description");
             return View();
         }
 
@@ -58,14 +58,31 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Description,Quantity,Category")] Item item)
         {
-            if (ModelState.IsValid)
+            try
             {
+                //if (ModelState.IsValid)
+                //{
                 _context.Add(item);
                 await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Producto agregado exitosamente";
                 return RedirectToAction(nameof(Index));
+                 //}
+                ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
+                return View(item);
             }
-            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
-            return View(item);
+            catch (Exception ex)
+            {
+                return View(item);
+            }
+
+            // //if (ModelState.IsValid)
+            // //{
+            //     _context.Add(item);
+            //     await _context.SaveChangesAsync();
+            //     return RedirectToAction(nameof(Index));
+            //// }
+            // ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
+            // return View(item);
         }
 
         // GET: Items/Edit/5
@@ -81,7 +98,7 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 return NotFound();
             }
-            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
+            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Description", item.Category);
             return View(item);
         }
 
@@ -97,12 +114,13 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(item);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Producto actualizado exitosamente";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -116,7 +134,7 @@ namespace AlimentandoEsperanzas.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
             return View(item);
         }
@@ -152,6 +170,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Producto eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

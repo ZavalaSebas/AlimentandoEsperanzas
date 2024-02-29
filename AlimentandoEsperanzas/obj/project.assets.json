@@ -6714,19 +6714,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sebas\\.nuget\\packages\\": {}
+    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
       "projectName": "AlimentandoEsperanzas",
-      "projectPath": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
-      "packagesPath": "C:\\Users\\sebas\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\obj\\",
+      "projectPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj",
+      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Alimentando Esperanzas\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6746,11 +6746,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -6795,7 +6790,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

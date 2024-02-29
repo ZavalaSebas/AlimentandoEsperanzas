@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Tipos de Identificación";
 }
+@if (TempData["Mensaje"] != null)
+{
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["Mensaje"]');
+    </script>
+}
 
 <div class="lime-header">
     <h1><a class="navbar-brand">Tipos de Identificación</a></h1>
@@ -67,7 +75,7 @@
                     <table id="idtypeTable" class="table table-bordered table-hover">
                         <thead class="thead-light">
                             <tr>
-                                <th>Descripción</th>
+                                <th>Tipo de Identificación</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
                         </thead>

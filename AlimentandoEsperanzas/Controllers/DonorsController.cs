@@ -58,8 +58,8 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DonorId,Name,LastName,Email,IdNumber,IdentificationType,PhoneNumber,Date,Comments")] Donor donor)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 try
                 {
                     _context.Add(donor);
@@ -72,7 +72,7 @@ namespace AlimentandoEsperanzas.Controllers
                     return View(donor);
                 }
                 
-            //}
+            }
             ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", donor.IdentificationType);
             return View(donor);
         }
