@@ -138,8 +138,7 @@ namespace AlimentandoEsperanzas.Controllers
             ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
             return View(item);
         }
-
-        // GET: Items/Delete/5
+    
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,23 +146,20 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var item = await _context.Items
-                .Include(i => i.CategoryNavigation)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Item item = _context.Items.Include(i => i.CategoryNavigation).Where(m => m.Id == id).FirstOrDefault();
             if (item == null)
             {
                 return NotFound();
             }
 
-            return View(item);
+            return PartialView("_ItemDelete", item);
         }
 
-        // POST: Items/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Item item)
         {
-            var item = await _context.Items.FindAsync(id);
+            
             if (item != null)
             {
                 _context.Items.Remove(item);
