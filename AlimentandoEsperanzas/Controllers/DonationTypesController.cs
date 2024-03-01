@@ -125,7 +125,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(donationtype);
         }
 
-        // GET: DonationTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,22 +132,20 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var donationtype = await _context.Donationtypes
-                .FirstOrDefaultAsync(m => m.DonationTypeId == id);
+            Donationtype donationtype = _context.Donationtypes.Where(m => m.DonationTypeId == id).FirstOrDefault();
             if (donationtype == null)
             {
                 return NotFound();
             }
 
-            return View(donationtype);
+            return PartialView("_DonationtypeDelete", donationtype);
         }
 
-        // POST: DonationTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Donationtype donationtype)
         {
-            var donationtype = await _context.Donationtypes.FindAsync(id);
+
             if (donationtype != null)
             {
                 _context.Donationtypes.Remove(donationtype);

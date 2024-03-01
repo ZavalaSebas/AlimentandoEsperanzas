@@ -126,7 +126,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(user);
         }
 
-        // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,30 +133,27 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .Include(u => u.IdentificationTypeNavigation)
-                .Include(u => u.RoleNavigation)
-                .FirstOrDefaultAsync(m => m.UserId == id);
+            User user = _context.Users.Include(u => u.IdentificationTypeNavigation).Include(u => u.RoleNavigation).Where(m => m.UserId == id).FirstOrDefault();
             if (user == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return PartialView("_UserDelete", user);
         }
 
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(User user)
         {
-            var user = await _context.Users.FindAsync(id);
+
             if (user != null)
             {
                 _context.Users.Remove(user);
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

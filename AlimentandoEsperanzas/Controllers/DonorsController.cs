@@ -131,7 +131,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(donor);
         }
 
-        // GET: Donors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,23 +138,20 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var donor = await _context.Donors
-                .Include(d => d.IdentificationTypeNavigation)
-                .FirstOrDefaultAsync(m => m.DonorId == id);
+            Donor donor = _context.Donors.Include(d => d.IdentificationTypeNavigation).Where(m => m.DonorId == id).FirstOrDefault();
             if (donor == null)
             {
                 return NotFound();
             }
 
-            return View(donor);
+            return PartialView("_DonorDelete", donor);
         }
 
-        // POST: Donors/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Donor donor)
         {
-            var donor = await _context.Donors.FindAsync(id);
+
             if (donor != null)
             {
                 _context.Donors.Remove(donor);
@@ -165,6 +161,7 @@ namespace AlimentandoEsperanzas.Controllers
             TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool DonorExists(int id)
         {

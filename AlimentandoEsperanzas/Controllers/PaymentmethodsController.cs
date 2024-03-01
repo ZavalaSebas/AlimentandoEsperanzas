@@ -124,7 +124,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(paymentmethod);
         }
 
-        // GET: Paymentmethods/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,29 +131,27 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var paymentmethod = await _context.Paymentmethods
-                .FirstOrDefaultAsync(m => m.PaymentMethodId == id);
+            Paymentmethod paymentmethod = _context.Paymentmethods.Where(m => m.PaymentMethodId == id).FirstOrDefault();
             if (paymentmethod == null)
             {
                 return NotFound();
             }
 
-            return View(paymentmethod);
+            return PartialView("_PaymentMethodDelete", paymentmethod);
         }
 
-        // POST: Paymentmethods/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Paymentmethod paymentmethod)
         {
-            var paymentmethod = await _context.Paymentmethods.FindAsync(id);
+
             if (paymentmethod != null)
             {
                 _context.Paymentmethods.Remove(paymentmethod);
             }
 
             await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente";
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

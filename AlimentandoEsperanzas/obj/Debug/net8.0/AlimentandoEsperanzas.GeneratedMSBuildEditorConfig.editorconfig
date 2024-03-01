@@ -30,10 +30,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,12 +42,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXENyZWF0ZS5jc2h0bWw=
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/_CategoriesDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xfQ2F0ZWdvcmllc0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXERlbGV0ZS5jc2h0bWw=
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/Details.cshtml]
@@ -66,12 +62,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xDcmVhdGUuY3NodG1s
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/_DonationDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXF9Eb25hdGlvbkRlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xEZWxldGUuY3NodG1s
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Details.cshtml]
@@ -84,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/_DonationtypeDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xfRG9uYXRpb250eXBlRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donors/Create.cshtml]
@@ -118,10 +118,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Idtypes/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Idtypes/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -134,12 +130,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Idtypes/_IdTypeDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xfSWRUeXBlRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcRGVsZXRlLmNzaHRtbA==
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/Details.cshtml]
@@ -154,12 +150,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Items/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/_ItemCategoryDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcX0l0ZW1DYXRlZ29yeURlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Items/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcRGVsZXRlLmNzaHRtbA==
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Items/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Items/Details.cshtml]
@@ -182,10 +178,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Paymentmethods/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Paymentmethods/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -196,6 +188,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Paymentmethods/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Paymentmethods/_PaymentMethodDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcX1BheW1lbnRNZXRob2REZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Roles/Create.cshtml]
@@ -216,6 +212,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Roles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Roles/_RoleDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcX1JvbGVEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Shared/Error.cshtml]
@@ -264,6 +264,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Users/_UserDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcX1VzZXJEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/_ViewImports.cshtml]

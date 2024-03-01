@@ -87,7 +87,8 @@
                                     <td class="text-right">
                                         <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
                                         <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
-                                        <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger" style="color:black;"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                                        <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="@("#deleteModal-" + item.CategoryId)" data-url="@Url.Action($"Delete/{item.CategoryId}")">Eliminar</button>
+                                        @await Html.PartialAsync("_CategoriesDelete", item)
                                     </td>
                                 </tr>
                             }
@@ -111,4 +112,21 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.delete-button').on('click', function (e) {
+                e.preventDefault();
+                var deleteUrl = $(this).attr('href');
+                $('#deleteForm').attr('action', deleteUrl);
+                $('#deleteModal').modal('show');
+            });
+        });
+
+        $('#cancelButton').on('click', function () {
+            history.back();
+        });
+        });
+    </script>
+
 }
