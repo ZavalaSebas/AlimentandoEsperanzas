@@ -4,6 +4,7 @@
     Layout = "";
 }
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,8 +61,10 @@
                                     <label class="custom-control-label" for="exampleCheck1">Recordar</label>
                                 </div>
                                 <a href="#" class="float-left forgot-link">¿Olvidó Contraseña?</a>
-                                <a href="index.html" class="btn btn-primary float-right m-l-xxs">Iniciar Sesión</a>
-                                
+
+                                <a asp-controller="Home" asp-action="Index"><i class="btn btn-primary float-right m-l-xxs">Iniciar Sesión</i></a>
+
+
                             </form>
                         </div>
                     </div>
@@ -79,4 +82,3 @@
     <script src="../../../../lime/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="../../../../lime/theme/assets/js/lime.min.js"></script>
 </body>
-
