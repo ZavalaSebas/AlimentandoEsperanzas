@@ -115,7 +115,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(role);
         }
 
-        // GET: Roles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,28 +122,27 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.RoleId == id);
+            Role role = _context.Roles.Where(m => m.RoleId == id).FirstOrDefault();
             if (role == null)
             {
                 return NotFound();
             }
 
-            return View(role);
+            return PartialView("_RoleDelete", role);
         }
 
-        // POST: Roles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Role role)
         {
-            var role = await _context.Roles.FindAsync(id);
+
             if (role != null)
             {
                 _context.Roles.Remove(role);
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

@@ -99,8 +99,8 @@
                                     <td class="text-right">
                                         <a asp-action="Edit" asp-route-id="@item.DonationId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
                                         <a asp-action="Details" asp-route-id="@item.DonationId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
-                                        <a href="#" class="btn btn-danger delete-button" data-toggle="modal" data-target="#deleteModal" data-donation-id="@item.DonationId"><i class="fas fa-trash-alt"></i> Eliminar</a>
-
+                                        <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="@("#deleteModal-" + item.DonationId)" data-url="@Url.Action($"Delete/{item.DonationId}")">Eliminar</button>
+                                        @await Html.PartialAsync("_DonationDelete", item)
                                     </td>
                                 </tr>
                             }
@@ -112,27 +112,6 @@
     </div>
 </div>
 
-<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Confirmar Eliminación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>¿Estás seguro de que quieres eliminar esta donación?</p>
-            </div>
-            <div class="modal-footer">
-                <form id="deleteForm" action="#" method="post">
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 @section Scripts {
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -155,6 +134,11 @@
                 $('#deleteForm').attr('action', deleteUrl);
                 $('#deleteModal').modal('show');
             });
+        });
+
+        $('#cancelButton').on('click', function () {
+            history.back();
+        });
         });
     </script>
 

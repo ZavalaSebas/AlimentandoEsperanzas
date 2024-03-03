@@ -47,7 +47,7 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
-            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id");
+            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Description");
             return View();
         }
 
@@ -58,14 +58,31 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Description,Quantity,Category")] Item item)
         {
-            if (ModelState.IsValid)
+            try
             {
+                //if (ModelState.IsValid)
+                //{
                 _context.Add(item);
                 await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Producto agregado exitosamente";
                 return RedirectToAction(nameof(Index));
+                 //}
+                ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
+                return View(item);
             }
-            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
-            return View(item);
+            catch (Exception ex)
+            {
+                return View(item);
+            }
+
+            // //if (ModelState.IsValid)
+            // //{
+            //     _context.Add(item);
+            //     await _context.SaveChangesAsync();
+            //     return RedirectToAction(nameof(Index));
+            //// }
+            // ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
+            // return View(item);
         }
 
         // GET: Items/Edit/5
@@ -81,7 +98,7 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 return NotFound();
             }
-            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
+            ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Description", item.Category);
             return View(item);
         }
 
@@ -97,12 +114,13 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(item);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Producto actualizado exitosamente";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -116,12 +134,11 @@ namespace AlimentandoEsperanzas.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
             return View(item);
         }
-
-        // GET: Items/Delete/5
+    
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,29 +146,27 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var item = await _context.Items
-                .Include(i => i.CategoryNavigation)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Item item = _context.Items.Include(i => i.CategoryNavigation).Where(m => m.Id == id).FirstOrDefault();
             if (item == null)
             {
                 return NotFound();
             }
 
-            return View(item);
+            return PartialView("_ItemDelete", item);
         }
 
-        // POST: Items/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Item item)
         {
-            var item = await _context.Items.FindAsync(id);
+            
             if (item != null)
             {
                 _context.Items.Remove(item);
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Producto eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

@@ -59,6 +59,7 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 _context.Add(itemcategory);
                 await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Categoria creada exitosamente";
                 return RedirectToAction(nameof(Index));
             }
             return View(itemcategory);
@@ -98,6 +99,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Update(itemcategory);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Categoria actualizada exitosamente";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -115,7 +117,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(itemcategory);
         }
 
-        // GET: Itemcategories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,28 +124,27 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var itemcategory = await _context.Itemcategories
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Itemcategory itemcategory = _context.Itemcategories.Where(m => m.Id == id).FirstOrDefault();
             if (itemcategory == null)
             {
                 return NotFound();
             }
 
-            return View(itemcategory);
+            return PartialView("_ItemCategoryDelete", itemcategory);
         }
 
-        // POST: Itemcategories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Itemcategory itemcategory)
         {
-            var itemcategory = await _context.Itemcategories.FindAsync(id);
+
             if (itemcategory != null)
             {
                 _context.Itemcategories.Remove(itemcategory);
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

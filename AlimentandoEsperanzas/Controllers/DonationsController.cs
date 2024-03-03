@@ -146,7 +146,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(donation);
         }
 
-        // GET: Donations/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -154,26 +153,24 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var donation = await _context.Donations
-                .Include(d => d.Category)
+            Donation donation = _context.Donations.Include(d => d.Category)
                 .Include(d => d.DonationType)
                 .Include(d => d.Donor)
                 .Include(d => d.PaymentMethod)
-                .FirstOrDefaultAsync(m => m.DonationId == id);
+                .Where(m => m.DonationId == id).FirstOrDefault();
             if (donation == null)
             {
                 return NotFound();
             }
 
-            return View(donation);
+            return PartialView("_DonationDelete", donation);
         }
 
-        // POST: Donations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Donation donation)
         {
-            var donation = await _context.Donations.FindAsync(id);
+
             if (donation != null)
             {
                 _context.Donations.Remove(donation);
