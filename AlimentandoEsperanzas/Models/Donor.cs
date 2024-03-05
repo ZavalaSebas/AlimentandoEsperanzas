@@ -19,7 +19,8 @@ public partial class Donor : IValidatableObject
     [RegularExpression("^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$", ErrorMessage = "El formato del correo electrónico no es válido.")]
     public string Email { get; set; } = null!;
 
-    [Required(ErrorMessage = "Este dato es requerido")]
+    [Required(ErrorMessage = "El número de identificación es obligatorio")]
+    [StringLength(9, ErrorMessage = "El número de identificación debe tener como máximo 9 dígitos")]
     public string IdNumber { get; set; } = null!;
 
     [Required(ErrorMessage = "Este dato es requerido")]
