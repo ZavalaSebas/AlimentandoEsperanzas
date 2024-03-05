@@ -138,7 +138,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            Donor donor = _context.Donors.Include(d => d.IdentificationTypeNavigation).Where(m => m.DonorId == id).FirstOrDefault();
+            Donor donor = _context.Donors.Include(d => d.IdentificationType).Where(m => m.DonorId == id).FirstOrDefault();
             if (donor == null)
             {
                 return NotFound();
