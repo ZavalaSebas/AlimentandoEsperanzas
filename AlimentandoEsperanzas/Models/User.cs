@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AlimentandoEsperanzas.Models;
 
@@ -10,9 +11,10 @@ public partial class User
     public string Name { get; set; } = null!;
 
     public string LastName { get; set; } = null!;
-
+    [Required(ErrorMessage = "El correo electrónico es obligatorio.")]
+    [EmailAddress(ErrorMessage = "Por favor, ingrese una dirección de correo electrónico válida.")]
     public string Email { get; set; } = null!;
-
+    [Required(ErrorMessage = "La contraseña es obligatoria.")]
     public string Password { get; set; } = null!;
 
     public string IdNumber { get; set; } = null!;

@@ -47,12 +47,15 @@
 
                             <h5 class="card-title">Inicio de Sesión</h5>
 
-                            <form method="post">
+                            <form method="post" onsubmit="return validateForm()">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Correo">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Correo">
+                                    <div id="emailError" style="display:none; color:red;">Por favor, ingrese su correo electrónico.</div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+                                    <div id="passwordError" style="display:none; color:red;">Por favor, ingrese su contraseña.</div>
+                                    <div id="loginError" style="display:none; color:red;">Credenciales incorrectas. Por favor, inténtelo de nuevo.</div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                             </form>
@@ -73,3 +76,27 @@
     <script src="../../../../lime/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="../../../../lime/theme/assets/js/lime.min.js"></script>
 
+<script>
+    function validateForm() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (email.trim() === "") {
+            document.getElementById("emailError").style.display = "block";
+            return false;
+        } else {
+            document.getElementById("emailError").style.display = "none";
+        }
+
+        if (password.trim() === "") {
+            document.getElementById("passwordError").style.display = "block";
+            return false;
+        } else {
+            document.getElementById("passwordError").style.display = "none";
+        }
+
+        // Agrega aquí la lógica de validación adicional si es necesario
+
+        return true;
+    }
+</script>
