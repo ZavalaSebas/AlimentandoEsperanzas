@@ -26,11 +26,8 @@ namespace AlimentandoEsperanzas.Controllers
 
             if (user != null)
             {
-                // Iniciar sesión
-                // Por ejemplo, puedes establecer una cookie de autenticación
-                // HttpContext.SignInAsync(user);
 
-                return RedirectToAction("Index", "Home"); // Redireccionar al usuario a la página de inicio
+                return RedirectToAction("Index", "Home"); 
             }
 
             ModelState.AddModelError(string.Empty, "Credenciales inválidas");
