@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlimentandoEsperanzas.Models;
+using System.Diagnostics;
+using System.Data;
+using System.Data.SqlClient;
+using ClosedXML.Excel;
 
 namespace AlimentandoEsperanzas.Controllers
 {
@@ -47,7 +51,7 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Donors/Create
         public IActionResult Create()
         {
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id");
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description");
             return View();
         }
 
@@ -60,9 +64,18 @@ namespace AlimentandoEsperanzas.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(donor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(donor);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Se ha agregado exitosamente.";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch(Exception ex)
+                {
+                    return View(donor);
+                }
+                
             }
             ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", donor.IdentificationType);
             return View(donor);
@@ -103,6 +116,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Update(donor);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Se ha actualizado exitosamente.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -121,7 +135,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(donor);
         }
 
-        // GET: Donors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,35 +142,80 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var donor = await _context.Donors
-                .Include(d => d.IdentificationTypeNavigation)
-                .FirstOrDefaultAsync(m => m.DonorId == id);
+            Donor donor = _context.Donors.Include(d => d.IdentificationTypeNavigation).Where(m => m.DonorId == id).FirstOrDefault();
             if (donor == null)
             {
                 return NotFound();
             }
 
-            return View(donor);
+            return PartialView("_DonorDelete", donor);
         }
 
-        // POST: Donors/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Donor donor)
         {
-            var donor = await _context.Donors.FindAsync(id);
+
             if (donor != null)
             {
                 _context.Donors.Remove(donor);
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool DonorExists(int id)
         {
             return _context.Donors.Any(e => e.DonorId == id);
+        }
+
+        private readonly string DefaultConnection;
+
+        public DonorsController(IConfiguration config)
+        {
+            DefaultConnection = config.GetConnectionString("DefaultConnection");
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Exportar_Excel(string fechainicio, string fechafin)
+        {
+            DataTable tabla_cliente = new DataTable();
+            using (var conexion = new sqlConection(DefaultConnection))
+            {
+                conexion.Open();
+                using (var adapter = sqlDataAdapter())
+                {
+                    adapter.SelectComand = new SqlCommand("sp_reporte_donor", conexion);
+                    adapter.SelectComand.CommandType = CommandType.StroredProcedure;
+                    adapter.SelectCommand.Parameters.AddWithValue("@FechaInicio", fechainicio);
+                    adapter.SelectCommand.Parameters.AddWithValue("@FechaFin", fechafin);
+
+                    adaptar.Fill(tabla_cliente);
+                }
+            }
+            using (var libro = new XLWorkbook())
+            {
+
+                tabla_cliente.TableName = "Clientes";
+                var hoja = libro.Worksheets.Add(tabla_cliente);
+                hoja.ColumnsUsed().AdjustToContents();
+
+                using (var memoria = new MemoryStream())
+                {
+
+                    libro.SaveAs(memoria);
+
+                    var nombreExcel = string.Concat("Reporte ", DateTime.Now.ToString(), ".xlsx");
+
+                    return File(memoria.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", nombreExcel);
+                }
+            }
         }
     }
 }
