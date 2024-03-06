@@ -48,8 +48,8 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id");
-            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId");
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description");
+            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1");
             return View();
         }
 
@@ -60,15 +60,23 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserId,Name,LastName,Email,Password,IdNumber,IdentificationType,PhoneNumber,Date,Role")] User user)
         {
-            if (ModelState.IsValid)
+            try
             {
+                //if (ModelState.IsValid)
+                //{
                 _context.Add(user);
                 await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Usuario agregado exitosamente";
                 return RedirectToAction(nameof(Index));
+                // }
+                ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+                ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+                return View(user);
             }
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
-            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
-            return View(user);
+            catch
+            {
+                return View(user);
+            }
         }
 
         // GET: Users/Edit/5
@@ -84,8 +92,8 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
-            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
             return View(user);
         }
 
@@ -101,13 +109,14 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(user);
                     await _context.SaveChangesAsync();
-                }
+                TempData["Mensaje"] = "Usuario actualizado exitosamente";
+            }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!UserExists(user.UserId))
@@ -120,7 +129,7 @@ namespace AlimentandoEsperanzas.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+           // }
             ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
             ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
             return View(user);
@@ -153,7 +162,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
 
             await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            TempData["Mensaje"] = "Usuario eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

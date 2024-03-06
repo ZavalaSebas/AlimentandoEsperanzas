@@ -59,6 +59,7 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 _context.Add(role);
                 await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Rol agregado exitosamente";
                 return RedirectToAction(nameof(Index));
             }
             return View(role);
@@ -98,6 +99,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Update(role);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Rol actualizado exitosamente";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -142,7 +144,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
 
             await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            TempData["Mensaje"] = "Rol eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

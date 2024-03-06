@@ -66,6 +66,9 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a asp-controller="Users" asp-action="Index"><i class="material-icons">add</i>Agregar Usuarios</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -99,7 +102,7 @@
                 </a>
             </section>
 
-            <a class="navbar-brand" href="/">Alimentando Esperanzas</a>
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">Alimentando Esperanzas</a>
 
             @* Settings *@
             <ul class="navbar-nav ml-auto">
@@ -147,11 +150,11 @@
         </main>
     </div>
 
-                    <footer class="border-top footer text-muted">
+                    @* <footer class="border-top footer text-muted">
                         <div class="container">
                             &copy; 2024 - AlimentandoEsperanzas - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </div>
-                    </footer>
+                    </footer> *@
 
                 </div>
             </div>

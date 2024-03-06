@@ -3,11 +3,21 @@
 @{
     ViewData["Title"] = "Usuarios";
 }
+@if (TempData["Mensaje"] != null)
+{
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["Mensaje"]');
+    </script>
+}
 
 <div class="lime-header">
     <h1><a class="navbar-brand">Usuarios</a></h1>
+
     <div class="text-right">
         <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a>
+        <a asp-controller="Roles" asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Roles</a>
     </div>
 </div>
 
@@ -70,11 +80,7 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Email</th>
-                                <th>Contraseña</th>
                                 <th>Número de Identificación</th>
-                                <th>Número de Teléfono</th>
-                                <th>Fecha</th>
-                                <th>Tipo de Identificación</th>
                                 <th>Rol</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
@@ -86,12 +92,8 @@
                                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
                                     <td>@Html.DisplayFor(modelItem => item.LastName)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Password)</td>
                                     <td>@Html.DisplayFor(modelItem => item.IdNumber)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.IdentificationTypeNavigation.Id)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.RoleNavigation.RoleId)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.RoleNavigation.Role1)</td>
                                     <td class="text-right">
                                         <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
                                         <a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
@@ -134,6 +136,6 @@
         $('#cancelButton').on('click', function () {
             history.back();
         });
-        });
+                });
     </script>
 }
