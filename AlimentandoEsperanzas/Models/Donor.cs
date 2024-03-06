@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace AlimentandoEsperanzas.Models;
@@ -10,31 +11,38 @@ public partial class Donor : IValidatableObject
     public int DonorId { get; set; }
 
     [Required(ErrorMessage = "Este dato es requerido")]
+    [DisplayName("Nombre")]
     public string Name { get; set; } = null!;
 
     [Required(ErrorMessage = "Este dato es requerido")]
+    [DisplayName("Apellido")]
     public string LastName { get; set; } = null!;
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [RegularExpression("^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$", ErrorMessage = "El formato del correo electrónico no es válido.")]
+    [DisplayName("Correo electrónico")]
     public string Email { get; set; } = null!;
 
     [Required(ErrorMessage = "El número de identificación es obligatorio")]
     [StringLength(9, ErrorMessage = "El número de identificación debe tener como máximo 9 dígitos")]
+    [DisplayName("Número de identificación")]
     public string IdNumber { get; set; } = null!;
 
     [Required(ErrorMessage = "Este dato es requerido")]
-
+    [DisplayName("Tipo de identificación")]
     public int IdentificationType { get; set; }
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [RegularExpression("^[0-9]{8}$", ErrorMessage = "El número de teléfono debe de tener 8 digitos")]
+    [DisplayName("Teléfono")]
     public required string PhoneNumber { get; set; }
 
 
     [Required(ErrorMessage = "Este dato es requerido")]
+    [DisplayName("Fecha")]
     public DateTime Date { get; set; }
 
+    [DisplayName("Comentarios")]
     public string? Comments { get; set; }
 
     public virtual ICollection<Donation> Donations { get; set; } = new List<Donation>();
