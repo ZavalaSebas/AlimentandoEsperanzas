@@ -48,8 +48,8 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id");
-            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId");
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description");
+            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1");
             return View();
         }
 
@@ -60,15 +60,23 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserId,Name,LastName,Email,Password,IdNumber,IdentificationType,PhoneNumber,Date,Role")] User user)
         {
-            if (ModelState.IsValid)
+            try
             {
+                //if (ModelState.IsValid)
+                //{
                 _context.Add(user);
                 await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Usuario agregado exitosamente";
                 return RedirectToAction(nameof(Index));
+                // }
+                ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+                ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+                return View(user);
             }
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
-            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
-            return View(user);
+            catch
+            {
+                return View(user);
+            }
         }
 
         // GET: Users/Edit/5
@@ -84,8 +92,8 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
-            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
             return View(user);
         }
 
@@ -101,13 +109,14 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(user);
                     await _context.SaveChangesAsync();
-                }
+                TempData["Mensaje"] = "Usuario actualizado exitosamente";
+            }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!UserExists(user.UserId))
@@ -120,13 +129,12 @@ namespace AlimentandoEsperanzas.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+           // }
             ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
             ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
             return View(user);
         }
 
-        // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,30 +142,27 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .Include(u => u.IdentificationTypeNavigation)
-                .Include(u => u.RoleNavigation)
-                .FirstOrDefaultAsync(m => m.UserId == id);
+            User user = _context.Users.Include(u => u.IdentificationTypeNavigation).Include(u => u.RoleNavigation).Where(m => m.UserId == id).FirstOrDefault();
             if (user == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return PartialView("_UserDelete", user);
         }
 
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(User user)
         {
-            var user = await _context.Users.FindAsync(id);
+
             if (user != null)
             {
                 _context.Users.Remove(user);
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Usuario eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

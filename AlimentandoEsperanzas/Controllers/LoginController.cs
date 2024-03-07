@@ -1,18 +1,36 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using AlimentandoEsperanzas.Models;
 
-namespace AlimentandoEsperanzas.Controllers
+public class LoginController : Controller
 {
-    public class LoginController : Controller
+    private readonly AlimentandoesperanzasContext _context;
+
+    public LoginController(AlimentandoesperanzasContext context)
     {
-        public ActionResult Index()
+        _context = context;
+    }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Index(string email, string password)
+    {
+        var user = _context.Users
+                           .Include(u => u.RoleNavigation)
+                           .FirstOrDefault(u => u.Email == email && u.Password == password);
+
+        if (user != null)
         {
-            return View();
+            HttpContext.Session.SetString("UserRole", user.RoleNavigation.Role1);
+            return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Login(string usuario)
-        {
-            ViewBag.usuario = usuario;
-            return View();
-        }
+        ModelState.AddModelError(string.Empty, "Credenciales inválidas");
+        return View();
     }
 }

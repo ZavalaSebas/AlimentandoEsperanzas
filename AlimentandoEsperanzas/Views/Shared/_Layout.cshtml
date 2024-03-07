@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var userRole = Context.Session.GetString("UserRole");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -61,8 +64,17 @@
                         <li>
                             <a asp-controller="Idtypes" asp-action="Index">Tipo de Identificación</a>
                         </li>
+                        <li>
+                            <a asp-controller="Itemcategories" asp-action="Index">Categoria de Producto</a>
+                        </li>
                     </ul>
                 </li>
+                @if (userRole == "Admin")
+                {
+                    <li>
+                        <a asp-controller="Users" asp-action="Index"><i class="material-icons">add</i>Agregar Usuarios</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>
@@ -96,7 +108,7 @@
                 </a>
             </section>
 
-            <a class="navbar-brand" href="/">Alimentando Esperanzas</a>
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">Alimentando Esperanzas</a>
 
             @* Settings *@
             <ul class="navbar-nav ml-auto">
@@ -114,8 +126,7 @@
                         <li><a class="dropdown-item" href="#">Cuenta</a></li>
                         <li><a class="dropdown-item" href="#">Configuración</a></li>
                         <li class="divider"></li>
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-
+                        <li><a class="dropdown-item" href="/Login/Index">Cerrar sesión</a></li>
                     </ul>
                 </li>
 
@@ -144,11 +155,11 @@
         </main>
     </div>
 
-@*     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - AlimentandoEsperanzas - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer> *@
+                    @* <footer class="border-top footer text-muted">
+                        <div class="container">
+                            &copy; 2024 - AlimentandoEsperanzas - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </div>
+                    </footer> *@
 
                 </div>
             </div>
@@ -173,3 +184,23 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<style>
+
+    .content {
+        padding-bottom: 60px; 
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px; 
+        background-color: #f5f5f5;
+        text-align: center;
+        line-height: 60px; 
+    }
+    .wrapper {
+        position: relative;
+        min-height: 100vh;
+    }
+</style>

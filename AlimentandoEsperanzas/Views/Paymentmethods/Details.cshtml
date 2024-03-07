@@ -1,24 +1,34 @@
 ﻿@model AlimentandoEsperanzas.Models.Paymentmethod
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle";
 }
 
-<h1>Details</h1>
+<div class="lime-container">
+    <h1 class="text-center mb-4">Detalle del Método de Pago</h1>
+    <div class="card">
+        <div class="card-body">
+            <div>
+                <h4>Método de Pago</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.PaymentMethod1)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PaymentMethod1)
+                    </dd>
+                </dl>
 
-<div>
-    <h4>Paymentmethod</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PaymentMethod1)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PaymentMethod1)
-        </dd>
-    </dl>
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="PaymentMethodId" />
+                    <div class="text-center">
+                        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.PaymentMethodId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
