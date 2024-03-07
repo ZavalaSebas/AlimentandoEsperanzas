@@ -50,10 +50,10 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Donations/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
-            ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId");
-            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "DonorId");
-            ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethodId");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1");
+            ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationType1");
+            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "Name");
+            ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethod1");
             return View();
         }
 
@@ -64,12 +64,21 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DonationId,DonorId,Amount,DonationTypeId,Date,PaymentMethodId,CategoryId,Comments")] Donation donation)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(donation);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            //if (ModelState.IsValid)
+            //{
+                try
+                {
+                        _context.Add(donation);
+                        await _context.SaveChangesAsync();
+                        TempData["Mensaje"] = "Se ha agregado exitosamente.";
+                        return RedirectToAction(nameof(Index));
+                }
+                catch(Exception ex)
+                {
+                    return View(donation);
+                }
+                
+            //}
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", donation.CategoryId);
             ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId", donation.DonationTypeId);
             ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "DonorId", donation.DonorId);
@@ -90,10 +99,10 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", donation.CategoryId);
-            ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId", donation.DonationTypeId);
-            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "DonorId", donation.DonorId);
-            ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethodId", donation.PaymentMethodId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1", donation.CategoryId);
+            ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationType1", donation.DonationTypeId);
+            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "Name", donation.DonorId);
+            ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethod1", donation.PaymentMethodId);
             return View(donation);
         }
 
@@ -109,12 +118,13 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(donation);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Se ha actualizado exitosamente.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -126,9 +136,9 @@ namespace AlimentandoEsperanzas.Controllers
                     {
                         throw;
                     }
-                }
-                return RedirectToAction(nameof(Index));
             }
+            return RedirectToAction(nameof(Index));
+            //}
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", donation.CategoryId);
             ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId", donation.DonationTypeId);
             ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "DonorId", donation.DonorId);
@@ -136,7 +146,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(donation);
         }
 
-        // GET: Donations/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,32 +153,31 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var donation = await _context.Donations
-                .Include(d => d.Category)
+            Donation donation = _context.Donations.Include(d => d.Category)
                 .Include(d => d.DonationType)
                 .Include(d => d.Donor)
                 .Include(d => d.PaymentMethod)
-                .FirstOrDefaultAsync(m => m.DonationId == id);
+                .Where(m => m.DonationId == id).FirstOrDefault();
             if (donation == null)
             {
                 return NotFound();
             }
 
-            return View(donation);
+            return PartialView("_DonationDelete", donation);
         }
 
-        // POST: Donations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Donation donation)
         {
-            var donation = await _context.Donations.FindAsync(id);
+
             if (donation != null)
             {
                 _context.Donations.Remove(donation);
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

@@ -57,9 +57,17 @@ namespace AlimentandoEsperanzas.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(idtype);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(idtype);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Categoría agregada exitosamente";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    return View(idtype);
+                }
             }
             return View(idtype);
         }
@@ -98,6 +106,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Update(idtype);
                     await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Categoría actualizada exitosamente";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -115,7 +124,6 @@ namespace AlimentandoEsperanzas.Controllers
             return View(idtype);
         }
 
-        // GET: Idtypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,28 +131,27 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var idtype = await _context.Idtypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Idtype idtype = _context.Idtypes.Where(m => m.Id == id).FirstOrDefault();
             if (idtype == null)
             {
                 return NotFound();
             }
 
-            return View(idtype);
+            return PartialView("_IdTypeDelete", idtype);
         }
 
-        // POST: Idtypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Idtype idtype)
         {
-            var idtype = await _context.Idtypes.FindAsync(id);
+
             if (idtype != null)
             {
                 _context.Idtypes.Remove(idtype);
             }
 
             await _context.SaveChangesAsync();
+            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 
