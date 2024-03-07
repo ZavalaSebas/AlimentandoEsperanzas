@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\Proyectos\\AlimentandoEsperanzas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,54 +42,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Program.cs",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Program.cs",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Program.cs",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T23:37:41.125Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAAAIAAAABfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-05T21:57:29.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Controllers\\LoginController.cs",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-05T21:40:39.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Login\\Index.cshtml",
               "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Views\\Login\\Index.cshtml",
               "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Login\\Index.cshtml",
               "RelativeToolTip": "AlimentandoEsperanzas\\Views\\Login\\Index.cshtml",
-              "ViewState": "AQIAABsAAAAAAAAAAAAswDsAAAAbAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-05T21:41:16.469Z",
+              "WhenOpened": "2024-03-07T01:12:57.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "AlimentandoEsperanzas\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAQwB8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-07T01:09:18.408Z",
               "EditorCaption": ""
             }
           ]

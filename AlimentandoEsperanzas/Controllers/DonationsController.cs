@@ -99,10 +99,10 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", donation.CategoryId);
-            ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId", donation.DonationTypeId);
-            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "DonorId", donation.DonorId);
-            ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethodId", donation.PaymentMethodId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1", donation.CategoryId);
+            ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationType1", donation.DonationTypeId);
+            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "Name", donation.DonorId);
+            ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethod1", donation.PaymentMethodId);
             return View(donation);
         }
 
@@ -118,8 +118,8 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(donation);
@@ -136,9 +136,9 @@ namespace AlimentandoEsperanzas.Controllers
                     {
                         throw;
                     }
-                }
-                return RedirectToAction(nameof(Index));
             }
+            return RedirectToAction(nameof(Index));
+            //}
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", donation.CategoryId);
             ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId", donation.DonationTypeId);
             ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "DonorId", donation.DonorId);
