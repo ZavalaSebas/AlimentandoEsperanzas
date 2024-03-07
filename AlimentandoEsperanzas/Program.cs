@@ -1,23 +1,27 @@
 using AlimentandoEsperanzas.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Agregar servicios al contenedor.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AlimentandoesperanzasContext>(options =>
-options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql")));
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql")));
 
+// Configurar servicios de sesión
+builder.Services.AddSession();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configurar el pipeline de solicitud HTTP.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    // El valor HSTS predeterminado es de 30 días. Puedes cambiar esto para escenarios de producción, consulta https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -25,6 +29,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Agregar middleware de sesión antes del middleware de autorización
+app.UseSession();
 
 app.UseAuthorization();
 

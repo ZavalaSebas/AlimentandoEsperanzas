@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var userRole = Context.Session.GetString("UserRole");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -66,9 +69,12 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a asp-controller="Users" asp-action="Index"><i class="material-icons">add</i>Agregar Usuarios</a>
-                </li>
+                @if (userRole == "Admin")
+                {
+                    <li>
+                        <a asp-controller="Users" asp-action="Index"><i class="material-icons">add</i>Agregar Usuarios</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>
@@ -120,8 +126,7 @@
                         <li><a class="dropdown-item" href="#">Cuenta</a></li>
                         <li><a class="dropdown-item" href="#">Configuración</a></li>
                         <li class="divider"></li>
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-
+                        <li><a class="dropdown-item" href="/Login/Index">Cerrar sesión</a></li>
                     </ul>
                 </li>
 
