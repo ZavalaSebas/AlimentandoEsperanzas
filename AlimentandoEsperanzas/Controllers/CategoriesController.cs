@@ -32,20 +32,20 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            Category category = _context.Categories.Where(m => m.CategoryId == id).FirstOrDefault();
             if (category == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return PartialView("_CategoriesDetails", category);
         }
 
         // GET: Categories/Create
         public IActionResult Create()
         {
-            return View();
+            Category category = new Category();
+            return PartialView("_CategoriesCreate", category);
         }
 
         // POST: Categories/Create
@@ -66,10 +66,10 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return View(category);
+                    return PartialView("_CategoriesCreate", category);
                 }
             }
-            return View(category);
+            return PartialView("_CategoriesCreate", category);
         }
 
         // GET: Categories/Edit/5
@@ -80,26 +80,20 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories.FindAsync(id);
+            Category category = _context.Categories.Where(m => m.CategoryId == id).FirstOrDefault();
             if (category == null)
             {
                 return NotFound();
             }
-            return View(category);
+
+            return PartialView("_CategoriesEdit", category);
         }
 
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,Category1")] Category category)
+        public async Task<IActionResult> Edit(Category category)
         {
-            if (id != category.CategoryId)
-            {
-                return NotFound();
-            }
-
+           
             if (ModelState.IsValid)
             {
                 try
@@ -121,7 +115,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return PartialView("_CategoriesEdit", category);
         }
 
         public async Task<IActionResult> Delete(int? id)

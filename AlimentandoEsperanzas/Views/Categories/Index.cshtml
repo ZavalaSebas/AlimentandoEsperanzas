@@ -15,7 +15,8 @@
 <div class="lime-header">
     <h1><a class="navbar-brand">Categorías</a></h1>
     <div class="text-right">
-        <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a>
+        @* <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a> *@
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createModal">Agregar Nuevo</button>
     </div>
 </div>
 
@@ -85,8 +86,10 @@
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.Category1)</td>
                                     <td class="text-right">
-                                        <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
-                                        <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
+                                        <button type="button" class="btn btn-warning edit-button" data-toggle="modal" data-target="@("#editModal-" + item.CategoryId)" data-url="@Url.Action($"Edit/{item.CategoryId}")">Editar</button>
+                                        @await Html.PartialAsync("_CategoriesEdit", item)
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@("#detailModal-" + item.CategoryId)" data-url="@Url.Action($"Details/{item.CategoryId}")">Detalle</button>
+                                        @await Html.PartialAsync("_CategoriesDetails", item)
                                         <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="@("#deleteModal-" + item.CategoryId)" data-url="@Url.Action($"Delete/{item.CategoryId}")">Eliminar</button>
                                         @await Html.PartialAsync("_CategoriesDelete", item)
                                     </td>
@@ -99,6 +102,8 @@
         </div>
     </div>
 </div>
+
+@await Html.PartialAsync("_CategoriesCreate", new Category())
 
 @section Scripts {
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -127,6 +132,38 @@
             history.back();
         });
         });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.edit-button').on('click', function (e) {
+                e.preventDefault();
+                var deleteUrl = $(this).attr('href');
+                $('#editForm').attr('action', deleteUrl);
+                $('#editModal').modal('show');
+            });
+        });
+
+        $('#cancelButton').on('click', function () {
+            history.back();
+        });
+                });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.edit-button').on('click', function (e) {
+                e.preventDefault();
+                var deleteUrl = $(this).attr('href');
+                $('#editForm').attr('action', deleteUrl);
+                $('#detailModal').modal('show');
+            });
+        });
+
+        $('#cancelButton').on('click', function () {
+            history.back();
+        });
+                        });
     </script>
 
 }
