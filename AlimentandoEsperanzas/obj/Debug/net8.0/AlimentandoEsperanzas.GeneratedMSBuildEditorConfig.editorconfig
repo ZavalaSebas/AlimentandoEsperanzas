@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Actionlog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aW9ubG9nXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Actionlog/_ActionlogDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aW9ubG9nXF9BY3Rpb25sb2dEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ASUS/OneDrive/Desktop/Alimentando Esperanzas/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

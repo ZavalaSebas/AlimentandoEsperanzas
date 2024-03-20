@@ -70,6 +70,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                         _context.Add(donation);
                         await _context.SaveChangesAsync();
+                        await LogAction($"Registro de la donación {donation.DonationId}", "Donaciones");
                         TempData["Mensaje"] = "Se ha agregado exitosamente.";
                         return RedirectToAction(nameof(Index));
                 }
@@ -124,6 +125,7 @@ namespace AlimentandoEsperanzas.Controllers
                 {
                     _context.Update(donation);
                     await _context.SaveChangesAsync();
+                    await LogAction($"Actualización de la donación {donation.DonationId}", "Donaciones");
                     TempData["Mensaje"] = "Se ha actualizado exitosamente.";
                 }
                 catch (DbUpdateConcurrencyException)
@@ -173,12 +175,59 @@ namespace AlimentandoEsperanzas.Controllers
 
             if (donation != null)
             {
+                await LogAction($"Eliminación de donación {donation.DonationId}", "Donaciones");
                 _context.Donations.Remove(donation);
             }
 
             await _context.SaveChangesAsync();
             TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
+        }
+
+        private async Task LogAction(string action, string document)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var actionLog = new Actionlog
+                {
+                    Action = action,
+                    Date = DateTime.Now,
+                    Document = document,
+                    UserId = userId.Value
+                };
+
+                _context.Actionlogs.Add(actionLog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                await LogError("No se pudo obtener el ID de usuario de la sesión");
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
+        }
+
+        private async Task LogError(string ex)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var errorlog = new Errorlog
+                {
+                    Date = DateTime.Now,
+                    ErrorMessage = ex,
+                    UserId = userId.Value
+                };
+
+                _context.Errorlogs.Add(errorlog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
         }
 
         private bool DonationExists(int id)

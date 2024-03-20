@@ -60,13 +60,14 @@ namespace AlimentandoEsperanzas.Controllers
         {
             try
             {
-                //if (ModelState.IsValid)
-                //{
-                _context.Add(item);
+                if (ModelState.IsValid)
+                {
+                    _context.Add(item);
                 await _context.SaveChangesAsync();
+                await LogAction($"Registro del producto {item.Description}","Inventario");
                 TempData["Mensaje"] = "Producto agregado exitosamente";
                 return RedirectToAction(nameof(Index));
-                 //}
+                 }
                 ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
                 return View(item);
             }
@@ -74,15 +75,6 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 return View(item);
             }
-
-            // //if (ModelState.IsValid)
-            // //{
-            //     _context.Add(item);
-            //     await _context.SaveChangesAsync();
-            //     return RedirectToAction(nameof(Index));
-            //// }
-            // ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
-            // return View(item);
         }
 
         // GET: Items/Edit/5
@@ -114,12 +106,13 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 try
                 {
                     _context.Update(item);
                     await _context.SaveChangesAsync();
+                    await LogAction($"Actualización del producto {item.Description}", "Inventario");
                     TempData["Mensaje"] = "Producto actualizado exitosamente";
                 }
                 catch (DbUpdateConcurrencyException)
@@ -134,7 +127,7 @@ namespace AlimentandoEsperanzas.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            //}
+            }
             ViewData["Category"] = new SelectList(_context.Itemcategories, "Id", "Id", item.Category);
             return View(item);
         }
@@ -159,15 +152,69 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Item item)
         {
-            
-            if (item != null)
+            try
             {
-                _context.Items.Remove(item);
-            }
+                if (item != null)
+                {
+                    await LogAction($"Eliminación de producto {item.Description}", "Inventario");
+                    _context.Items.Remove(item);
+                }
 
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Producto eliminado exitosamente.";
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Producto eliminado exitosamente.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
+            }
             return RedirectToAction(nameof(Index));
+        }
+
+        private async Task LogAction(string action, string document)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var actionLog = new Actionlog
+                {
+                    Action = action,
+                    Date = DateTime.Now,
+                    Document = document,
+                    UserId = userId.Value
+                };
+
+                _context.Actionlogs.Add(actionLog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                await LogError("No se pudo obtener el ID de usuario de la sesión");
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
+        }
+
+        private async Task LogError(string ex)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var errorlog = new Errorlog
+                {
+                    Date = DateTime.Now,
+                    ErrorMessage = ex,
+                    UserId = userId.Value
+                };
+
+                _context.Errorlogs.Add(errorlog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
         }
 
         private bool ItemExists(int id)

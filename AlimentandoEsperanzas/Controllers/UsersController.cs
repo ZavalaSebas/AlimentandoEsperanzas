@@ -62,13 +62,14 @@ namespace AlimentandoEsperanzas.Controllers
         {
             try
             {
-                //if (ModelState.IsValid)
-                //{
-                _context.Add(user);
+                if (ModelState.IsValid)
+                {
+                    _context.Add(user);
                 await _context.SaveChangesAsync();
+                await LogAction($"Registro del usuario {user.Email}", "Usuarios");
                 TempData["Mensaje"] = "Usuario agregado exitosamente";
                 return RedirectToAction(nameof(Index));
-                // }
+                }
                 ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
                 ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
                 return View(user);
@@ -109,13 +110,14 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 try
                 {
                     _context.Update(user);
                     await _context.SaveChangesAsync();
-                TempData["Mensaje"] = "Usuario actualizado exitosamente";
+                    await LogAction($"Actualización del usuario {user.Email}", "Usuarios");
+                    TempData["Mensaje"] = "Usuario actualizado exitosamente";
             }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -129,7 +131,7 @@ namespace AlimentandoEsperanzas.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-           // }
+            }
             ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
             ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
             return View(user);
@@ -158,6 +160,7 @@ namespace AlimentandoEsperanzas.Controllers
 
             if (user != null)
             {
+                await LogAction($"Eliminación de usuario {user.Email}", "Usuarios");
                 _context.Users.Remove(user);
             }
 
@@ -165,6 +168,53 @@ namespace AlimentandoEsperanzas.Controllers
             TempData["Mensaje"] = "Usuario eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
+        private async Task LogAction(string action, string document)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var actionLog = new Actionlog
+                {
+                    Action = action,
+                    Date = DateTime.Now,
+                    Document = document,
+                    UserId = userId.Value
+                };
+
+                _context.Actionlogs.Add(actionLog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                await LogError("No se pudo obtener el ID de usuario de la sesión");
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
+        }
+
+        private async Task LogError(string ex)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var errorlog = new Errorlog
+                {
+                    Date = DateTime.Now,
+                    ErrorMessage = ex,
+                    UserId = userId.Value
+                };
+
+                _context.Errorlogs.Add(errorlog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
+        }
+
 
         private bool UserExists(int id)
         {

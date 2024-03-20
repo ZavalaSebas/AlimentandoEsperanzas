@@ -12,7 +12,7 @@ public partial class Item
     
     [Required(ErrorMessage = "Este dato es requerido")]
     [DisplayName("Producto")]
-    public string Description { get; set; } = null!;
+    public string Description { get; set; }
     
     [Required(ErrorMessage = "Este dato es requerido")]
     [DisplayName("Cantidad")]
@@ -22,5 +22,5 @@ public partial class Item
     [DisplayName("Categoría")]
     public int Category { get; set; }
     [DisplayName("Categoría")]
-    public virtual Itemcategory CategoryNavigation { get; set; } = null!;
+    public virtual Itemcategory? CategoryNavigation { get; set; }
 }

@@ -26,6 +26,7 @@ public class LoginController : Controller
 
         if (user != null)
         {
+            HttpContext.Session.SetInt32("UserId", user.UserId);
             HttpContext.Session.SetString("UserRole", user.RoleNavigation.Role1);
             return RedirectToAction("Index", "Home");
         }

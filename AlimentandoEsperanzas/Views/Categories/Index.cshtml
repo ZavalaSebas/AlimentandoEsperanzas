@@ -12,13 +12,13 @@
     </script>
 }
 
-<div class="lime-header">
+@* <div class="lime-header">
     <h1><a class="navbar-brand">Categorías</a></h1>
     <div class="text-right">
         @* <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a> *@
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createModal">Agregar Nuevo</button>
+        @* <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createModal">Agregar Nuevo</button>
     </div>
-</div>
+</div> *@ 
 
 <head>
     <meta charset="utf-8">
@@ -67,6 +67,15 @@
         }
     </style>
 </head>
+
+
+<div class="lime-header">
+    <h1><a class="navbar-brand">Categorías</a></h1>
+    <div class="text-right">
+        @* <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a> *@
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createModal">Agregar Nuevo</button>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-12">
@@ -118,7 +127,7 @@
         });
     </script>
 
-    <script>
+    @* <script>
         $(document).ready(function () {
             $('.delete-button').on('click', function (e) {
                 e.preventDefault();
@@ -132,9 +141,9 @@
             history.back();
         });
         });
-    </script>
+    </script> *@
 
-    <script>
+   @*  <script>
         $(document).ready(function () {
             $('.edit-button').on('click', function (e) {
                 e.preventDefault();
@@ -148,9 +157,9 @@
             history.back();
         });
                 });
-    </script>
+    </script> *@
 
-    <script>
+   @*  <script>
         $(document).ready(function () {
             $('.edit-button').on('click', function (e) {
                 e.preventDefault();
@@ -164,6 +173,48 @@
             history.back();
         });
                         });
-    </script>
+    </script> *@
+
+   @*  <script>
+        $(document).ready(function () {
+            $('#btnCreate').click(function () {
+                var formData = $('#Create1').serializeArray();
+                var isValid = true;
+
+                // Verificar si algún campo está vacío
+                $.each(formData, function (index, item) {
+                    if (!item.value) {
+                        isValid = false;
+                        return false; // Salir del bucle si se encuentra un campo vacío
+                    }
+                });
+
+                if (isValid) {
+                    // Si el formulario no está vacío, enviarlo a través de Ajax
+                    $.ajax({
+                        url: '@Url.Action("Create", "Categories")',
+                        type: 'POST',
+                        data: formData,
+                        success: function (result) {
+                            $('#createModal').modal('hide');
+                            alert("Se ha agregado exitosamente");
+                        },
+                        error: function (xhr) {
+                            var errors = JSON.parse(xhr.responseText);
+                            if (errors.Category1) {
+                                $('#createModal .text-danger').html('<span>' + errors.Category1[0] + '</span>');
+                            }
+                            else {
+                                $('#createModal .text-danger').html('<span>Ha ocurrido un error al crear la categoría.</span>');
+                            }
+                        }
+                    });
+                } else {
+                    // Si el formulario está vacío, mostrar un mensaje de error
+                    $('#createModal .text-danger').html('<span>Por favor complete todos los campos.</span>');
+                }
+            });
+        });
+    </script> *@
 
 }

@@ -70,6 +70,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
             }
             return PartialView("_CategoriesCreate", category);
+            
         }
 
         // GET: Categories/Edit/5
