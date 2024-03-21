@@ -1,0 +1,54 @@
+﻿@model AlimentandoEsperanzas.Models.User
+
+@{
+    ViewData["Title"] = "Perfil";
+}
+@if (TempData["Mensaje"] != null)
+{
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["Mensaje"]');
+    </script>
+}
+
+<div class="lime-container">
+    <h1 class="text-center mb-4">Mi Perfil</h1>
+    <div class="card">
+        <div class="card-body">
+            <div>
+                <h3>@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.LastName)</h3>
+                <hr />
+                <dl class="row">
+                    <div class="container text-left">
+                        <div class="row">
+                            <div class="col">
+                                
+                                <h5>@Html.DisplayNameFor(model => model.Email):  @Html.DisplayFor(model => model.Email)</h5>
+                                <br />
+                                <h5>@Html.DisplayNameFor(model => model.IdNumber):  @Html.DisplayFor(model => model.IdNumber)</h5>
+                                <br />
+                                <h5>@Html.DisplayNameFor(model => model.IdentificationTypeNavigation):  @Html.DisplayFor(model => model.IdentificationTypeNavigation.Description)</h5>
+                                <br />
+                            </div>
+                            <div class="col">
+                                <h5>@Html.DisplayNameFor(model => model.PhoneNumber):  @Html.DisplayFor(model => model.PhoneNumber)</h5>
+                                <br />
+                                <h5>Fecha de creación:  @Html.DisplayFor(model => model.Date)</h5>
+                                <br />
+                                <h5>@Html.DisplayNameFor(model => model.RoleNavigation):  @Html.DisplayFor(model => model.RoleNavigation.Role1)</h5>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </dl>
+                    <div class="text-center">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Página Principal</a>
+                    <a asp-controller="Users" asp-action="EditProfile" asp-route-id="@Model.UserId" class="btn btn-primary">Editar Perfil</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

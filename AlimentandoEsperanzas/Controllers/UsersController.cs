@@ -169,6 +169,86 @@ namespace AlimentandoEsperanzas.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> UserProfile()
+        {
+            
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var user = await _context.Users
+                .Include(u => u.IdentificationTypeNavigation)
+                .Include(u => u.RoleNavigation)
+                .FirstOrDefaultAsync(u => u.UserId == userId);
+
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View(user);
+        
+        }
+
+        public async Task<IActionResult> EditProfile(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+            return View(user);
+        }
+
+        // POST: Users/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfile(int id, User user)
+        {
+            if (id != user.UserId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(user);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Usuario actualizado exitosamente";
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UserExists(user.UserId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(UserProfile));
+            }
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
+            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
+            return View(user);
+        }
+
+
         private async Task LogAction(string action, string document)
         {
             var userId = HttpContext.Session.GetInt32("UserId");

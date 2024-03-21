@@ -51,8 +51,10 @@ public partial class User
 
     public virtual ICollection<Errorlog>? Errorlogs { get; set; } = new List<Errorlog>();
 
-    public virtual Idtype? IdentificationTypeNavigation { get; set; } 
+    [DisplayName("Tipo de identifiación")]
+    public virtual Idtype? IdentificationTypeNavigation { get; set; }
 
+    [DisplayName("Rol")]
     public virtual Role? RoleNavigation { get; set; } 
 
     public virtual ICollection<Userrole>? Userroles { get; set; } = new List<Userrole>();
