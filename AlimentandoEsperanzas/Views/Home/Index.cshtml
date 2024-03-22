@@ -46,6 +46,191 @@
                     </ul>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Exportar</h2>
+                        <form action="Url.Action(" exportar","home") " method="post">
+                            <div class="form-row allign-items-end ">
+                                <div class="col-md-3">
+                                    <label class="form-text">insertar Donador:</label>
+                                    <select clase="form-control" name="Donor"></select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-text">fecha Inicio:</label>
+                                    <imput type="text" clase="form-control" name="fechainicio" autocomplete="off" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-text">fecha final:</label>
+                                    <imput type="text" clase="form-control" name="fechafinal" />
+                                </div>
+                                <div class="col-md-3">
+                                    < button type="submit" class="btn btn-success btn-block">Descargar</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+
+                <div class="card">
+                    <div class="card-header">Donaciones de los ultimos 5 dias </div>
+                    <div class="card-body">
+                        <canvas id="chartDonations" style="max-height:250px"></canvas>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+
+                <div class="card">
+                    <div class="card-header">Donadores </div>
+                    <div class="card-body">
+                        <canvas id="chartDonors" style="max-height:250px"></canvas>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
+@section scripts{
+    <script>
+        //Home/obtenerDonors
+        $(document).ready(function () {
+
+            $.get("Url.Action("optenerDonors","home")", function (data) {
+                $("select[name = Donor]").append(
+                    $("<option>").attr({ "value": "0").text("todos")
+                )
+                $.each(data, function (i, fila) {
+                    $("select[name=Donor]").append(
+                        $("<option>").attr({ "value": fila.DonorID).text(fila.Nombres)
+                    )
+
+                })
+
+            });
+            $("imput[name = fechainicio]").datapicker({
+                dataformat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true,
+            }).datepicker('setDate', new Date());
+
+
+            $("imput[name = fechafinal]").datapicker({
+                dataformat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true,
+            }).datepicker('setDate', new Date());
+
+        })
+
+        function resumenDonation() {
+
+            fetch("Home/resumenDonation")
+                .then((response) => {
+                    return response.ok ? response.json() : Promise.reject(response);
+                })
+                .then((dataJson) => {
+                    console.log(dataJson)
+
+                    const labels = dataJson.map((item) => { return item.DateTime Date })
+                    const values = dataJson.map((item) => { return item.amout})
+
+                    console.log(labels)
+                    console.log(values)
+
+                    const data = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'cantidad',
+                            data: values,
+                            backgroundColor: 'rgb(54, 162, 235)',
+                            borderWidth: 1
+                        }]
+                    };
+
+                    const config = {
+                        type: 'bar',
+                        data: data,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        },
+                    };
+                    const canvasBarras = document.getElementById("chartDonations");
+
+                    const graficoBarras = new Chart(canvasBarras, config)
+                }).catch((error) => {
+                    console.log("error")
+
+                })
+
+
+                })
+        }
+
+        function resumenDonor() {
+
+            fetch("Home/resumenDonor")
+                .then((response) => {
+                    return response.ok ? response.json() : Promise.reject(response);
+                })
+                .then((dataJson) => {
+                    console.log(dataJson)
+
+                    const labels = dataJson.map((item) => { return item.Name })
+                    const values = dataJson.map((item) => { return item.cantidad })
+
+                    console.log(labels)
+                    console.log(values)
+
+                    const data = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'cantidad',
+                            data: values,
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)',
+                                "#01AF40"
+                            ],
+                            hoverOffset: 4
+                        }]
+                    };
+
+
+                    const config = {
+                        type: 'doughnut',
+                        data: data,
+                    };
+                    const canvasDona = document.getElementById("chartDonors");
+
+                    const graficoDona = new Chart(canvasDona, config)
+                }).catch((error) => {
+                    console.log("error")
+
+                })
+
+
+        })
+                }
+
+        $(document).ready(() => {
+
+            resumenDonation()
+            resumenDonor()
+
+        })
+
+    </script>
+}
