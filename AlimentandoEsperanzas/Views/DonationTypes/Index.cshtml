@@ -15,6 +15,29 @@
     <h1><a class="navbar-brand">Tipo de Donación</a></h1>
     <div class="text-right">
         <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a>
+        @* <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="nuevaDonacionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar nuevo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        ...
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>
+        </div>
+        </div> *@
     </div>
 </div>
 
@@ -36,11 +59,13 @@
     <link href="../../../../lime/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../../lime/theme/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet">
     <link href="../../../../lime/theme/assets/plugins/toastr/toastr.min.css" rel="stylesheet">
+    @* <link href="./lime/theme/assets/css/themes/admin2.css" rel="stylesheet" id="theme-style" /> *@
 
 
     <!-- Theme Styles -->
     <link href="../../../../lime/theme/assets/css/lime.min.css" rel="stylesheet">
     <link href="../../../../lime/theme/assets/css/custom.css" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

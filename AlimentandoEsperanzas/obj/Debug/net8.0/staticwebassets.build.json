@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "Hash": "oaUh+jS/uUEiBf7lOfLhPni1ou4BgUZjrRpJxSY+BmA=",
+=======
+  "Hash": "MrfMTzgu1+kffJz6SkOcxG8t0SoZXcHcXqvXGJ5O+so=",
+>>>>>>> Stashed changes
   "Source": "AlimentandoEsperanzas",
   "BasePath": "_content/AlimentandoEsperanzas",
   "Mode": "Default",
@@ -1936,10 +1940,36 @@
       "OriginalItemSpec": "wwwroot\\lime\\theme\\assets\\css\\themes\\admin2.css"
     },
     {
+<<<<<<< Updated upstream
       "Identity": "C:\\Users\\sball\\OneDrive\\Escritorio\\Proyecto Sistemas y desarrollo\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\wwwroot\\lime\\theme\\assets\\images\\404.svg",
       "SourceId": "AlimentandoEsperanzas",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\sball\\OneDrive\\Escritorio\\Proyecto Sistemas y desarrollo\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\sball\\OneDrive\\Escritorio\\Proyecto Sistemas y desarrollo\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\wwwroot\\lime\\theme\\assets\\css\\themes\\customdark.css",
+      "SourceId": "AlimentandoEsperanzas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sball\\OneDrive\\Escritorio\\Proyecto Sistemas y desarrollo\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\wwwroot\\",
+      "BasePath": "_content/AlimentandoEsperanzas",
+      "RelativePath": "lime/theme/assets/css/themes/customdark.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lime\\theme\\assets\\css\\themes\\customdark.css"
+    },
+    {
+      "Identity": "C:\\Users\\sball\\OneDrive\\Escritorio\\Proyecto Sistemas y desarrollo\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\wwwroot\\lime\\theme\\assets\\images\\404.svg",
+      "SourceId": "AlimentandoEsperanzas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sball\\OneDrive\\Escritorio\\Proyecto Sistemas y desarrollo\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\wwwroot\\",
+>>>>>>> Stashed changes
       "BasePath": "_content/AlimentandoEsperanzas",
       "RelativePath": "lime/theme/assets/images/404.svg",
       "AssetKind": "All",

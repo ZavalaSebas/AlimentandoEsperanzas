@@ -393,6 +393,13 @@
       "PackagePath": "staticwebassets\\lime\\theme\\assets\\css\\themes\\admin2.css"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "Id": "C:\\Users\\sball\\OneDrive\\Escritorio\\Proyecto Sistemas y desarrollo\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\wwwroot\\lime\\theme\\assets\\css\\themes\\customdark.css",
+      "PackagePath": "staticwebassets\\lime\\theme\\assets\\css\\themes\\customdark.css"
+    },
+    {
+>>>>>>> Stashed changes
       "Id": "C:\\Users\\sball\\OneDrive\\Escritorio\\Proyecto Sistemas y desarrollo\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\wwwroot\\lime\\theme\\assets\\images\\404.svg",
       "PackagePath": "staticwebassets\\lime\\theme\\assets\\images\\404.svg"
     },

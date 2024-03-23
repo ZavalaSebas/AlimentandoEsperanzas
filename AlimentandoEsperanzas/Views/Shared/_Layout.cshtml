@@ -1,5 +1,6 @@
 ﻿@{
     var userRole = Context.Session.GetString("UserRole");
+
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +22,20 @@
     <link href="../../../../lime/theme/assets/plugins/toastr/toastr.min.css" rel="stylesheet">
     <!-- Theme Styles -->
     <link href="../../../../lime/theme/assets/css/lime.min.css" rel="stylesheet">
-    <link href="../../../../lime/theme/assets/css/custom.css" rel="stylesheet">
+    <link href="../../../../lime/theme/assets/css/custom.css" rel="stylesheet" id="theme-style">
+
+    @* <link href="./lime/theme/assets/css/lime.min.css" rel="stylesheet" /> *@
+
+    @* <link href="./lime/theme/assets/css/themes/admin2.css" rel="stylesheet" /> *@
+    
+    @* <link href="./lime/theme/assets/css/themes/customdark.css" rel="stylesheet" /> *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" asp-append-version="true" />
 
 </head>
 <body>
-
+ 
+        
+    
     @* Sidebar *@
     <div class="lime-sidebar">
         <div class="lime-sidebar-inner slimscroll">
@@ -84,16 +93,35 @@
         <div class="theme-settings-inner">
             <h3 class="theme-sidebar-title">Tema</h3>
             <p class="themes-info">Seleccione un tema</p>
+            
+            <button onclick="modoBrillante()" class="theme-item">
+                <h4 class="theme-title">Modo Clásico</h4>
+                </button>
 
-            <a class="theme-item active" href="#">
-                <img src="../../assets/images/themes/1.png" alt="">
-                <h4 class="theme-title">Clásico</h4>
-            </a>
-            <a class="theme-item" href="../admin2/index.html">
-
-                <img src="../../assets/images/themes/2.png" alt="">
+            <button onclick="modoOscuro()" class="theme-item">
                 <h4 class="theme-title">Modo oscuro</h4>
-            </a>
+            </button> 
+            
+             <script>
+                
+                function modoBrillante() {
+                    theme = document.getElementById('theme-style').setAttribute('href', './lime/theme/assets/css/lime.min.css');
+                    localStorage.setItem('theme', './lime/theme/assets/css/themes/lime.min.css');
+                }
+
+                function modoOscuro() {
+                    document.getElementById('theme-style').setAttribute('href', './lime/theme/assets/css/themes/admin2.css');
+                    localStorage.setItem('theme', './lime/theme/assets/css/themes/admin2.css');
+                }
+
+                window.onload = function () {
+                    var savedTheme = localStorage.getItem('theme');
+                    if (savedTheme) {
+                        document.getElementById('theme-style').setAttribute('href', savedTheme);
+                    }
+                };
+            </script>
+            
         </div>
     </div>
 
@@ -171,6 +199,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <!-- Javascripts -->
+<<<<<<< Updated upstream
     <script src="../../../../lime/theme/assets/plugins/jquery/jquery-3.1.0.min.js"></script>
     <script src="../../../../lime/theme/assets/plugins/bootstrap/popper.min.js"></script>
     <script src="../../../../lime/theme/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -180,6 +209,18 @@
     <script src="../../../../lime/theme/assets/plugins/toastr/toastr.min.js"></script>
     <script src="../../../../lime/theme/assets/js/lime.min.js"></script>
     <script src="../../../../lime/theme/assets/js/pages/dashboard.js"></script>
+=======
+    <script src="./lime/theme/assets/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="./lime/theme/assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="./lime/theme/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lime/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="./lime/theme/assets/plugins/chartjs/chart.min.js"></script>
+    <script src="./lime/theme/assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="./lime/theme/assets/plugins/toastr/toastr.min.js"></script>
+    <script src="./lime/theme/assets/js/lime.min.js"></script>
+    <script src="./lime/theme/assets/js/pages/dashboard.js"></script>
+    
+>>>>>>> Stashed changes
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
