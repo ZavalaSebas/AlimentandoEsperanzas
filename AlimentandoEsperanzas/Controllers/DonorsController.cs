@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using OfficeOpenXml;
+using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +14,32 @@ namespace AlimentandoEsperanzas.Controllers
         public DonorsController(AlimentandoesperanzasContext context)
         {
             _context = context;
+        }
+
+        // Acción para exportar donantes a Excel
+        public IActionResult ExportDonorsToExcel()
+        {
+            var donors = _context.Donors.ToList();
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Debes tener instalado EPPlus para usar esta funcionalidad
+
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Donantes");
+                worksheet.Cells.LoadFromCollection(donors, true);
+
+                // Headers
+                for (int i = 1; i <= donors.Count(); i++)
+                {
+                    worksheet.Cells[1, i].Value = donors[i - 1].GetType().GetProperties()[i - 1].Name;
+                }
+
+                // Guardar el archivo Excel en la memoria
+                var stream = new MemoryStream(package.GetAsByteArray());
+
+                // Devolver el archivo Excel como un archivo para descargar
+                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Donantes.xlsx");
+            }
         }
 
         // GET: Donors

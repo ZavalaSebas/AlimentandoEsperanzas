@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlimentandoEsperanzas.Models;
+using OfficeOpenXml;
 
 namespace AlimentandoEsperanzas.Controllers
 {
@@ -23,6 +24,38 @@ namespace AlimentandoEsperanzas.Controllers
         {
             var alimentandoesperanzasContext = _context.Items.Include(i => i.CategoryNavigation);
             return View(await alimentandoesperanzasContext.ToListAsync());
+        }
+
+
+        // Acción para exportar ítems a Excel
+        public IActionResult ExportItemsToExcel()
+        {
+            var items = _context.Items.ToList();
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Debes tener instalado EPPlus para usar esta funcionalidad
+
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Items");
+                worksheet.Cells.LoadFromCollection(items, true);
+
+                // Headers
+                var properties = items.FirstOrDefault()?.GetType().GetProperties();
+                if (properties != null)
+                {
+                    for (int i = 1; i <= properties.Length; i++)
+                    {
+                        worksheet.Cells[1, i].Value = properties[i - 1].Name;
+                    }
+                }
+
+
+                // Guardar el archivo Excel en la memoria
+                var stream = new MemoryStream(package.GetAsByteArray());
+
+                // Devolver el archivo Excel como un archivo para descargar
+                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Items.xlsx");
+            }
         }
 
         // GET: Items/Details/5
