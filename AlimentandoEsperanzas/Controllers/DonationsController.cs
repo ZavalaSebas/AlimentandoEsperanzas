@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OfficeOpenXml;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlimentandoEsperanzas.Models;
+using System.ComponentModel;
 
 namespace AlimentandoEsperanzas.Controllers
 {
@@ -17,6 +17,34 @@ namespace AlimentandoEsperanzas.Controllers
         {
             _context = context;
         }
+
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var donations = await _context.Donations
+                .Include(d => d.Category)
+                .Include(d => d.DonationType)
+                .Include(d => d.Donor)
+                .Include(d => d.PaymentMethod)
+                .ToListAsync();
+
+            // Crear el archivo Excel
+            OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; // Aquí se especifica el espacio de nombres completo
+            using (var package = new OfficeOpenXml.ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Donaciones");
+                worksheet.Cells.LoadFromCollection(donations, true);
+
+                // Guardar el archivo en memoria
+                var stream = new MemoryStream();
+                package.SaveAs(stream);
+                stream.Position = 0;
+
+                // Devolver el archivo Excel como una descarga
+                string excelName = $"Donaciones_{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
+                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+            }
+        }
+
 
         // GET: Donations
         public async Task<IActionResult> Index()

@@ -16,11 +16,11 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">Últimas Noticias</h2>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">Nueva campaña de donación lanzada</a>
-                        <a href="#" class="list-group-item list-group-item-action">Evento benéfico este fin de semana</a>
-                        <a href="#" class="list-group-item list-group-item-action">Actualización sobre nuestros proyectos</a>
+                    <h2 class="card-title">Donaciones</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="donationChart" width="400" height="200"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,3 +49,42 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Obtener los datos de donaciones desde el backend (puedes usar AJAX)
+
+    // Datos de ejemplo (reemplaza con los datos reales)
+    var donationData = {
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
+        datasets: [{
+            label: 'Monto de Donaciones',
+            data: [1000, 1500, 2000, 1800, 2500, 2200, 3000], // Ejemplo de datos
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    // Configurar opciones del gráfico
+    var chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    };
+
+    // Obtener el contexto del lienzo del gráfico
+    var ctx = document.getElementById('donationChart').getContext('2d');
+
+    // Crear el gráfico
+    var myChart = new Chart(ctx, {
+        type: 'bar', // Tipo de gráfico (puedes cambiarlo a 'line', 'pie', etc.)
+        data: donationData,
+        options: chartOptions
+    });
+</script>
+
