@@ -58,10 +58,10 @@
 
     // Datos de ejemplo (reemplaza con los datos reales)
     var donationData = {
-        labels: [@foreach (var donation in Model) { <text>"@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(donation.Month) - @donation.Year"</text> }],
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
         datasets: [{
             label: 'Monto de Donaciones',
-            data: [@foreach (var donation in Model) { <text>@donation.TotalAmount</text>@if (!donation.Equals(Model.Last())) { <text>,</text> } }],
+            data: [1000, 1500, 2000, 1800, 2500, 2200, 3000], // Ejemplo de datos
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
