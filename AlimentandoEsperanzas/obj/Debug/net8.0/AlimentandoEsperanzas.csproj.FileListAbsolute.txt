@@ -1202,6 +1202,11 @@ C:\Users\sball\OneDrive\Escritorio\Proyecto Sistemas y desarrollo\AlimentandoEsp
 C:\Users\sball\OneDrive\Escritorio\Proyecto Sistemas y desarrollo\AlimentandoEsperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.pdb
 C:\Users\sball\OneDrive\Escritorio\Proyecto Sistemas y desarrollo\AlimentandoEsperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.genruntimeconfig.cache
 C:\Users\sball\OneDrive\Escritorio\Proyecto Sistemas y desarrollo\AlimentandoEsperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\ref\AlimentandoEsperanzas.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\EPPlus.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\System.Xml.XPath.XmlDocument.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\appsettings.json
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\AlimentandoEsperanzas.staticwebassets.runtime.json
@@ -1210,6 +1215,7 @@ C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\Alim
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\AlimentandoEsperanzas.runtimeconfig.json
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\AlimentandoEsperanzas.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\AlimentandoEsperanzas.pdb
+C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\EPPlus.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Humanizer.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
@@ -1238,8 +1244,11 @@ C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\Alim
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.JSInterop.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
@@ -1275,6 +1284,7 @@ C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\Alim
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\System.Security.Permissions.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\System.Xml.XPath.XmlDocument.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\af\Humanizer.resources.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\ar\Humanizer.resources.dll
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\az\Humanizer.resources.dll
@@ -1443,10 +1453,3 @@ C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\Alim
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.pdb
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.genruntimeconfig.cache
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\ref\AlimentandoEsperanzas.dll
-C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\EPPlus.dll
-D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
-D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\System.Xml.XPath.XmlDocument.dll

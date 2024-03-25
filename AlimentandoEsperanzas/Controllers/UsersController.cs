@@ -58,13 +58,13 @@ namespace AlimentandoEsperanzas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,Name,LastName,Email,Password,IdNumber,IdentificationType,PhoneNumber,Date,Role")] User user)
+        public async Task<IActionResult> Create([Bind("UserId,Name,LastName,Email,Password,IdNumber,IdentificationType,PhoneNumber,Date,Role,ConfirmPassword")] User user)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Add(user);
+                _context.Add(user);
                 await _context.SaveChangesAsync();
                 await LogAction($"Registro del usuario {user.Email}", "Usuarios");
                 TempData["Mensaje"] = "Usuario agregado exitosamente";
@@ -103,7 +103,7 @@ namespace AlimentandoEsperanzas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,Name,LastName,Email,Password,IdNumber,IdentificationType,PhoneNumber,Date,Role")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,Name,LastName,Email,Password,IdNumber,IdentificationType,PhoneNumber,Date,Role,ConfirmPassword")] User user)
         {
             if (id != user.UserId)
             {
