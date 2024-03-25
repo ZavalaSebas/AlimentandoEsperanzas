@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlimentandoEsperanzas.Models;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Security.Cryptography;
 
 namespace AlimentandoEsperanzas.Controllers
 {
@@ -64,7 +66,11 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                _context.Add(user);
+                    //Encrypt
+                    user.Password = HashPassword(user.Password);
+                    user.ConfirmPassword = HashPassword(user.ConfirmPassword);
+
+                    _context.Add(user);
                 await _context.SaveChangesAsync();
                 await LogAction($"Registro del usuario {user.Email}", "Usuarios");
                 TempData["Mensaje"] = "Usuario agregado exitosamente";
@@ -114,6 +120,13 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 try
                 {
+
+                    if (!string.IsNullOrEmpty(user.Password))
+                    {
+                        user.Password = HashPassword(user.Password);
+                        user.ConfirmPassword = HashPassword(user.ConfirmPassword);
+                    }
+
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                     await LogAction($"Actualización del usuario {user.Email}", "Usuarios");
@@ -226,6 +239,16 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 try
                 {
+
+                    // Verificar si se ha proporcionado una nueva contraseña
+                    if (!string.IsNullOrEmpty(user.Password))
+                    {
+                        // Encriptar la nueva contraseña antes de guardarla
+                        user.Password = HashPassword(user.Password);
+                        user.ConfirmPassword = HashPassword(user.ConfirmPassword);
+                    }
+
+
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                     TempData["Mensaje"] = "Usuario actualizado exitosamente";
@@ -295,6 +318,27 @@ namespace AlimentandoEsperanzas.Controllers
             }
         }
 
+
+        private string HashPassword(string password)
+        {
+            // Generar un salt aleatorio
+            byte[] salt = new byte[128 / 8];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+
+            // Calcular el hash de la contraseña usando el salt
+            string hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: password,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA256,
+                iterationCount: 10000,
+                numBytesRequested: 256 / 8));
+
+            // Retornar el hash de la contraseña concatenado con el salt
+            return $"{hashedPassword}:{Convert.ToBase64String(salt)}";
+        }
 
         private bool UserExists(int id)
         {

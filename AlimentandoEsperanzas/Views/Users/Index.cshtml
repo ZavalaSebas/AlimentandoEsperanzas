@@ -1,4 +1,7 @@
-﻿@model IEnumerable<AlimentandoEsperanzas.Models.User>
+﻿@{
+    var ProfileId = Context.Session.GetInt32("UserId");
+}
+@model IEnumerable<AlimentandoEsperanzas.Models.User>
 
 @{
     ViewData["Title"] = "Usuarios";
@@ -33,6 +36,7 @@
     <title>Lime - Responsive Admin Dashboard Template</title>
 
     <!-- Styles -->
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--<link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
@@ -97,7 +101,14 @@
                                     <td class="text-right">
                                         <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
                                         <a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
-                                        <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="@("#deleteModal-" + item.UserId)" data-url="@Url.Action($"Delete/{item.UserId}")">Eliminar</button>
+                                        @if(item.UserId == ProfileId)
+                                        {
+                                            <button type="button" class="btn btn-danger delete-button" disabled>Eliminar</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="@("#deleteModal-" + item.UserId)" data-url="@Url.Action($"Delete/{item.UserId}")">Eliminar</button>
+                                        }
                                         @await Html.PartialAsync("_UserDelete", item)
                                     </td>
                                 </tr>
