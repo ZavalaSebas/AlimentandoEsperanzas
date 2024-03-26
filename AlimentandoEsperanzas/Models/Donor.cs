@@ -12,21 +12,21 @@ public partial class Donor : IValidatableObject
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [DisplayName("Nombre")]
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } 
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [DisplayName("Apellido")]
-    public string LastName { get; set; } = null!;
+    public string LastName { get; set; } 
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [RegularExpression("^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$", ErrorMessage = "El formato del correo electrónico no es válido.")]
     [DisplayName("Correo electrónico")]
-    public string Email { get; set; } = null!;
+    public string Email { get; set; } 
 
     [Required(ErrorMessage = "El número de identificación es obligatorio")]
     [StringLength(9, ErrorMessage = "El número de identificación debe tener como máximo 9 dígitos")]
     [DisplayName("Número de identificación")]
-    public string IdNumber { get; set; } = null!;
+    public string IdNumber { get; set; } 
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [DisplayName("Tipo de identificación")]
@@ -45,9 +45,9 @@ public partial class Donor : IValidatableObject
     [DisplayName("Comentarios")]
     public string? Comments { get; set; }
 
-    public virtual ICollection<Donation> Donations { get; set; } = new List<Donation>();
+    public virtual ICollection<Donation>? Donations { get; set; } = new List<Donation>();
 
-    public virtual Idtype IdentificationTypeNavigation { get; set; } = null!;
+    public virtual Idtype? IdentificationTypeNavigation { get; set; } 
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
