@@ -1,4 +1,5 @@
 using AlimentandoEsperanzas.Models;
+using AlimentandoEsperanzas.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,12 +7,60 @@ namespace AlimentandoEsperanzas.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly AlimentandoesperanzasContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(AlimentandoesperanzasContext context)
         {
-            _logger = logger;
+            _context = context;
         }
+
+
+        public IActionResult DonationSummary()
+        {
+            DateTime StartDate = DateTime.Now;
+            StartDate = StartDate.AddDays(-365);
+
+            List<VMDonations> ListD = (from TDonation in _context.Donations
+                                       where TDonation.Date >= StartDate.Date
+                                       group TDonation by TDonation.Date into grupD
+                                       select new VMDonations
+                                       {
+                                           Date = grupD.Key,
+                                           Amount = grupD.Count(),
+                                       }).ToList();
+
+            return StatusCode(StatusCodes.Status200OK, ListD);
+        }
+
+        public IActionResult ItemSummary()
+        {
+            List<VMItems> ListD = (from TItems in _context.Items
+                                   group TItems by TItems.Description into grupD
+                                   orderby grupD.Max(item => item.Quantity) descending
+                                   select new VMItems
+                                   {
+                                       Description = grupD.Key,
+                                       Quantity = grupD.Max(item => item.Quantity),
+                                   }).Take(4).ToList();
+
+            return StatusCode(StatusCodes.Status200OK, ListD);
+        }
+
+        //public IActionResult ItemSummary()
+        //{
+
+        //    List<VMItems> ListD = (from TItems in _context.Items
+        //                               group TItems by TItems.Description into grupD
+        //                               orderby grupD.Count() descending
+        //                               select new VMItems
+        //                               {
+        //                                   Description = grupD.Key,
+        //                                   Quantity = grupD.Count(),
+        //                               }).Take(4).ToList();
+
+        //    return StatusCode(StatusCodes.Status200OK, ListD);
+        //}
+
 
         public IActionResult Index()
         {

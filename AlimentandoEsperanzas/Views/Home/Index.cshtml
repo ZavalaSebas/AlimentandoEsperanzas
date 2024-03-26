@@ -26,6 +26,20 @@
                     </div>
                 </div>
             </div>
+
+            <br />
+
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Inventario</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="itemsChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-4">
             <div class="card mb-4">
@@ -53,7 +67,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
+@* <script>
     // Obtener los datos de donaciones desde el backend (puedes usar AJAX)
 
     // Datos de ejemplo (reemplaza con los datos reales)
@@ -88,5 +102,46 @@
         data: donationData,
         options: chartOptions
     });
-</script>
+</script> *@
 
+<script>
+    function DonationSummary() {
+        fetch("Home/DonationSummary")
+            .then((response) => { 
+                return response.ok? response.json() : Promise.reject(response);
+            })
+            .then((dataJson) => {
+                console.log(dataJson)
+
+                const labels = dataJson.map((item) => { return item.Date })
+                const values = dataJson.map((item) => { return item.Amount })
+
+                var donationData = {
+                    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
+                    datasets: [{
+                        label: 'Monto de Donaciones',
+                        data: [1000, 1500, 2000, 1800, 2500, 2200, 3000], // Ejemplo de datos
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                };
+                
+                // Configurar opciones del gráfico
+                var chartOptions = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                };
+
+            })
+    }
+
+    $(document).ready(() => {
+        DonationSummary()
+    })
+</script>
