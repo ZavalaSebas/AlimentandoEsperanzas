@@ -65,13 +65,13 @@ public class LoginController : Controller
                 // Las contraseñas coinciden, iniciar sesión correctamente
                 HttpContext.Session.SetInt32("UserId", user.UserId);
                 HttpContext.Session.SetString("UserRole", user.RoleNavigation.Role1);
-                return RedirectToAction("Index", "Home");
+                return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
             }
         }
 
         // Si no se encuentra el usuario o la contraseña es incorrecta, mostrar un mensaje de error
         ModelState.AddModelError(string.Empty, "Credenciales inválidas");
-        return View();
+        return Json(new { success = false });
     }
 
 }

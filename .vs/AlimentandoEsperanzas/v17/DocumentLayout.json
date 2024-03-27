@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Proyectos\\AlimentandoEsperanzas\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,6 +39,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "AlimentandoEsperanzas\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAowCwAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T03:43:39.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Item.cs",
+              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Models\\Item.cs",
+              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Models\\Item.cs",
+              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Models\\Item.cs",
+              "RelativeToolTip": "AlimentandoEsperanzas\\Models\\Item.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T03:42:58.113Z",
+              "EditorCaption": ""
             }
           ]
         }
