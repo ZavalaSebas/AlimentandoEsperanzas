@@ -11,70 +11,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="Create" method="post" id="Create1">
+                <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="CategoryId" />
                     <div class="form-group" style="text-align: left">
                         <label asp-for="Category1" class="control-label"></label>
-                        <input asp-for="Category1" class="form-control" name="InputData"/>
+                        <input asp-for="Category1" class="form-control"/>
                         <span asp-validation-for="Category1" class="text-danger"></span>
                     </div>
                     <br />
                     <div class="form-group" style="text-align: center">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button id="btnCreate" type="submit" class="btn btn-primary">Crear</button>
+                        <input type="submit" value="Crear" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
- 
-@* @section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('#btnCreate').click(function () {
-                var formData = $('#Create1').serializeArray();
-                var isValid = true;
-
-                // Verificar si algún campo está vacío
-                $.each(formData, function (index, item) {
-                    if (!item.value) {
-                        isValid = false;
-                        return false; // Salir del bucle si se encuentra un campo vacío
-                    }
-                });
-
-                if (isValid) {
-                    // Si el formulario no está vacío, enviarlo a través de Ajax
-                    $.ajax({
-                        url: '@Url.Action("Create", "Categories")',
-                        type: 'POST',
-                        data: formData,
-                        success: function (result) {
-                            $('#createModal').modal('hide');
-                            alert("Se ha agregado exitosamente");
-                        },
-                        error: function (xhr) {
-                            var errors = JSON.parse(xhr.responseText);
-                            if (errors.Category1) {
-                                $('#createModal .text-danger').html('<span>' + errors.Category1[0] + '</span>');
-                            }
-                            else {
-                                $('#createModal .text-danger').html('<span>Ha ocurrido un error al crear la categoría.</span>');
-                            }
-                        }
-                    });
-                } else {
-                    // Si el formulario está vacío, mostrar un mensaje de error
-                    $('#createModal .text-danger').html('<span>Por favor complete todos los campos.</span>');
-                }
-            });
-        });
-    </script>
-} *@
-
-
-
-

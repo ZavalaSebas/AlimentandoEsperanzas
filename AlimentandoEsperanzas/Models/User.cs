@@ -24,7 +24,11 @@ public partial class User
     [Required(ErrorMessage = "Este dato es requerido")]
     [RegularExpression("^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$", ErrorMessage = "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un dígito y un carácter especial, y que tenga una longitud de entre 8 y 15 caracteres.")]
     [DisplayName("Contraseña")]
-    public string Password { get; set; } 
+    public string Password { get; set; }
+
+    [Required(ErrorMessage = "Este dato es requerido")]
+    [Compare("Password", ErrorMessage = "La contraseña no coincide.")]
+    public string ConfirmPassword { get; set; }
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [DisplayName("Número de identificación")]

@@ -37,11 +37,11 @@ public partial class Donation
     [DisplayName("Comentarios")]
     public string? Comments { get; set; }
 
-    public virtual Category Category { get; set; } = null!;
+    public virtual Category? Category { get; set; } 
 
-    public virtual Donationtype DonationType { get; set; } = null!;
+    public virtual Donationtype? DonationType { get; set; } 
 
-    public virtual Donor Donor { get; set; } = null!;
+    public virtual Donor? Donor { get; set; } 
 
-    public virtual Paymentmethod PaymentMethod { get; set; } = null!;
+    public virtual Paymentmethod? PaymentMethod { get; set; } 
 }

@@ -256,6 +256,7 @@ public partial class AlimentandoesperanzasContext : DbContext
             entity.Property(e => e.LastName).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Password).HasMaxLength(255);
+            entity.Property(e => e.ConfirmPassword).HasMaxLength(255);
 
             entity.HasOne(d => d.IdentificationTypeNavigation).WithMany(p => p.Users)
                 .HasForeignKey(d => d.IdentificationType)
