@@ -15,6 +15,7 @@ public partial class Item
     public string Description { get; set; }
     
     [Required(ErrorMessage = "Este dato es requerido")]
+    [Range(0, int.MaxValue, ErrorMessage = "La cantidad debe ser un valor positivo.")]
     [DisplayName("Cantidad")]
     public int Quantity { get; set; }
     
