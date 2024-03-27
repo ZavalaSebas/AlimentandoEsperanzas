@@ -62,13 +62,33 @@ namespace AlimentandoEsperanzas.Controllers
         {
             try
             {
+                // Verificar si ya existe un usuario con el mismo número de identificación
+                var existingUserWithIdNumber = await _context.Users.FirstOrDefaultAsync(u => u.IdNumber == user.IdNumber);
+                if (existingUserWithIdNumber != null)
+                {
+                    ModelState.AddModelError("IdNumber", "Ya existe un usuario con este número de identificación.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+                    ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+                    return View(user);
+                }
+
+                // Verificar si ya existe un usuario con el mismo correo electrónico
+                var existingUserWithEmail = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+                if (existingUserWithEmail != null)
+                {
+                    ModelState.AddModelError("Email", "Ya existe un usuario con este correo electrónico.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+                    ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+                    return View(user);
+                }
+
                 if (ModelState.IsValid)
                 {
                     _context.Add(user);
-                await _context.SaveChangesAsync();
-                await LogAction($"Registro del usuario {user.Email}", "Usuarios");
-                TempData["Mensaje"] = "Usuario agregado exitosamente";
-                return RedirectToAction(nameof(Index));
+                    await _context.SaveChangesAsync();
+                    await LogAction($"Registro del usuario {user.Email}", "Usuarios");
+                    TempData["Mensaje"] = "Usuario agregado exitosamente";
+                    return RedirectToAction(nameof(Index));
                 }
                 ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
                 ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
@@ -79,6 +99,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return View(user);
             }
         }
+
 
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)

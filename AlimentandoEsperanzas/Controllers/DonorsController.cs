@@ -177,17 +177,26 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Donor donor)
         {
-
-            if (donor != null)
+            if (donor == null)
             {
-                await LogAction($"Eliminación de donador {donor.IdNumber}", "Donadores");
-                _context.Donors.Remove(donor);
+                return NotFound();
             }
 
+            var donations = _context.Donations.Where(d => d.DonorId == donor.DonorId).ToList();
+
+            if (donations.Any())
+            {
+                TempData["ErrorMessage"] = "No se puede eliminar el donante porque hay donaciones asociadas.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            await LogAction($"Eliminación de donador {donor.IdNumber}", "Donadores");
+            _context.Donors.Remove(donor);
             await _context.SaveChangesAsync();
             TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
 
         private async Task LogAction(string action, string document)
         {

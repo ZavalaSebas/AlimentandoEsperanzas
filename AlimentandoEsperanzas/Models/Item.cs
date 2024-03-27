@@ -16,6 +16,7 @@ public partial class Item
     
     [Required(ErrorMessage = "Este dato es requerido")]
     [DisplayName("Cantidad")]
+    [Range(0, 1000000, ErrorMessage = "La cantidad debe ser mayor o igual a cero.")]
     public int Quantity { get; set; }
     
     [Required(ErrorMessage = "Este dato es requerido")]

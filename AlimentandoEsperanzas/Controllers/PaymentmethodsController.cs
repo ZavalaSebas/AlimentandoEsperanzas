@@ -140,20 +140,28 @@ namespace AlimentandoEsperanzas.Controllers
             return PartialView("_PaymentMethodDelete", paymentmethod);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Delete(Paymentmethod paymentmethod)
         {
-
-            if (paymentmethod != null)
+            if (paymentmethod == null)
             {
-                _context.Paymentmethods.Remove(paymentmethod);
+                return NotFound();
             }
 
+            var donations = _context.Donations.Where(d => d.PaymentMethodId == paymentmethod.PaymentMethodId).ToList();
+
+            if (donations.Any())
+            {
+                TempData["ErrorMessage"] = "No se puede eliminar el método de pago porque hay donaciones asociadas.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.Paymentmethods.Remove(paymentmethod);
             await _context.SaveChangesAsync();
             TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool PaymentmethodExists(int id)
         {

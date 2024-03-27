@@ -28,10 +28,11 @@ public class LoginController : Controller
         {
             HttpContext.Session.SetInt32("UserId", user.UserId);
             HttpContext.Session.SetString("UserRole", user.RoleNavigation.Role1);
-            return RedirectToAction("Index", "Home");
+            return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
         }
 
         ModelState.AddModelError(string.Empty, "Credenciales inválidas");
-        return View();
+        return Json(new { success = false });
     }
+
 }

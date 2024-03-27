@@ -1,20 +1,41 @@
 using AlimentandoEsperanzas.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Globalization; // Agrega este using para obtener nombres de meses
 
 namespace AlimentandoEsperanzas.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AlimentandoesperanzasContext _context; // Agrega el contexto de tu base de datos
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AlimentandoesperanzasContext context)
         {
             _logger = logger;
+            _context = context; // Inicializa el contexto
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var donationData = await _context.Donations
+                .GroupBy(d => d.Date.Month)
+                .Select(g => new
+                {
+                    Month = g.Key,
+                    TotalAmount = g.Sum(d => d.Amount)
+                })
+                .OrderBy(g => g.Month)
+                .ToListAsync();
+
+            // Convertir los datos en un formato adecuado para el gráfico
+            var labels = donationData.Select(d => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(d.Month)).ToArray();
+            var amounts = donationData.Select(d => d.TotalAmount).ToArray();
+
+            ViewBag.Labels = labels;
+            ViewBag.Amounts = amounts;
+
             return View();
         }
 

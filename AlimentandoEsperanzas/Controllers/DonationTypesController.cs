@@ -145,16 +145,25 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Donationtype donationtype)
         {
-
-            if (donationtype != null)
+            if (donationtype == null)
             {
-                _context.Donationtypes.Remove(donationtype);
+                return NotFound();
             }
 
+            var donations = _context.Donations.Where(d => d.DonationTypeId == donationtype.DonationTypeId).ToList();
+
+            if (donations.Any())
+            {
+                TempData["ErrorMessage"] = "No se puede eliminar el tipo de donación porque hay donaciones asociadas.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.Donationtypes.Remove(donationtype);
             await _context.SaveChangesAsync();
             TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool DonationtypeExists(int id)
         {

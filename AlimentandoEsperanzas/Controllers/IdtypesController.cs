@@ -144,16 +144,25 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Idtype idtype)
         {
-
-            if (idtype != null)
+            if (idtype == null)
             {
-                _context.Idtypes.Remove(idtype);
+                return NotFound();
             }
 
+            var users = _context.Users.Where(u => u.IdentificationType == idtype.Id).ToList();
+
+            if (users.Any())
+            {
+                TempData["ErrorMessage"] = "No se puede eliminar el tipo de identificación porque hay usuarios asociados.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.Idtypes.Remove(idtype);
             await _context.SaveChangesAsync();
             TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool IdtypeExists(int id)
         {

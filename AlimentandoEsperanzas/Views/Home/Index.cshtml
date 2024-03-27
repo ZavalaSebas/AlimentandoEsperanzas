@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-
+@model IEnumerable<AlimentandoEsperanzas.Models.Donation>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -20,8 +20,8 @@
                 <div class="card-body">
                     <h2 class="card-title">Donaciones</h2>
                     <div class="row">
-                        <div class="col-md-12">
-                            <canvas id="donationChart" width="400" height="200"></canvas>
+                        <div class="col-md-24">
+                            <canvas id="donationChart" width="800" height="400"></canvas>
                         </div>
                     </div>
                 </div>
@@ -54,14 +54,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Obtener los datos de donaciones desde el backend (puedes usar AJAX)
-
-    // Datos de ejemplo (reemplaza con los datos reales)
+    // Obtener los datos de donaciones desde ViewBag
     var donationData = {
-        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
+        labels: @Html.Raw(Json.Serialize(ViewBag.Labels)),
         datasets: [{
             label: 'Monto de Donaciones',
-            data: [1000, 1500, 2000, 1800, 2500, 2200, 3000], // Ejemplo de datos
+            data: @Html.Raw(Json.Serialize(ViewBag.Amounts)),
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
@@ -89,4 +87,6 @@
         options: chartOptions
     });
 </script>
+
+
 

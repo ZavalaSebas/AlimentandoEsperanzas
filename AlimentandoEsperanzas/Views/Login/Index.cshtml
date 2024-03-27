@@ -47,7 +47,7 @@
 
                             <h5 class="card-title">Inicio de Sesión</h5>
 
-                            <form method="post" onsubmit="return validateForm()">
+                            <form id="loginForm" method="post">
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="email" id="email" placeholder="Correo">
                                     <div id="emailError" style="display:none; color:red;">Por favor, ingrese su correo electrónico.</div>
@@ -57,8 +57,9 @@
                                     <div id="passwordError" style="display:none; color:red;">Por favor, ingrese su contraseña.</div>
                                     <div id="loginError" style="display:none; color:red;">Credenciales incorrectas. Por favor, inténtelo de nuevo.</div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                                <button type="button" id="loginButton" class="btn btn-primary">Iniciar Sesión</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -77,22 +78,50 @@
     <script src="../../../../lime/theme/assets/js/lime.min.js"></script>
 
 <script>
+    $(document).ready(function () {
+        $('#loginButton').click(function () {
+            if (validateForm()) {
+                var email = $('#email').val();
+                var password = $('#password').val();
+
+                $.ajax({
+                    url: '@Url.Action("Index", "Login")',
+                    type: 'POST',
+                    data: {
+                        email: email,
+                        password: password
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = response.redirectUrl;
+                        } else {
+                            $('#loginError').show();
+                        }
+                    },
+                    error: function () {
+                        $('#loginError').show();
+                    }
+                });
+            }
+        });
+    });
+
     function validateForm() {
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
+        var email = $('#email').val();
+        var password = $('#password').val();
 
         if (email.trim() === "") {
-            document.getElementById("emailError").style.display = "block";
+            $('#emailError').show();
             return false;
         } else {
-            document.getElementById("emailError").style.display = "none";
+            $('#emailError').hide();
         }
 
         if (password.trim() === "") {
-            document.getElementById("passwordError").style.display = "block";
+            $('#passwordError').show();
             return false;
         } else {
-            document.getElementById("passwordError").style.display = "none";
+            $('#passwordError').hide();
         }
 
         return true;

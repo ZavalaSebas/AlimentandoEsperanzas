@@ -137,16 +137,25 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Itemcategory itemcategory)
         {
-
-            if (itemcategory != null)
+            if (itemcategory == null)
             {
-                _context.Itemcategories.Remove(itemcategory);
+                return NotFound();
             }
 
+            var items = _context.Items.Where(i => i.Id == itemcategory.Id).ToList();
+
+            if (items.Any())
+            {
+                TempData["ErrorMessage"] = "No se puede eliminar la categoría de ítems porque hay ítems asociados.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.Itemcategories.Remove(itemcategory);
             await _context.SaveChangesAsync();
             TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool ItemcategoryExists(int id)
         {

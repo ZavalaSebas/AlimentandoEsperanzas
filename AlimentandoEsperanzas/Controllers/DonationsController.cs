@@ -176,6 +176,18 @@ namespace AlimentandoEsperanzas.Controllers
             return View(donation);
         }
 
+        public IActionResult GetDonationChartData()
+        {
+            var donationData = _context.Donations
+                .GroupBy(d => d.Date.Month)
+                .Select(g => new { Month = g.Key, TotalAmount = g.Sum(d => d.Amount) })
+                .OrderBy(g => g.Month)
+                .ToList();
+
+            return Json(donationData);
+        }
+
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
