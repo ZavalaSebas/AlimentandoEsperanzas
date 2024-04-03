@@ -4,14 +4,24 @@
     ViewData["Title"] = "Create";
 }
 
+<form asp-action="Create">
 <div class="lime-container">
     <h1 class="text-center mb-4">Agregar Nuevo Donante</h1>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-body">
-                    <form asp-action="Create">
+                 <div class="card-body">
+                    
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="IdentificationType" class="control-label">Tipo de Identificación</label>
+                            <select asp-for="IdentificationType" class="form-control" asp-items="ViewBag.IdentificationType"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdNumber" class="control-label">Número de Identificación</label>
+                            <input asp-for="IdNumber" class="form-control" />
+                            <span asp-validation-for="IdNumber" class="text-danger"></span>
+                        </div>
                         <div class="form-group">
                             <label asp-for="Name" class="control-label">Nombre</label>
                             <input asp-for="Name" class="form-control" />
@@ -22,42 +32,52 @@
                             <input asp-for="LastName" class="form-control" />
                             <span asp-validation-for="LastName" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="control-label">Correo Electrónico</label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="IdNumber" class="control-label">Número de Identificación</label>
-                            <input asp-for="IdNumber" class="form-control" />
-                            <span asp-validation-for="IdNumber" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="IdentificationType" class="control-label">Tipo de Identificación</label>
-                            <select asp-for="IdentificationType" class="form-control" asp-items="ViewBag.IdentificationType"></select>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="PhoneNumber" class="control-label">Número de Teléfono</label>
-                            <input asp-for="PhoneNumber" class="form-control" />
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Comments" class="control-label">Comentarios</label>
-                            <textarea asp-for="Comments" class="form-control" rows="5"></textarea>
-                            <span asp-validation-for="Comments" class="text-danger"></span>
-                        </div>
-                        <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary">Crear</button>
-                        </div>
-                    </form>
+                        
+                        
+                    
+                </div>
+            </div>        
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Correo Electrónico</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label">Número de Teléfono</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Comments" class="control-label">Comentarios</label>
+                        <textarea asp-for="Comments" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="Comments" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="text-center mt-3">
+    @* <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">Crear</button>
         <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
-    </div>
+    </div> *@
+
+        <table style="width: 100%">
+            <tr>
+                <td style="text-align: left"><button type="submit" class="btn btn-primary">Crear</button></td>
+                <td style="text-align: right"><a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a></td>
+            </tr>
+        </table>
+   
+        
+    
 </div>
+</form>
 
 @section Scripts {
     @{

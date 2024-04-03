@@ -4,19 +4,33 @@
     ViewData["Title"] = "Crear";
 }
 
+<form asp-action="Create">
 <div class="lime-container">
     <h1 class="text-center mb-4">Agregar Nuevo Usuario</h1>
     <div class="row justify-content-center">
         <div class="col-md-11">
             <div class="card">
                 <div class="card-body">
+<<<<<<< Updated upstream
 
                     <form asp-action="Create">
+=======
+                    
+>>>>>>> Stashed changes
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                         <div class="row">
                             <div class="col">
 
+                        <div class="form-group">
+                            <label asp-for="IdentificationType" class="control-label">Tipo de Identificación</label>
+                            <select asp-for="IdentificationType" class="form-control" asp-items="ViewBag.IdentificationType"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdNumber" class="control-label">Número de Identificación</label>
+                            <input asp-for="IdNumber" class="form-control" />
+                            <span asp-validation-for="IdNumber" class="text-danger"></span>
+                        </div>
                         <div class="form-group">
                             <label asp-for="Name" class="control-label">Nombre</label>
                             <input asp-for="Name" class="form-control" />
@@ -32,11 +46,22 @@
                             <input asp-for="Email" class="form-control" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
+                        
+                        
+                    
+                </div>
+            </div>
+                
+        </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
                         <div class="form-group">
                             <label asp-for="Password" class="control-label">Contraseña</label>
                             <input asp-for="Password" class="form-control" type="password" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
+<<<<<<< Updated upstream
                         <div class="form-group">
                             <label asp-for="ConfirmPassword" class="control-label">Confirmar Contraseña</label>
                             <input asp-for="ConfirmPassword" class="form-control" type="password" />
@@ -55,6 +80,13 @@
                             <input asp-for="IdNumber" class="form-control" />
                             <span asp-validation-for="IdNumber" class="text-danger"></span>
                         </div>
+=======
+                        @* <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="control-label">Contraseña</label>
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div> *@
+>>>>>>> Stashed changes
                         <div class="form-group">
                             <label asp-for="PhoneNumber" class="control-label">Número de Teléfono</label>
                             <input asp-for="PhoneNumber" class="form-control" />
@@ -69,6 +101,7 @@
                             <label asp-for="Role" class="control-label">Rol</label>
                             <select asp-for="Role" class="form-control" asp-items="ViewBag.Role"></select>
                         </div>
+<<<<<<< Updated upstream
 
 
                             </div>
@@ -79,14 +112,23 @@
                         </div>
                     </form>
 
+=======
+                    </div>
+>>>>>>> Stashed changes
                 </div>
             </div>
-        </div>
     </div>
-    <div class="text-center mt-3">
-        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
-    </div>
+        
+        <table style="width: 100%">
+            <tr>
+                <td style="text-align: left"><button type="submit" class="btn btn-primary">Crear</button></td>
+                <td style="text-align: right"><a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a></td>
+            </tr>
+        </table>
+        
+    
 </div>
+</form>
 
 
 @section Scripts {

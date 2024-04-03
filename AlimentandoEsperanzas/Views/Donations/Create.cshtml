@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<form asp-action="Create">
 <div class="lime-container">
     <h1 class="text-center mb-4">Agregar Nueva Donación</h1>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <form asp-action="Create">
+                    
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="DonorId" class="control-label">Donante</label>
@@ -32,6 +32,17 @@
                             <input asp-for="Date" class="form-control" type="date" />
                             <span asp-validation-for="Date" class="text-danger"></span>
                         </div>
+                        
+                        
+
+                    
+                </div>
+            </div>
+        </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+
                         <div class="form-group">
                             <label asp-for="PaymentMethodId" class="control-label">Método de Pago</label>
                             <select asp-for="PaymentMethodId" class="form-control" asp-items="ViewBag.PaymentMethodId"></select>
@@ -47,18 +58,18 @@
                             <textarea asp-for="Comments" class="form-control" rows="5"></textarea>
                             <span asp-validation-for="Comments" class="text-danger"></span>
                         </div>
-                        <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary">Crear</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
-    <div class="text-center mt-3">
-        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
-    </div>
+        <table style="width: 100%">
+            <tr>
+                <td style="text-align: left"><button type="submit" class="btn btn-primary">Crear</button></td>
+                <td style="text-align: right"><a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a></td>
+            </tr>
+        </table>
 </div>
+</form>
 
 @section Scripts {
     @{
