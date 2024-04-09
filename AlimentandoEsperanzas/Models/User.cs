@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AlimentandoEsperanzas.Models;
 
-public partial class User
+public partial class User : IValidatableObject
 {
     public int UserId { get; set; }
     
@@ -62,4 +62,27 @@ public partial class User
     public virtual Role? RoleNavigation { get; set; } 
 
     public virtual ICollection<Userrole>? Userroles { get; set; } = new List<Userrole>();
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (IdNumber != null)
+        {
+            if (IdentificationType == 5 && IdNumber.Length != 9) //Cédula Física
+            {
+                yield return new ValidationResult("La cédula física debe de tener 9 digitos", new[] { "IdNumber" });
+            }
+            else if (IdentificationType == 7 && IdNumber.Length != 10) //Cédula Jurídica
+            {
+                yield return new ValidationResult("La cédula jurídica debe de tener 10 digitos", new[] { "IdNumber" });
+            }
+            else if (IdentificationType == 4 && (IdNumber.Length != 11 && IdNumber.Length != 12)) //Cédula Dimex
+            {
+                yield return new ValidationResult("La cédula dimex debe de tener 11 o 12 digitos", new[] { "IdNumber" });
+            }
+            else if (IdentificationType == 1 && IdNumber.Length != 10) //Cédula Nite
+            {
+                yield return new ValidationResult("La cédula nite debe de tener 10 digitos", new[] { "IdNumber" });
+            }
+        }
+    }
 }

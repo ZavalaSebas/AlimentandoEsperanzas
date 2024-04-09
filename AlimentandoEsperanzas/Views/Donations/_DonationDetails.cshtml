@@ -1,0 +1,78 @@
+﻿@model AlimentandoEsperanzas.Models.Donation
+
+<div class="modal" id="detailModal-@Model.DonationId" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Detalle de Donación</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <hr />
+                    <div class="form-group" style="text-align: left">
+                        <dl class="row">
+                            <div class="col">
+
+                                <dt class="col-sm-10">
+                                    @Html.DisplayNameFor(model => model.Amount)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    ₡@Html.DisplayFor(model => model.Amount)
+                                </dd>
+                                <dt class="col-sm-10">
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Date)
+                                </dd>
+                                <dt class="col-sm-10">
+                                    @Html.DisplayNameFor(model => model.Comments)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Comments)
+                                </dd>
+                                <dt class="col-sm-10">
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Category.Category1)
+                                </dd>
+
+                            </div>
+                            <div class="col">
+
+                                <dt class="col-sm-10">
+                                    @Html.DisplayNameFor(model => model.DonationType)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.DonationType.DonationType1)
+                                </dd>
+                                <dt class="col-sm-10">
+                                    @Html.DisplayNameFor(model => model.Donor)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Model.Donor.Name @Model.Donor.LastName - @Model.Donor.IdNumber
+                                </dd>
+                                <dt class="col-sm-10">
+                                    @Html.DisplayNameFor(model => model.PaymentMethod)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.PaymentMethod.PaymentMethod1)
+                                </dd>
+
+                            </div>
+
+                        </dl>
+                    </div>
+                    <br />
+                    <div class="form-group" style="text-align: center">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Volver a la lista</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

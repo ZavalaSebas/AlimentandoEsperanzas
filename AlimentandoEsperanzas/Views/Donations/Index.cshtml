@@ -16,7 +16,6 @@
     <h1><a class="navbar-brand">Donaciones</a></h1>
     <div class="text-right">
         <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a>
-        <a asp-controller="DonationTypes" asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Tipo de Donación</a>
         <a href="@Url.Action("ExportToExcel")" class="btn btn-outline-primary"><i class="fas fa-file-excel"></i> Exportar a Excel</a>
     </div>
 </div>
@@ -88,14 +87,15 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                                    <td>₡@item.Amount</td>
                                     <td>@Html.DisplayFor(modelItem => item.Category.Category1)</td>
                                     <td>@Html.DisplayFor(modelItem => item.DonationType.DonationType1)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Donor.Name)</td>
+                                    <td>@item.Donor.Name @item.Donor.LastName - @item.Donor.IdNumber</td>
                                     <td>@Html.DisplayFor(modelItem => item.PaymentMethod.PaymentMethod1)</td>
                                     <td class="text-right">
                                         <a asp-action="Edit" asp-route-id="@item.DonationId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
-                                        <a asp-action="Details" asp-route-id="@item.DonationId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@("#detailModal-" + item.DonationId)" data-url="@Url.Action($"Details/{item.DonationId}")">Detalle</button>
+                                        @await Html.PartialAsync("_DonationDetails", item)
                                         <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="@("#deleteModal-" + item.DonationId)" data-url="@Url.Action($"Delete/{item.DonationId}")">Eliminar</button>
                                         @await Html.PartialAsync("_DonationDelete", item)
                                     </td>

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AlimentandoEsperanzas.Models;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace AlimentandoEsperanzas.Controllers
 {
@@ -44,7 +45,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(user);
+            return PartialView("_UsersDetails", user);
         }
 
         // GET: Users/Create
@@ -86,6 +87,8 @@ namespace AlimentandoEsperanzas.Controllers
 
                 if (ModelState.IsValid)
                 {
+                    user.Date = DateTime.Now;
+
                     //Encrypt
                     user.Password = HashPassword(user.Password);
                     user.ConfirmPassword = HashPassword(user.ConfirmPassword);

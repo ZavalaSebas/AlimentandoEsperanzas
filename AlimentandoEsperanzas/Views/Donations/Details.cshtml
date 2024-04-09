@@ -46,7 +46,7 @@
                         @Html.DisplayNameFor(model => model.Donor)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Donor.DonorId)
+                        @Model.Donor.Name @Model.Donor.LastName - @Model.Donor.IdNumber
                     </dd>
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.PaymentMethod)

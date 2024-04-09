@@ -65,7 +65,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(donor);
+            return PartialView("_DonorDetails", donor);
         }
 
         // GET: Donors/Create
@@ -86,6 +86,8 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 try
                 {
+                    donor.Date = DateTime.Now;
+
                     _context.Add(donor);
                     await _context.SaveChangesAsync();
                     await LogAction($"Registro del donador {donor.IdNumber}", "Donadores");

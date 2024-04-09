@@ -37,12 +37,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Password" class="control-label">Contraseña</label>
-                                    <input asp-for="Password" class="form-control" type="password" />
+                                    <input asp-for="Password" class="form-control" type="password" value="@Model.Password" />
                                     <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="ConfirmPassword" class="control-label">Confirmar Contraseña</label>
-                                    <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                                    <input asp-for="ConfirmPassword" class="form-control" type="password" value="@Model.Password" />
                                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                 </div>
 
@@ -63,11 +63,9 @@
                                     <input asp-for="PhoneNumber" class="form-control" />
                                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                 </div>
-                                <div class="form-group">
-                                    <label asp-for="Date" class="control-label">Fecha</label>
-                                    <input asp-for="Date" class="form-control" type="date" />
-                                    <span asp-validation-for="Date" class="text-danger"></span>
-                                </div>
+
+                                <input type="hidden" asp-for="Date" />
+
                                 <div class="form-group">
                                     <label asp-for="Role" class="control-label">Role</label>
                                     <select asp-for="Role" class="form-control" asp-items="ViewBag.Role"></select>
@@ -78,7 +76,7 @@
                         </div>
                         <br />
                         <div class="form-group text-center">
-                            @* <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a> *@
+                             <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a> 
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
@@ -86,9 +84,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="text-center mt-3">
-        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
     </div>
 </div>
 

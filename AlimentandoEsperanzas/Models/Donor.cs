@@ -24,7 +24,6 @@ public partial class Donor : IValidatableObject
     public string Email { get; set; } 
 
     [Required(ErrorMessage = "El número de identificación es obligatorio")]
-    [StringLength(9, ErrorMessage = "El número de identificación debe tener como máximo 9 dígitos")]
     [DisplayName("Número de identificación")]
     public string IdNumber { get; set; } 
 
@@ -42,30 +41,32 @@ public partial class Donor : IValidatableObject
     [DisplayName("Fecha")]
     public DateTime Date { get; set; }
 
+    [StringLength(100, ErrorMessage = "Los comentarios no pueden tener más de 100 caracteres.")]
     [DisplayName("Comentarios")]
     public string? Comments { get; set; }
 
     public virtual ICollection<Donation>? Donations { get; set; } = new List<Donation>();
 
+    [DisplayName("Tipo de identificación")]
     public virtual Idtype? IdentificationTypeNavigation { get; set; } 
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         if (IdNumber != null)
         {
-            if (IdentificationType == 1 && IdNumber.Length != 8) //Cédula Física
+            if (IdentificationType == 5 && IdNumber.Length != 9) //Cédula Física
             {
-                yield return new ValidationResult("La cédula física debe de tener 8 digitos", new[] { "IdNumber" });
+                yield return new ValidationResult("La cédula física debe de tener 9 digitos", new[] { "IdNumber" });
             }
-            else if (IdentificationType == 2 && IdNumber.Length != 10) //Cédula Jurídica
+            else if (IdentificationType == 7 && IdNumber.Length != 10) //Cédula Jurídica
             {
                 yield return new ValidationResult("La cédula jurídica debe de tener 10 digitos", new[] { "IdNumber" });
             }
-            else if (IdentificationType == 3 && (IdNumber.Length != 11 && IdNumber.Length != 12)) //Cédula Dimex
+            else if (IdentificationType == 4 && (IdNumber.Length != 11 && IdNumber.Length != 12)) //Cédula Dimex
             {
                 yield return new ValidationResult("La cédula dimex debe de tener 11 o 12 digitos", new[] { "IdNumber" });
             }
-            else if (IdentificationType == 4 && IdNumber.Length != 10) //Cédula Nite
+            else if (IdentificationType == 1 && IdNumber.Length != 10) //Cédula Nite
             {
                 yield return new ValidationResult("La cédula nite debe de tener 10 digitos", new[] { "IdNumber" });
             }

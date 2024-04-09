@@ -34,6 +34,7 @@ public partial class Donation
     [DisplayName("Categoría")]
     public int CategoryId { get; set; }
 
+    [StringLength(100, ErrorMessage = "Los comentarios no pueden tener más de 100 caracteres.")]
     [DisplayName("Comentarios")]
     public string? Comments { get; set; }
 
