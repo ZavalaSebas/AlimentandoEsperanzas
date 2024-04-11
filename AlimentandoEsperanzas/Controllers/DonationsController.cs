@@ -18,14 +18,35 @@ namespace AlimentandoEsperanzas.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ExportToExcel()
+        public async Task<IActionResult> ExportToExcel(string searchTerm)
         {
-            var donations = await _context.Donations
+            IQueryable<Donation> donationsQuery = _context.Donations
                 .Include(d => d.Category)
                 .Include(d => d.DonationType)
                 .Include(d => d.Donor)
-                .Include(d => d.PaymentMethod)
-                .ToListAsync();
+                .Include(d => d.PaymentMethod);
+
+            // Aplicar el filtro de búsqueda si se proporciona un término de búsqueda
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Intentar convertir el término de búsqueda a un número
+                if (decimal.TryParse(searchTerm, out decimal amount))
+                {
+                    // Si el término de búsqueda es un número, buscar en la cantidad
+                    donationsQuery = donationsQuery.Where(d => (decimal)d.Amount == amount);
+                }
+                else
+                {
+                    // Si el término de búsqueda no es un número, buscar en los campos de texto
+                    donationsQuery = donationsQuery.Where(d =>
+                        d.Category.Category1.Contains(searchTerm) ||
+                        d.DonationType.DonationType1.Contains(searchTerm) ||
+                        d.Donor.Name.Contains(searchTerm) ||
+                        d.PaymentMethod.PaymentMethod1.Contains(searchTerm));
+                }
+            }
+
+            var donations = await donationsQuery.ToListAsync();
 
             // Crear el archivo Excel
             OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; // Aquí se especifica el espacio de nombres completo
@@ -44,6 +65,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
             }
         }
+
 
 
         // GET: Donations

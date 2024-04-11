@@ -82,9 +82,27 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DonorId,Name,LastName,Email,IdNumber,IdentificationType,PhoneNumber,Date,Comments")] Donor donor)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                // Verificar si ya existe un donante con el mismo número de identificación
+                var existingDonorWithIdNumber = await _context.Donors.FirstOrDefaultAsync(d => d.IdNumber == donor.IdNumber);
+                if (existingDonorWithIdNumber != null)
+                {
+                    ModelState.AddModelError("IdNumber", "Ya existe un donante con este número de identificación.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", donor.IdentificationType);
+                    return View(donor);
+                }
+
+                // Verificar si ya existe un donante con el mismo correo electrónico
+                var existingDonorWithEmail = await _context.Donors.FirstOrDefaultAsync(d => d.Email == donor.Email);
+                if (existingDonorWithEmail != null)
+                {
+                    ModelState.AddModelError("Email", "Ya existe un donante con este correo electrónico.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", donor.IdentificationType);
+                    return View(donor);
+                }
+
+                if (ModelState.IsValid)
                 {
                     _context.Add(donor);
                     await _context.SaveChangesAsync();
@@ -92,12 +110,13 @@ namespace AlimentandoEsperanzas.Controllers
                     TempData["Mensaje"] = "Se ha agregado exitosamente.";
                     return RedirectToAction(nameof(Index));
                 }
-                catch(Exception ex)
-                {
-                    return View(donor);
-                }
-                
             }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción aquí
+                return View(donor);
+            }
+
             ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", donor.IdentificationType);
             return View(donor);
         }
