@@ -7,7 +7,7 @@
 <div class="lime-container">
     <h1 class="text-center mb-4">Agregar Nuevo Producto</h1>
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
                     <form asp-action="Create">
@@ -26,16 +26,15 @@
                             <label asp-for="Category" class="control-label">Categoría</label>
                             <select asp-for="Category" class="form-control" asp-items="ViewBag.Category"></select>
                         </div>
+                        <br />
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary">Crear</button>
+                            <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="text-center mt-3">
-        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
     </div>
 </div>
 

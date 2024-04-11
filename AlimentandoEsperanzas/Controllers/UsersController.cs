@@ -145,11 +145,22 @@ namespace AlimentandoEsperanzas.Controllers
                 try
                 {
 
-                    if (!string.IsNullOrEmpty(user.Password))
+                    bool passwordUnchanged = user.Password == "En@r4Pt3D";
+                    bool confirmPasswordUnchanged = user.ConfirmPassword == "En@r4Pt3D";
+
+                    
+                    if (passwordUnchanged && confirmPasswordUnchanged)
+                    {
+                        var originalUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == id);
+                        user.Password = originalUser.Password;
+                        user.ConfirmPassword = originalUser.ConfirmPassword;
+                    }
+                    else
                     {
                         user.Password = HashPassword(user.Password);
-                        user.ConfirmPassword = HashPassword(user.ConfirmPassword);
+                        user.ConfirmPassword = user.Password; 
                     }
+
 
                     _context.Update(user);
                     await _context.SaveChangesAsync();
@@ -264,12 +275,20 @@ namespace AlimentandoEsperanzas.Controllers
                 try
                 {
 
-                    // Verificar si se ha proporcionado una nueva contraseña
-                    if (!string.IsNullOrEmpty(user.Password))
+                    bool passwordUnchanged = user.Password == "En@r4Pt3D";
+                    bool confirmPasswordUnchanged = user.ConfirmPassword == "En@r4Pt3D";
+
+                    
+                    if (passwordUnchanged && confirmPasswordUnchanged)
                     {
-                        // Encriptar la nueva contraseña antes de guardarla
+                        var originalUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == id);
+                        user.Password = originalUser.Password;
+                        user.ConfirmPassword = originalUser.ConfirmPassword;
+                    }
+                    else
+                    {
                         user.Password = HashPassword(user.Password);
-                        user.ConfirmPassword = HashPassword(user.ConfirmPassword);
+                        user.ConfirmPassword = user.Password;
                     }
 
 

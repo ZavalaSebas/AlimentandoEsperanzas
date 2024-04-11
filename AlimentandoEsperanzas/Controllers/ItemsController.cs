@@ -74,7 +74,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(item);
+            return PartialView("_ItemDetails", item);
         }
 
         // GET: Items/Create
