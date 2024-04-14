@@ -103,8 +103,9 @@ namespace AlimentandoEsperanzas.Controllers
                 ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
                 return View(user);
             }
-            catch
+            catch (Exception ex)
             {
+                await LogError($"{ex}");
                 return View(user);
             }
         }
@@ -169,6 +170,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar el usuario");
                     if (!UserExists(user.UserId))
                     {
                         return NotFound();
@@ -206,14 +208,21 @@ namespace AlimentandoEsperanzas.Controllers
         public async Task<IActionResult> Delete(User user)
         {
 
-            if (user != null)
+            try
             {
-                await LogAction($"Eliminación de usuario {user.Email}", "Usuarios");
-                _context.Users.Remove(user);
-            }
+                if (user != null)
+                {
+                    await LogAction($"Eliminación de usuario {user.Email}", "Usuarios");
+                    _context.Users.Remove(user);
+                }
 
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Usuario eliminado exitosamente.";
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Usuario eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
+            }
             return RedirectToAction(nameof(Index));
         }
 
@@ -298,6 +307,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar el usuario");
                     if (!UserExists(user.UserId))
                     {
                         return NotFound();

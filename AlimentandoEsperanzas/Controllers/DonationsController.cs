@@ -110,6 +110,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch(Exception ex)
                 {
+                    await LogError($"{ex}");
                     return View(donation);
                 }
                 
@@ -170,6 +171,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar la donación");
                     if (!DonationExists(donation.DonationId))
                     {
                         return NotFound();
@@ -225,14 +227,22 @@ namespace AlimentandoEsperanzas.Controllers
         public async Task<IActionResult> Delete(Donation donation)
         {
 
-            if (donation != null)
+            try
             {
-                await LogAction($"Eliminación de donación {donation.DonationId}", "Donaciones");
-                _context.Donations.Remove(donation);
+                if (donation != null)
+                {
+                    await LogAction($"Eliminación de donación {donation.DonationId}", "Donaciones");
+                    _context.Donations.Remove(donation);
+                }
+
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
 
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 
