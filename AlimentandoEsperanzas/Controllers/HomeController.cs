@@ -2,19 +2,19 @@ using AlimentandoEsperanzas.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using System.Globalization; // Agrega este using para obtener nombres de meses
+using System.Globalization; //  Obtener nombres de meses
 
 namespace AlimentandoEsperanzas.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly AlimentandoesperanzasContext _context; // Agrega el contexto de tu base de datos
+        private readonly AlimentandoesperanzasContext _context; 
 
         public HomeController(ILogger<HomeController> logger, AlimentandoesperanzasContext context)
         {
             _logger = logger;
-            _context = context; // Inicializa el contexto
+            _context = context; 
         }
 
         public async Task<IActionResult> Index()
@@ -35,6 +35,12 @@ namespace AlimentandoEsperanzas.Controllers
 
             ViewBag.Labels = labels;
             ViewBag.Amounts = amounts;
+
+            var numDonations = await _context.Donations.CountAsync();
+            var numDonors = await _context.Donors.CountAsync();
+
+            ViewBag.TotalDonations = numDonations;
+            ViewBag.TotalDonors = numDonors;
 
             return View();
         }
