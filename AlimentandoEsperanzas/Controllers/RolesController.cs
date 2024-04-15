@@ -55,12 +55,19 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RoleId,Role1")] Role role)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(role);
-                await _context.SaveChangesAsync();
-                TempData["Mensaje"] = "Rol agregado exitosamente";
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(role);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Rol agregado exitosamente";
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
             return View(role);
         }
@@ -103,6 +110,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar el rol");
                     if (!RoleExists(role.RoleId))
                     {
                         return NotFound();
@@ -138,14 +146,43 @@ namespace AlimentandoEsperanzas.Controllers
         public async Task<IActionResult> Delete(Role role)
         {
 
-            if (role != null)
+            try
             {
-                _context.Roles.Remove(role);
-            }
+                if (role != null)
+                {
+                    _context.Roles.Remove(role);
+                }
 
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Rol eliminado exitosamente.";
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Rol eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
+            }
             return RedirectToAction(nameof(Index));
+        }
+
+        private async Task LogError(string ex)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var errorlog = new Errorlog
+                {
+                    Date = DateTime.Now,
+                    ErrorMessage = ex,
+                    UserId = userId.Value
+                };
+
+                _context.Errorlogs.Add(errorlog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
         }
 
         private bool RoleExists(int id)

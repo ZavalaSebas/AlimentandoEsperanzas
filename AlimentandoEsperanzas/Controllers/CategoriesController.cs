@@ -66,6 +66,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (Exception ex)
                 {
+                    await LogError($"{ex}");
                     return PartialView("_CategoriesCreate", category);
                 }
             }
@@ -105,6 +106,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar la categoría");
                     if (!CategoryExists(category.CategoryId))
                     {
                         return NotFound();
@@ -139,24 +141,55 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Category category)
         {
-            if (category == null)
+            try
             {
-                return NotFound();
+                if (category == null)
+                {
+                    return NotFound();
+                }
+
+                var donations = _context.Donations.Where(d => d.CategoryId == category.CategoryId).ToList();
+
+                if (donations.Any())
+                {
+                    TempData["ErrorMessage"] = "No se puede eliminar la categoría porque tiene donaciones asociadas.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                _context.Categories.Remove(category);
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
 
-            var donations = _context.Donations.Where(d => d.CategoryId == category.CategoryId).ToList();
-
-            if (donations.Any())
-            {
-                TempData["ErrorMessage"] = "No se puede eliminar la categoría porque tiene donaciones asociadas.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
+
+        private async Task LogError(string ex)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var errorlog = new Errorlog
+                {
+                    Date = DateTime.Now,
+                    ErrorMessage = ex,
+                    UserId = userId.Value
+                };
+
+                _context.Errorlogs.Add(errorlog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
+        }
+
 
         private bool CategoryExists(int id)
         {
