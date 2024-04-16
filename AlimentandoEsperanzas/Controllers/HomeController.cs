@@ -29,6 +29,16 @@ namespace AlimentandoEsperanzas.Controllers
                 .OrderBy(g => g.Month)
                 .ToListAsync();
 
+           
+            var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+           
+            var totalDonationThisMonth = await _context.Donations
+                .Where(d => d.Date >= firstDayOfMonth && d.Date <= lastDayOfMonth)
+                .SumAsync(d => d.Amount);
+
+
             // Convertir los datos en un formato adecuado para el gráfico
             var labels = donationData.Select(d => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(d.Month)).ToArray();
             var amounts = donationData.Select(d => d.TotalAmount).ToArray();
@@ -41,6 +51,11 @@ namespace AlimentandoEsperanzas.Controllers
 
             ViewBag.TotalDonations = numDonations;
             ViewBag.TotalDonors = numDonors;
+            ViewBag.donationDataLastMonth = totalDonationThisMonth;
+
+            var monthName = CultureInfo.GetCultureInfo("es-ES").DateTimeFormat.GetMonthName(DateTime.Now.Month);
+            monthName = char.ToUpper(monthName[0]) + monthName.Substring(1);
+            ViewBag.CurrentMonth = monthName;
 
             return View();
         }
