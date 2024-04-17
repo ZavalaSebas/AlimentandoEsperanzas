@@ -39,7 +39,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(role);
+            return PartialView("_RoleDetails", role);
         }
 
         // GET: Roles/Create

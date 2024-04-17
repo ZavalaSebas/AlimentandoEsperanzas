@@ -65,7 +65,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(donor);
+            return PartialView("_DonorDetails", donor);
         }
 
         // GET: Donors/Create
@@ -113,7 +113,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción aquí
+                await LogError($"{ex}");
                 return View(donor);
             }
 
@@ -161,6 +161,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar el donador");
                     if (!DonorExists(donor.DonorId))
                     {
                         return NotFound();
@@ -196,23 +197,31 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Donor donor)
         {
-            if (donor == null)
+            try
             {
-                return NotFound();
+                if (donor == null)
+                {
+                    return NotFound();
+                }
+
+                var donations = _context.Donations.Where(d => d.DonorId == donor.DonorId).ToList();
+
+                if (donations.Any())
+                {
+                    TempData["ErrorMessage"] = "No se puede eliminar el donante porque hay donaciones asociadas.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                await LogAction($"Eliminación de donador {donor.IdNumber}", "Donadores");
+                _context.Donors.Remove(donor);
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
 
-            var donations = _context.Donations.Where(d => d.DonorId == donor.DonorId).ToList();
-
-            if (donations.Any())
-            {
-                TempData["ErrorMessage"] = "No se puede eliminar el donante porque hay donaciones asociadas.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            await LogAction($"Eliminación de donador {donor.IdNumber}", "Donadores");
-            _context.Donors.Remove(donor);
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlimentandoEsperanzas.Models;
+using System.Data;
 
 namespace AlimentandoEsperanzas.Controllers
 {
@@ -44,8 +45,7 @@ namespace AlimentandoEsperanzas.Controllers
         // GET: Categories/Create
         public IActionResult Create()
         {
-            Category category = new Category();
-            return PartialView("_CategoriesCreate", category);
+            return View();
         }
 
         // POST: Categories/Create
@@ -70,7 +70,7 @@ namespace AlimentandoEsperanzas.Controllers
                     return PartialView("_CategoriesCreate", category);
                 }
             }
-            return PartialView("_CategoriesCreate", category);
+            return View(category);
             
         }
 
@@ -88,7 +88,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return PartialView("_CategoriesEdit", category);
+            return View(category);
         }
 
         
@@ -118,7 +118,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return PartialView("_CategoriesEdit", category);
+            return View(category);
         }
 
         public async Task<IActionResult> Delete(int? id)

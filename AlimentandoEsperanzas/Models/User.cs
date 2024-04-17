@@ -67,11 +67,11 @@ public partial class User : IValidatableObject
     {
         if (IdNumber != null)
         {
-            if (IdentificationType == 5 && IdNumber.Length != 9) //Cédula Física
+            if (IdentificationType == 1 && IdNumber.Length != 9) //Cédula Física
             {
                 yield return new ValidationResult("La cédula física debe de tener 9 digitos", new[] { "IdNumber" });
             }
-            else if (IdentificationType == 7 && IdNumber.Length != 10) //Cédula Jurídica
+            else if (IdentificationType == 5 && IdNumber.Length != 10) //Cédula Jurídica
             {
                 yield return new ValidationResult("La cédula jurídica debe de tener 10 digitos", new[] { "IdNumber" });
             }
@@ -79,7 +79,7 @@ public partial class User : IValidatableObject
             {
                 yield return new ValidationResult("La cédula dimex debe de tener 11 o 12 digitos", new[] { "IdNumber" });
             }
-            else if (IdentificationType == 1 && IdNumber.Length != 10) //Cédula Nite
+            else if (IdentificationType == 8 && IdNumber.Length != 10) //Cédula Nite
             {
                 yield return new ValidationResult("La cédula nite debe de tener 10 digitos", new[] { "IdNumber" });
             }

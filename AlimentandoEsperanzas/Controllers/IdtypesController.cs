@@ -39,7 +39,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(idtype);
+            return PartialView("_IdtypeDetails", idtype);
         }
 
         // GET: Idtypes/Create

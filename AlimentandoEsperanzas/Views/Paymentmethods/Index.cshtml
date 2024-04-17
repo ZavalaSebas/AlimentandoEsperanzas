@@ -86,7 +86,8 @@
                                     <td>@Html.DisplayFor(modelItem => item.PaymentMethod1)</td>
                                     <td class="text-right">
                                         <a asp-action="Edit" asp-route-id="@item.PaymentMethodId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
-                                        <a asp-action="Details" asp-route-id="@item.PaymentMethodId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@("#detailModal-" + item.PaymentMethod1)" data-url="@Url.Action($"Details/{item.PaymentMethod1}")">Detalle</button>
+                                        @await Html.PartialAsync("_PaymentmethodDetails", item)
                                         <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="@("#deleteModal-" + item.PaymentMethodId)" data-url="@Url.Action($"Delete/{item.PaymentMethodId}")">Eliminar</button>
                                         @await Html.PartialAsync("_PaymentMethodDelete", item)
                                     </td>

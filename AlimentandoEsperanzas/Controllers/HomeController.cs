@@ -9,12 +9,12 @@ namespace AlimentandoEsperanzas.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly AlimentandoesperanzasContext _context; // Agrega el contexto de tu base de datos
+        private readonly AlimentandoesperanzasContext _context; 
 
         public HomeController(ILogger<HomeController> logger, AlimentandoesperanzasContext context)
         {
             _logger = logger;
-            _context = context; // Inicializa el contexto
+            _context = context; 
         }
 
         public async Task<IActionResult> Index()
@@ -54,6 +54,25 @@ namespace AlimentandoEsperanzas.Controllers
 
             ViewBag.DonorLabels = donorLabels;
             ViewBag.DonorCounts = donorCounts;
+
+            var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            var numDonations = await _context.Donations.CountAsync();
+            var numDonors = await _context.Donors.CountAsync();
+
+            var totalDonationThisMonth = await _context.Donations
+                .Where(d => d.Date >= firstDayOfMonth && d.Date <= lastDayOfMonth)
+                .SumAsync(d => d.Amount);
+            
+            ViewBag.TotalDonations = numDonations;
+            ViewBag.TotalDonors = numDonors;
+            ViewBag.donationDataLastMonth = totalDonationThisMonth;
+
+            var monthName = CultureInfo.GetCultureInfo("es-ES").DateTimeFormat.GetMonthName(DateTime.Now.Month);
+            monthName = char.ToUpper(monthName[0]) + monthName.Substring(1);
+            ViewBag.CurrentMonth = monthName;
+
 
             return View();
         }

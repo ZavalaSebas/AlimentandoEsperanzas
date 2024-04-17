@@ -39,7 +39,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(donationtype);
+            return PartialView("_DonationtypeDetails", donationtype);
         }
 
         // GET: DonationTypes/Create

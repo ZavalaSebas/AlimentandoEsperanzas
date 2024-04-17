@@ -39,7 +39,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(itemcategory);
+            return PartialView("_ItemcategoryDetails", itemcategory);
         }
 
         // GET: Itemcategories/Create

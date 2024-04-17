@@ -94,15 +94,20 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(donation);
+            return PartialView("_DonationDetails", donation);
         }
 
         // GET: Donations/Create
         public IActionResult Create()
         {
+            var donors = _context.Donors.Select(d => new {
+                DonorId = d.DonorId,
+                Name = $"{d.Name} {d.LastName} - {d.IdNumber}"
+            }).ToList();
+
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1");
             ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationType1");
-            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "Name");
+            ViewData["DonorId"] = new SelectList(donors, "DonorId", "Name");
             ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethod1");
             return View();
         }
@@ -133,19 +138,15 @@ namespace AlimentandoEsperanzas.Controllers
                         string subject = "Recordatorio de Donación Mensual";
                         string body = $"Hola {donor.Name},\n\nEste es un recordatorio amistoso de que tu donación mensual ha sido procesada. ¡Gracias por tu apoyo continuo!\n\nAtentamente,\nAlimentando Esperanzas";
 
-                        // Enviar el correo electrónico
-                        // Construir el cuerpo del mensaje del correo electrónico
 
                         // Enviar el correo electrónico
                         await emailService.SendEmailAsync(donor.Email, body);
 
 
-                        // Mensaje de éxito
                         TempData["Mensaje"] = "Se ha agregado exitosamente y se ha enviado un recordatorio al donador.";
                     }
                     else
                     {
-                        // Manejo de la situación cuando no se encuentra el donante asociado a la donación
                         TempData["ErrorMessage"] = "No se pudo enviar el correo electrónico de recordatorio porque no se encontró la información del donador asociado a la donación.";
                     }
 
@@ -153,7 +154,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (Exception ex)
                 {
-                    // Manejo de errores
+                    await LogError($"{ex}");
                     return View(donation);
                 }
             }
@@ -181,9 +182,16 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 return NotFound();
             }
+
+            var donors = _context.Donors.Select(d => new {
+                DonorId = d.DonorId,
+                Name = $"{d.Name} {d.LastName} - {d.IdNumber}"
+            }).ToList();
+
+
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1", donation.CategoryId);
             ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationType1", donation.DonationTypeId);
-            ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "Name", donation.DonorId);
+            ViewData["DonorId"] = new SelectList(donors, "DonorId", "Name");
             ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethod1", donation.PaymentMethodId);
             return View(donation);
         }
@@ -211,6 +219,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar la donación");
                     if (!DonationExists(donation.DonationId))
                     {
                         return NotFound();
@@ -266,14 +275,22 @@ namespace AlimentandoEsperanzas.Controllers
         public async Task<IActionResult> Delete(Donation donation)
         {
 
-            if (donation != null)
+            try
             {
-                await LogAction($"Eliminación de donación {donation.DonationId}", "Donaciones");
-                _context.Donations.Remove(donation);
+                if (donation != null)
+                {
+                    await LogAction($"Eliminación de donación {donation.DonationId}", "Donaciones");
+                    _context.Donations.Remove(donation);
+                }
+
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
 
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 

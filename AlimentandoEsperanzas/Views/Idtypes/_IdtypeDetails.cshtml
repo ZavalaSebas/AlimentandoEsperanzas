@@ -1,0 +1,33 @@
+﻿@model Idtype
+
+
+<div class="modal" id="detailModal-@Model.Id" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalle de Categoría</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group" style="text-align: left">
+                        <dl class="row">
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Description)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Description)
+                            </dd>
+                        </dl>
+                    </div>
+                    <br />
+                    <div class="form-group" style="text-align: center">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Volver a la lista</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

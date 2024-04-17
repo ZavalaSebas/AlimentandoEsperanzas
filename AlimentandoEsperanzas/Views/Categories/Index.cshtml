@@ -12,13 +12,6 @@
     </script>
 }
 
-@* <div class="lime-header">
-    <h1><a class="navbar-brand">Categorías</a></h1>
-    <div class="text-right">
-        @* <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a> *@
-        @* <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createModal">Agregar Nuevo</button>
-    </div>
-</div> *@ 
 
 <head>
     <meta charset="utf-8">
@@ -72,8 +65,7 @@
 <div class="lime-header">
     <h1><a class="navbar-brand">Categorías</a></h1>
     <div class="text-right">
-        @* <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a> *@
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createModal">Agregar Nuevo</button>
+        <a href="@Url.Action("Create")" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Agregar nuevo</a>
     </div>
 </div>
 
@@ -95,8 +87,7 @@
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.Category1)</td>
                                     <td class="text-right">
-                                        <button type="button" class="btn btn-warning edit-button" data-toggle="modal" data-target="@("#editModal-" + item.CategoryId)" data-url="@Url.Action($"Edit/{item.CategoryId}")">Editar</button>
-                                        @await Html.PartialAsync("_CategoriesEdit", item)
+                                        <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="@("#detailModal-" + item.CategoryId)" data-url="@Url.Action($"Details/{item.CategoryId}")">Detalle</button>
                                         @await Html.PartialAsync("_CategoriesDetails", item)
                                         <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="@("#deleteModal-" + item.CategoryId)" data-url="@Url.Action($"Delete/{item.CategoryId}")">Eliminar</button>
@@ -112,7 +103,6 @@
     </div>
 </div>
 
-@await Html.PartialAsync("_CategoriesCreate", new Category())
 
 @section Scripts {
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -126,95 +116,5 @@
             });
         });
     </script>
-
-    <script>
-        $(document).ready(function () {
-            $('.delete-button').on('click', function (e) {
-                e.preventDefault();
-                var deleteUrl = $(this).attr('href');
-                $('#deleteForm').attr('action', deleteUrl);
-                $('#deleteModal').modal('show');
-            });
-        });
-
-        $('#cancelButton').on('click', function () {
-            history.back();
-        });
-        });
-    </script> 
-
-    <script>
-        $(document).ready(function () {
-            $('.edit-button').on('click', function (e) {
-                e.preventDefault();
-                var deleteUrl = $(this).attr('href');
-                $('#editForm').attr('action', deleteUrl);
-                $('#editModal').modal('show');
-            });
-        });
-
-        $('#cancelButton').on('click', function () {
-            history.back();
-        });
-                });
-    </script>
-
-     <script>
-        $(document).ready(function () {
-            $('.edit-button').on('click', function (e) {
-                e.preventDefault();
-                var deleteUrl = $(this).attr('href');
-                $('#editForm').attr('action', deleteUrl);
-                $('#detailModal').modal('show');
-            });
-        });
-
-        $('#cancelButton').on('click', function () {
-            history.back();
-        });
-                        });
-    </script>
-
-   @*  <script>
-        $(document).ready(function () {
-            $('#btnCreate').click(function () {
-                var formData = $('#Create1').serializeArray();
-                var isValid = true;
-
-                // Verificar si algún campo está vacío
-                $.each(formData, function (index, item) {
-                    if (!item.value) {
-                        isValid = false;
-                        return false; // Salir del bucle si se encuentra un campo vacío
-                    }
-                });
-
-                if (isValid) {
-                    // Si el formulario no está vacío, enviarlo a través de Ajax
-                    $.ajax({
-                        url: '@Url.Action("Create", "Categories")',
-                        type: 'POST',
-                        data: formData,
-                        success: function (result) {
-                            $('#createModal').modal('hide');
-                            alert("Se ha agregado exitosamente");
-                        },
-                        error: function (xhr) {
-                            var errors = JSON.parse(xhr.responseText);
-                            if (errors.Category1) {
-                                $('#createModal .text-danger').html('<span>' + errors.Category1[0] + '</span>');
-                            }
-                            else {
-                                $('#createModal .text-danger').html('<span>Ha ocurrido un error al crear la categoría.</span>');
-                            }
-                        }
-                    });
-                } else {
-                    // Si el formulario está vacío, mostrar un mensaje de error
-                    $('#createModal .text-danger').html('<span>Por favor complete todos los campos.</span>');
-                }
-            });
-        });
-    </script> *@
 
 }

@@ -10,12 +10,13 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <h1 class="display-4 text-center">¡Bienvenido!</h1>
-                    <p class="lead text-center">Aquí puedes encontrar información sobre nuestro proyecto y cómo puedes contribuir para ayudar a quienes más lo necesitan.</p>
+                    <p class="lead text-center">Aquí encontrarás todas las herramientas necesarias para administrar y coordinar las donaciones de manera eficiente. Juntos, podemos hacer posible un impacto real en las vidas de quienes más lo necesitan..</p>
                     <div class="text-center">
-                        <a href="#" class="btn btn-primary">Más información</a>
+                        <a asp-controller="Donations" asp-action="Index" class="btn btn-primary">Donaciones</a>
                     </div>
                 </div>
             </div>
+
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Donaciones</h2>
@@ -26,18 +27,9 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title">¿Cómo puedes ayudar?</h2>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-hand-holding-heart"></i> Dona para apoyar nuestras causas.</li>
-                        <li><i class="fas fa-hands-helping"></i> Únete como voluntario en nuestros proyectos.</li>
-                        <li><i class="fas fa-share-square"></i> Comparte nuestra causa en tus redes sociales.</li>
-                    </ul>
-                </div>
-            </div>
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Donantes</h2>
@@ -48,6 +40,59 @@
                     </div>
                 </div>
             </div>
+            
+            
+            <div>
+                <div class="container text-center">
+                    <div class="row">
+
+                        <div class="col">
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h2 class="card-title text-center">Total @ViewBag.CurrentMonth</h2>
+                                    <h1 class="text-center">₡@ViewBag.donationDataLastMonth</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h2 class="card-title text-center">Donadores Registrados</h2>
+                                    <h1 class="text-center">@ViewBag.TotalDonors</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            @* <div class="card mb-2">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Total @ViewBag.CurrentMonth</h2>
+                    <h1 class="text-center">₡@ViewBag.donationDataLastMonth</h1>
+                </div>
+            </div>
+
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Donaciones Registradas</h2>
+                    <h1 class="text-center">@ViewBag.TotalDonations</h1>
+                </div>
+            </div>
+
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Donadores Registrados</h2>
+                    <h1 class="text-center">@ViewBag.TotalDonors</h1>
+                </div>
+            </div> *@
+
+            
         </div>
     </div>
 </div>
