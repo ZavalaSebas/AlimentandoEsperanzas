@@ -66,6 +66,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (Exception ex)
                 {
+                    await LogError($"{ex}");
                     return View(idtype);
                 }
             }
@@ -110,6 +111,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar el tipo de identificación");
                     if (!IdtypeExists(idtype.Id))
                     {
                         return NotFound();
@@ -144,25 +146,54 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Idtype idtype)
         {
-            if (idtype == null)
+            try
             {
-                return NotFound();
+                if (idtype == null)
+                {
+                    return NotFound();
+                }
+
+                var users = _context.Users.Where(u => u.IdentificationType == idtype.Id).ToList();
+
+                if (users.Any())
+                {
+                    TempData["ErrorMessage"] = "No se puede eliminar el tipo de identificación porque hay usuarios asociados.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                _context.Idtypes.Remove(idtype);
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
 
-            var users = _context.Users.Where(u => u.IdentificationType == idtype.Id).ToList();
-
-            if (users.Any())
-            {
-                TempData["ErrorMessage"] = "No se puede eliminar el tipo de identificación porque hay usuarios asociados.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            _context.Idtypes.Remove(idtype);
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 
+        private async Task LogError(string ex)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var errorlog = new Errorlog
+                {
+                    Date = DateTime.Now,
+                    ErrorMessage = ex,
+                    UserId = userId.Value
+                };
+
+                _context.Errorlogs.Add(errorlog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
+        }
 
         private bool IdtypeExists(int id)
         {

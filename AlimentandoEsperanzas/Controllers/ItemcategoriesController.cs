@@ -55,12 +55,19 @@ namespace AlimentandoEsperanzas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Description")] Itemcategory itemcategory)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(itemcategory);
-                await _context.SaveChangesAsync();
-                TempData["Mensaje"] = "Categoria creada exitosamente";
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(itemcategory);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensaje"] = "Categoria creada exitosamente";
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
             return View(itemcategory);
         }
@@ -103,6 +110,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar la categoría del item");
                     if (!ItemcategoryExists(itemcategory.Id))
                     {
                         return NotFound();
@@ -137,25 +145,54 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Itemcategory itemcategory)
         {
-            if (itemcategory == null)
+            try
             {
-                return NotFound();
+                if (itemcategory == null)
+                {
+                    return NotFound();
+                }
+
+                var items = _context.Items.Where(i => i.Id == itemcategory.Id).ToList();
+
+                if (items.Any())
+                {
+                    TempData["ErrorMessage"] = "No se puede eliminar la categoría de ítems porque hay ítems asociados.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                _context.Itemcategories.Remove(itemcategory);
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
 
-            var items = _context.Items.Where(i => i.Id == itemcategory.Id).ToList();
-
-            if (items.Any())
-            {
-                TempData["ErrorMessage"] = "No se puede eliminar la categoría de ítems porque hay ítems asociados.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            _context.Itemcategories.Remove(itemcategory);
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
         }
 
+        private async Task LogError(string ex)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var errorlog = new Errorlog
+                {
+                    Date = DateTime.Now,
+                    ErrorMessage = ex,
+                    UserId = userId.Value
+                };
+
+                _context.Errorlogs.Add(errorlog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
+        }
 
         private bool ItemcategoryExists(int id)
         {

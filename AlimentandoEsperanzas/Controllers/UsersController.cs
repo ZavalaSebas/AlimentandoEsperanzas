@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AlimentandoEsperanzas.Models;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace AlimentandoEsperanzas.Controllers
 {
@@ -44,7 +45,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(user);
+            return PartialView("_UsersDetails", user);
         }
 
         // GET: Users/Create
@@ -86,6 +87,8 @@ namespace AlimentandoEsperanzas.Controllers
 
                 if (ModelState.IsValid)
                 {
+                    user.Date = DateTime.Now;
+
                     //Encrypt
                     user.Password = HashPassword(user.Password);
                     user.ConfirmPassword = HashPassword(user.ConfirmPassword);
@@ -100,8 +103,9 @@ namespace AlimentandoEsperanzas.Controllers
                 ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
                 return View(user);
             }
-            catch
+            catch (Exception ex)
             {
+                await LogError($"{ex}");
                 return View(user);
             }
         }
@@ -142,11 +146,22 @@ namespace AlimentandoEsperanzas.Controllers
                 try
                 {
 
-                    if (!string.IsNullOrEmpty(user.Password))
+                    bool passwordUnchanged = user.Password == "En@r4Pt3D";
+                    bool confirmPasswordUnchanged = user.ConfirmPassword == "En@r4Pt3D";
+
+                    
+                    if (passwordUnchanged && confirmPasswordUnchanged)
+                    {
+                        var originalUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == id);
+                        user.Password = originalUser.Password;
+                        user.ConfirmPassword = originalUser.ConfirmPassword;
+                    }
+                    else
                     {
                         user.Password = HashPassword(user.Password);
-                        user.ConfirmPassword = HashPassword(user.ConfirmPassword);
+                        user.ConfirmPassword = user.Password; 
                     }
+
 
                     _context.Update(user);
                     await _context.SaveChangesAsync();
@@ -155,6 +170,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar el usuario");
                     if (!UserExists(user.UserId))
                     {
                         return NotFound();
@@ -192,14 +208,21 @@ namespace AlimentandoEsperanzas.Controllers
         public async Task<IActionResult> Delete(User user)
         {
 
-            if (user != null)
+            try
             {
-                await LogAction($"Eliminación de usuario {user.Email}", "Usuarios");
-                _context.Users.Remove(user);
-            }
+                if (user != null)
+                {
+                    await LogAction($"Eliminación de usuario {user.Email}", "Usuarios");
+                    _context.Users.Remove(user);
+                }
 
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Usuario eliminado exitosamente.";
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Usuario eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
+            }
             return RedirectToAction(nameof(Index));
         }
 
@@ -261,12 +284,20 @@ namespace AlimentandoEsperanzas.Controllers
                 try
                 {
 
-                    // Verificar si se ha proporcionado una nueva contraseña
-                    if (!string.IsNullOrEmpty(user.Password))
+                    bool passwordUnchanged = user.Password == "En@r4Pt3D";
+                    bool confirmPasswordUnchanged = user.ConfirmPassword == "En@r4Pt3D";
+
+                    
+                    if (passwordUnchanged && confirmPasswordUnchanged)
                     {
-                        // Encriptar la nueva contraseña antes de guardarla
+                        var originalUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == id);
+                        user.Password = originalUser.Password;
+                        user.ConfirmPassword = originalUser.ConfirmPassword;
+                    }
+                    else
+                    {
                         user.Password = HashPassword(user.Password);
-                        user.ConfirmPassword = HashPassword(user.ConfirmPassword);
+                        user.ConfirmPassword = user.Password;
                     }
 
 
@@ -276,6 +307,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar el usuario");
                     if (!UserExists(user.UserId))
                     {
                         return NotFound();

@@ -74,7 +74,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return View(item);
+            return PartialView("_ItemDetails", item);
         }
 
         // GET: Items/Create
@@ -106,6 +106,7 @@ namespace AlimentandoEsperanzas.Controllers
             }
             catch (Exception ex)
             {
+                await LogError($"{ex}");
                 return View(item);
             }
         }
@@ -150,6 +151,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar el item");
                     if (!ItemExists(item.Id))
                     {
                         return NotFound();

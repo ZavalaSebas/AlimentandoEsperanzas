@@ -66,6 +66,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (Exception ex)
                 {
+                    await LogError($"{ex}");
                     return View(donationtype);
                 }
 
@@ -111,6 +112,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    await LogError("Error al actualizar tipo de donación");
                     if (!DonationtypeExists(donationtype.DonationTypeId))
                     {
                         return NotFound();
@@ -145,23 +147,53 @@ namespace AlimentandoEsperanzas.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Donationtype donationtype)
         {
-            if (donationtype == null)
+            try
             {
-                return NotFound();
+                if (donationtype == null)
+                {
+                    return NotFound();
+                }
+
+                var donations = _context.Donations.Where(d => d.DonationTypeId == donationtype.DonationTypeId).ToList();
+
+                if (donations.Any())
+                {
+                    TempData["ErrorMessage"] = "No se puede eliminar el tipo de donación porque hay donaciones asociadas.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                _context.Donationtypes.Remove(donationtype);
+                await _context.SaveChangesAsync();
+                TempData["Mensaje"] = "Se ha eliminado exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                await LogError($"{ex}");
             }
 
-            var donations = _context.Donations.Where(d => d.DonationTypeId == donationtype.DonationTypeId).ToList();
-
-            if (donations.Any())
-            {
-                TempData["ErrorMessage"] = "No se puede eliminar el tipo de donación porque hay donaciones asociadas.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            _context.Donationtypes.Remove(donationtype);
-            await _context.SaveChangesAsync();
-            TempData["Mensaje"] = "Se ha eliminado exitosamente.";
             return RedirectToAction(nameof(Index));
+        }
+
+        private async Task LogError(string ex)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId.HasValue)
+            {
+                var errorlog = new Errorlog
+                {
+                    Date = DateTime.Now,
+                    ErrorMessage = ex,
+                    UserId = userId.Value
+                };
+
+                _context.Errorlogs.Add(errorlog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
+            }
         }
 
 

@@ -61,11 +61,6 @@
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Date" class="control-label">Fecha</label>
-                            <input asp-for="Date" class="form-control" type="date" />
-                            <span asp-validation-for="Date" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
                             <label asp-for="Role" class="control-label">Rol</label>
                             <select asp-for="Role" class="form-control" asp-items="ViewBag.Role"></select>
                         </div>
@@ -75,6 +70,7 @@
                         </div>
                         <br />
                         <div class="form-group text-center">
+                            <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
@@ -82,9 +78,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="text-center mt-3">
-        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
     </div>
 </div>
 

@@ -100,7 +100,8 @@
                                     <td>@Html.DisplayFor(modelItem => item.RoleNavigation.Role1)</td>
                                     <td class="text-right">
                                         <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
-                                        <a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-info" style="color:black;"><i class="fas fa-eye"></i> Detalles</a>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@("#detailModal-" + item.UserId)" data-url="@Url.Action($"Details/{item.UserId}")">Detalle</button>
+                                        @await Html.PartialAsync("_UsersDetails", item)
                                         @if(item.UserId == ProfileId)
                                         {
                                             <button type="button" class="btn btn-danger delete-button" disabled>Eliminar</button>

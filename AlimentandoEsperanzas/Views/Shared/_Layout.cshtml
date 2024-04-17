@@ -83,7 +83,7 @@
     </div>
 
     @* Themes *@
-    <div class="theme-settings-sidebar">
+    @* <div class="theme-settings-sidebar">
         <div class="theme-settings-inner">
             <h3 class="theme-sidebar-title">Tema</h3>
             <p class="themes-info">Seleccione un tema</p>
@@ -98,7 +98,7 @@
                 <h4 class="theme-title">Modo oscuro</h4>
             </a>
         </div>
-    </div>
+    </div> *@
 
     @*  Header *@
     <div class="lime-header">
@@ -115,19 +115,18 @@
 
             @* Settings *@
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
+                @* <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle theme-settings-link" href="#">
                         <i class="material-icons">layers</i>
                     </a>
-                </li>
+                </li> *@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">more_vert</i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a class="dropdown-item" href="#">Cuenta</a></li>
-                        <li><a class="dropdown-item" href="#">Configuración</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("UserProfile", "Users")">Cuenta</a></li>
                         <li class="divider"></li>
                         <li><a class="dropdown-item" href="/Login/Index">Cerrar sesión</a></li>
                     </ul>
