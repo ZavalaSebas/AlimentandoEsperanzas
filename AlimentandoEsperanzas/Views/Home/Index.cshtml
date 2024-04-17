@@ -40,12 +40,12 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">Contacto</h2>
-                    <p>Puedes contactarnos para obtener más información sobre nuestro trabajo y cómo puedes involucrarte.</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-envelope"></i> Correo electrónico: info@tuprojecto.com</li>
-                        <li><i class="fas fa-phone"></i> Teléfono: +123456789</li>
-                    </ul>
+                    <h2 class="card-title">Donantes</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="donorChart" width="800" height="400"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,20 +54,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Obtener los datos de donaciones desde ViewBag
     var donationData = {
-        labels: @Html.Raw(Json.Serialize(ViewBag.Labels)),
+        labels: @Html.Raw(Json.Serialize(ViewBag.DonationLabels)),
         datasets: [{
             label: 'Monto de Donaciones',
-            data: @Html.Raw(Json.Serialize(ViewBag.Amounts)),
+            data: @Html.Raw(Json.Serialize(ViewBag.DonationAmounts)),
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
         }]
     };
 
-    // Configurar opciones del gráfico
-    var chartOptions = {
+    var donationChartOptions = {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -77,16 +75,42 @@
         }
     };
 
-    // Obtener el contexto del lienzo del gráfico
-    var ctx = document.getElementById('donationChart').getContext('2d');
+    var donationCtx = document.getElementById('donationChart').getContext('2d');
 
-    // Crear el gráfico
-    var myChart = new Chart(ctx, {
-        type: 'bar', // Tipo de gráfico (puedes cambiarlo a 'line', 'pie', etc.)
+    var myDonationChart = new Chart(donationCtx, {
+        type: 'bar',
         data: donationData,
-        options: chartOptions
+        options: donationChartOptions
+    });
+
+    var donorData = {
+        labels: @Html.Raw(Json.Serialize(ViewBag.DonorLabels)),
+        datasets: [{
+            label: 'Cantidad de Donantes',
+            data: @Html.Raw(Json.Serialize(ViewBag.DonorCounts)),
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    var donorChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    };
+
+    var donorCtx = document.getElementById('donorChart').getContext('2d');
+
+    var myDonorChart = new Chart(donorCtx, {
+        type: 'line',
+        data: donorData,
+        options: donorChartOptions
     });
 </script>
-
 
 

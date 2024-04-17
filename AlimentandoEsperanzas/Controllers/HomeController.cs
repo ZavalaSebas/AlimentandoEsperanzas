@@ -19,6 +19,7 @@ namespace AlimentandoEsperanzas.Controllers
 
         public async Task<IActionResult> Index()
         {
+            // Obtener datos de donaciones
             var donationData = await _context.Donations
                 .GroupBy(d => d.Date.Month)
                 .Select(g => new
@@ -29,15 +30,34 @@ namespace AlimentandoEsperanzas.Controllers
                 .OrderBy(g => g.Month)
                 .ToListAsync();
 
-            // Convertir los datos en un formato adecuado para el gráfico
-            var labels = donationData.Select(d => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(d.Month)).ToArray();
-            var amounts = donationData.Select(d => d.TotalAmount).ToArray();
+            // Convertir los datos de donaciones en un formato adecuado para el gráfico
+            var donationLabels = donationData.Select(d => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(d.Month)).ToArray();
+            var donationAmounts = donationData.Select(d => d.TotalAmount).ToArray();
 
-            ViewBag.Labels = labels;
-            ViewBag.Amounts = amounts;
+            ViewBag.DonationLabels = donationLabels;
+            ViewBag.DonationAmounts = donationAmounts;
+
+            // Obtener datos de los donantes
+            var donorData = await _context.Donors
+                .GroupBy(d => d.Date.Month)
+                .Select(g => new
+                {
+                    Month = g.Key,
+                    DonorCount = g.Count()
+                })
+                .OrderBy(g => g.Month)
+                .ToListAsync();
+
+            // Convertir los datos de donantes en un formato adecuado para el gráfico
+            var donorLabels = donorData.Select(d => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(d.Month)).ToArray();
+            var donorCounts = donorData.Select(d => d.DonorCount).ToArray();
+
+            ViewBag.DonorLabels = donorLabels;
+            ViewBag.DonorCounts = donorCounts;
 
             return View();
         }
+
 
         public IActionResult Privacy()
         {

@@ -1453,3 +1453,6 @@ C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\Alim
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.pdb
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\AlimentandoEsperanzas.genruntimeconfig.cache
 C:\Users\ASUS\OneDrive\Desktop\Alimentando Esperanzas\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Debug\net8.0\ref\AlimentandoEsperanzas.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\MailKit.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Debug\net8.0\MimeKit.dll

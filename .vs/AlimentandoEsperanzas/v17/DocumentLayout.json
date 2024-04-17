@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\Proyectos\\AlimentandoEsperanzas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\controllers\\donationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\controllers\\donationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\controllers\\itemcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\controllers\\itemcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\views\\itemcategories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\views\\itemcategories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|d:\\proyectos\\alimentandoesperanzas\\alimentandoesperanzas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB467046-DF48-4602-83AE-C717F107BED1}|AlimentandoEsperanzas\\AlimentandoEsperanzas.csproj|solutionrelative:alimentandoesperanzas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,41 +42,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DonationsController.cs",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\DonationsController.cs",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Controllers\\DonationsController.cs",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\DonationsController.cs",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Controllers\\DonationsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T00:58:53.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Itemcategories\\Index.cshtml",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Views\\Itemcategories\\Index.cshtml",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Itemcategories\\Index.cshtml",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Views\\Itemcategories\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-11T00:45:56.479Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ItemcategoriesController.cs",
-              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\ItemcategoriesController.cs",
-              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Controllers\\ItemcategoriesController.cs",
-              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\ItemcategoriesController.cs",
-              "RelativeToolTip": "AlimentandoEsperanzas\\Controllers\\ItemcategoriesController.cs",
-              "ViewState": "AQIAAHoAAAAAAAAAAAAYwJoAAABCAAAA",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "AlimentandoEsperanzas\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAowDsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T00:45:24.773Z",
+              "WhenOpened": "2024-04-17T00:06:34.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "AlimentandoEsperanzas\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Proyectos\\AlimentandoEsperanzas\\AlimentandoEsperanzas\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "AlimentandoEsperanzas\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAACkAAAAAAAAAAAAswHEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-17T00:01:46.554Z",
               "EditorCaption": ""
             }
           ]

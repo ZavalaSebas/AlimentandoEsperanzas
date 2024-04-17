@@ -118,24 +118,55 @@ namespace AlimentandoEsperanzas.Controllers
             {
                 try
                 {
-                        _context.Add(donation);
-                        await _context.SaveChangesAsync();
-                        await LogAction($"Registro de la donación {donation.DonationId}", "Donaciones");
-                        TempData["Mensaje"] = "Se ha agregado exitosamente.";
-                        return RedirectToAction(nameof(Index));
+                    _context.Add(donation);
+                    await _context.SaveChangesAsync();
+
+                    // Obtener la información del donante asociado a la donación
+                    var donor = await _context.Donors.FirstOrDefaultAsync(d => d.DonorId == donation.DonorId);
+
+                    if (donor != null)
+                    {
+                        // Crear el servicio de correo electrónico
+                        var emailService = new EmailService();
+
+                        // Construir el mensaje de correo electrónico
+                        string subject = "Recordatorio de Donación Mensual";
+                        string body = $"Hola {donor.Name},\n\nEste es un recordatorio amistoso de que tu donación mensual ha sido procesada. ¡Gracias por tu apoyo continuo!\n\nAtentamente,\nAlimentando Esperanzas";
+
+                        // Enviar el correo electrónico
+                        // Construir el cuerpo del mensaje del correo electrónico
+
+                        // Enviar el correo electrónico
+                        await emailService.SendEmailAsync(donor.Email, body);
+
+
+                        // Mensaje de éxito
+                        TempData["Mensaje"] = "Se ha agregado exitosamente y se ha enviado un recordatorio al donador.";
+                    }
+                    else
+                    {
+                        // Manejo de la situación cuando no se encuentra el donante asociado a la donación
+                        TempData["ErrorMessage"] = "No se pudo enviar el correo electrónico de recordatorio porque no se encontró la información del donador asociado a la donación.";
+                    }
+
+                    return RedirectToAction(nameof(Index));
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
+                    // Manejo de errores
                     return View(donation);
                 }
-                
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", donation.CategoryId);
+
+            // Si hay errores de validación, se vuelve a mostrar el formulario de creación
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1", donation.CategoryId);
             ViewData["DonationTypeId"] = new SelectList(_context.Donationtypes, "DonationTypeId", "DonationTypeId", donation.DonationTypeId);
             ViewData["DonorId"] = new SelectList(_context.Donors, "DonorId", "DonorId", donation.DonorId);
             ViewData["PaymentMethodId"] = new SelectList(_context.Paymentmethods, "PaymentMethodId", "PaymentMethodId", donation.PaymentMethodId);
             return View(donation);
         }
+
+
 
         // GET: Donations/Edit/5
         public async Task<IActionResult> Edit(int? id)

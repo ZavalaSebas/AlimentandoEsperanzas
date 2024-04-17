@@ -12,6 +12,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AlimentandoesperanzasContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql")));
 
+// Agregar el servicio de configuración
+builder.Services.Configure<SMTPConfigModel>(builder.Configuration.GetSection("SMTPConfig"));
+
 // Configurar servicios de sesión
 builder.Services.AddSession();
 
