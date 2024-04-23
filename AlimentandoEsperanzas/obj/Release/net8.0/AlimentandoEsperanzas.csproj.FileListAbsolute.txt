@@ -244,3 +244,6 @@ D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\refi
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\AlimentandoEsperanzas.pdb
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\AlimentandoEsperanzas.genruntimeconfig.cache
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\ref\AlimentandoEsperanzas.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Release\net8.0\BouncyCastle.Cryptography.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Release\net8.0\MailKit.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\bin\Release\net8.0\MimeKit.dll

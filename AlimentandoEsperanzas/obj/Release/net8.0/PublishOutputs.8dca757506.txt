@@ -4,8 +4,10 @@ D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubT
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\AlimentandoEsperanzas.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\AlimentandoEsperanzas.runtimeconfig.json
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\AlimentandoEsperanzas.pdb
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\BouncyCastle.Cryptography.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\EPPlus.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Humanizer.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\MailKit.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Authorization.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Components.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Components.Forms.dll
@@ -47,6 +49,7 @@ D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubT
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\MimeKit.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Mono.TextTemplating.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\MySqlConnector.dll
 D:\Proyectos\AlimentandoEsperanzas\AlimentandoEsperanzas\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll

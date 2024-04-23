@@ -136,7 +136,7 @@ namespace AlimentandoEsperanzas.Controllers
 
                         // Construir el mensaje de correo electrónico
                         string subject = "Recordatorio de Donación Mensual";
-                        string body = $"Hola {donor.Name},\n\nEste es un recordatorio amistoso de que tu donación mensual ha sido procesada. ¡Gracias por tu apoyo continuo!\n\nAtentamente,\nAlimentando Esperanzas";
+                        string body = $"Hola {donor.Name},\n\nTu donación mensual ha sido procesada. ¡Gracias por tu apoyo continuo!";
 
 
                         // Enviar el correo electrónico
@@ -321,13 +321,15 @@ namespace AlimentandoEsperanzas.Controllers
         private async Task LogError(string ex)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
-
             if (userId.HasValue)
             {
+                // Truncar el mensaje de error si es demasiado largo
+                var truncatedErrorMessage = ex.Length > 255 ? ex.Substring(0, 255) : ex;
+
                 var errorlog = new Errorlog
                 {
                     Date = DateTime.Now,
-                    ErrorMessage = ex,
+                    ErrorMessage = truncatedErrorMessage,
                     UserId = userId.Value
                 };
 
@@ -339,6 +341,7 @@ namespace AlimentandoEsperanzas.Controllers
                 throw new InvalidOperationException("No se pudo obtener el ID de usuario de la sesión");
             }
         }
+
 
         private bool DonationExists(int id)
         {

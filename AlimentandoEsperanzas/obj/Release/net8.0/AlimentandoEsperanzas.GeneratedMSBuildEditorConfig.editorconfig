@@ -34,12 +34,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aW9ubG9nXF9BY3Rpb25sb2dEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/_CategoriesCreate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xfQ2F0ZWdvcmllc0NyZWF0ZS5jc2h0bWw=
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/_CategoriesDelete.cshtml]
@@ -50,16 +54,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xfQ2F0ZWdvcmllc0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Categories/_CategoriesEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xfQ2F0ZWdvcmllc0VkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/Edit.cshtml]
@@ -74,12 +70,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXF9Eb25hdGlvbkRlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xDcmVhdGUuY3NodG1s
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donations/_DonationDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25zXF9Eb25hdGlvbkRldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xEZXRhaWxzLmNzaHRtbA==
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/Edit.cshtml]
@@ -94,16 +90,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xfRG9uYXRpb250eXBlRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/DonationTypes/_DonationtypeDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRpb25UeXBlc1xfRG9uYXRpb250eXBlRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donors/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9ub3JzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donors/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9ub3JzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donors/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9ub3JzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donors/Edit.cshtml]
@@ -118,6 +114,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9ub3JzXF9Eb25vckRlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Donors/_DonorDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9ub3JzXF9Eb25vckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -128,10 +128,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Idtypes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Idtypes/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Idtypes/Edit.cshtml]
@@ -146,12 +142,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xfSWRUeXBlRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcQ3JlYXRlLmNzaHRtbA==
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Idtypes/_IdtypeDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWR0eXBlc1xfSWR0eXBlRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcRGV0YWlscy5jc2h0bWw=
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/Edit.cshtml]
@@ -164,6 +160,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/_ItemCategoryDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcX0l0ZW1DYXRlZ29yeURlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Itemcategories/_ItemcategoryDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbWNhdGVnb3JpZXNcX0l0ZW1jYXRlZ29yeURldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Items/Create.cshtml]
@@ -186,16 +186,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcX0l0ZW1EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Items/_ItemDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcX0l0ZW1EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Paymentmethods/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Paymentmethods/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Paymentmethods/Edit.cshtml]
@@ -210,16 +210,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcX1BheW1lbnRNZXRob2REZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Paymentmethods/_PaymentmethodDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudG1ldGhvZHNcX1BheW1lbnRtZXRob2REZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Roles/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Roles/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Roles/Edit.cshtml]
@@ -234,32 +230,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcX1JvbGVEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Roles/_RoleDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcX1JvbGVEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Userroles/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnJvbGVzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Userroles/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnJvbGVzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Userroles/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnJvbGVzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Userroles/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnJvbGVzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Userroles/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnJvbGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Users/Create.cshtml]
@@ -292,6 +272,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Users/_UserDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcX1VzZXJEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/Users/_UsersDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcX1VzZXJzRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Proyectos/AlimentandoEsperanzas/AlimentandoEsperanzas/Views/_ViewImports.cshtml]
