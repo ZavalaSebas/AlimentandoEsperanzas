@@ -150,6 +150,34 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
+            // Obtener el donante actual de la base de datos sin rastrearlo
+            var existingDonor = await _context.Donors.AsNoTracking().FirstOrDefaultAsync(d => d.DonorId == id);
+
+            // Verificar si el número de identificación ha cambiado y existe otro donante con el nuevo número de identificación
+            if (existingDonor.IdNumber != donor.IdNumber)
+            {
+                var existingDonorWithIdNumber = await _context.Donors.FirstOrDefaultAsync(d => d.IdNumber == donor.IdNumber);
+                if (existingDonorWithIdNumber != null)
+                {
+                    ModelState.AddModelError("IdNumber", "Ya existe un donante con este número de identificación.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", donor.IdentificationType);
+                    return View(donor);
+                }
+            }
+
+            // Verificar si el correo electrónico ha cambiado y existe otro donante con el nuevo correo electrónico
+            if (existingDonor.Email != donor.Email)
+            {
+                var existingDonorWithEmail = await _context.Donors.FirstOrDefaultAsync(d => d.Email == donor.Email);
+                if (existingDonorWithEmail != null)
+                {
+                    ModelState.AddModelError("Email", "Ya existe un donante con este correo electrónico.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", donor.IdentificationType);
+                    return View(donor);
+                }
+            }
+
+
             if (ModelState.IsValid)
             {
                 try
@@ -173,7 +201,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", donor.IdentificationType);
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", donor.IdentificationType);
             return View(donor);
         }
 

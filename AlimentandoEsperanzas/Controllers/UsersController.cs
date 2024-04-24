@@ -141,6 +141,35 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
+            // Obtener el usuario actual de la base de datos sin rastrearlo
+            var existingUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == id);
+
+            // Verificar si el número de identificación ha cambiado y existe otro usuario con el nuevo número de identificación
+            if (existingUser.IdNumber != user.IdNumber)
+            {
+                var existingUserWithIdNumber = await _context.Users.FirstOrDefaultAsync(u => u.IdNumber == user.IdNumber);
+                if (existingUserWithIdNumber != null)
+                {
+                    ModelState.AddModelError("IdNumber", "Ya existe un usuario con este número de identificación.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+                    ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+                    return View(user);
+                }
+            }
+
+            // Verificar si el correo electrónico ha cambiado y existe otro usuario con el nuevo correo electrónico
+            if (existingUser.Email != user.Email)
+            {
+                var existingUserWithEmail = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+                if (existingUserWithEmail != null)
+                {
+                    ModelState.AddModelError("Email", "Ya existe un usuario con este correo electrónico.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+                    ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+                    return View(user);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -277,6 +306,35 @@ namespace AlimentandoEsperanzas.Controllers
             if (id != user.UserId)
             {
                 return NotFound();
+            }
+
+            // Obtener el usuario actual de la base de datos sin rastrearlo
+            var existingUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == id);
+
+            // Verificar si el número de identificación ha cambiado y existe otro usuario con el nuevo número de identificación
+            if (existingUser.IdNumber != user.IdNumber)
+            {
+                var existingUserWithIdNumber = await _context.Users.FirstOrDefaultAsync(u => u.IdNumber == user.IdNumber);
+                if (existingUserWithIdNumber != null)
+                {
+                    ModelState.AddModelError("IdNumber", "Ya existe un usuario con este número de identificación.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+                    ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+                    return View(user);
+                }
+            }
+
+            // Verificar si el correo electrónico ha cambiado y existe otro usuario con el nuevo correo electrónico
+            if (existingUser.Email != user.Email)
+            {
+                var existingUserWithEmail = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+                if (existingUserWithEmail != null)
+                {
+                    ModelState.AddModelError("Email", "Ya existe un usuario con este correo electrónico.");
+                    ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+                    ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
+                    return View(user);
+                }
             }
 
             if (ModelState.IsValid)
