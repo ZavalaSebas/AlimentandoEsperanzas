@@ -182,8 +182,8 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
-            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
+            ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "Role1", user.Role);
             return View(user);
         }
 
@@ -319,7 +319,7 @@ namespace AlimentandoEsperanzas.Controllers
                 }
                 return RedirectToAction(nameof(UserProfile));
             }
-            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Id", user.IdentificationType);
+            ViewData["IdentificationType"] = new SelectList(_context.Idtypes, "Id", "Description", user.IdentificationType);
             ViewData["Role"] = new SelectList(_context.Roles, "RoleId", "RoleId", user.Role);
             return View(user);
         }
