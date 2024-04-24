@@ -77,7 +77,6 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>Nombre</th>
-                                <th>Apellido</th>
                                 <th>Email</th>
                                 <th>Número de Identificación</th>
                                 <th>Número de Teléfono</th>
@@ -88,8 +87,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Name) @Html.DisplayFor(modelItem => item.LastName)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                     <td>@Html.DisplayFor(modelItem => item.IdNumber)</td>
                                     <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>

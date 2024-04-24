@@ -79,7 +79,6 @@
                                 <th>Categoría</th>
                                 <th>Tipo de Donación</th>
                                 <th>Donante</th>
-                                <th>Método de Pago</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
                         </thead>
@@ -91,7 +90,6 @@
                                     <td>@Html.DisplayFor(modelItem => item.Category.Category1)</td>
                                     <td>@Html.DisplayFor(modelItem => item.DonationType.DonationType1)</td>
                                     <td>@item.Donor.Name @item.Donor.LastName - @item.Donor.IdNumber</td>
-                                    <td>@Html.DisplayFor(modelItem => item.PaymentMethod.PaymentMethod1)</td>
                                     <td class="text-right">
                                         <a asp-action="Edit" asp-route-id="@item.DonationId" class="btn btn-warning" style="color:black;"><i class="fas fa-edit"></i> Editar</a>
                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="@("#detailModal-" + item.DonationId)" data-url="@Url.Action($"Details/{item.DonationId}")">Detalle</button>

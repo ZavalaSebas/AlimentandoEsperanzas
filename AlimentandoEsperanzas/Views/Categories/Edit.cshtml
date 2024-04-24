@@ -5,10 +5,10 @@
 }
 
 <div class="lime-container">
-    <h1 class="text-center mb-4">Editar Tipo de Rol</h1>
+    <h1 class="text-center mb-4">Editar Categoría</h1>
     <div class="card">
         <div class="card-body">
-            <h4>Tipo de Rol</h4>
+            <h4>Categoría</h4>
             <hr />
             <div class="row">
                 <div class="col-md-8">
@@ -16,13 +16,14 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="CategoryId" />
                         <div class="form-group">
-                            <label asp-for="Category1" class="control-label">Tipo de Rol</label>
+                            <label asp-for="Category1" class="control-label"></label>
                             <input asp-for="Category1" class="form-control" />
                             <span asp-validation-for="Category1" class="text-danger"></span>
                         </div>
+                        <br />
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
                             <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
                 </div>

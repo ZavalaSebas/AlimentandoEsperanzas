@@ -39,7 +39,7 @@ namespace AlimentandoEsperanzas.Controllers
                 return NotFound();
             }
 
-            return PartialView("_PaymentmethodDetails", paymentmethod);
+            return PartialView("_PaymentDetails", paymentmethod);
         }
 
         // GET: Paymentmethods/Create
