@@ -53,7 +53,27 @@ namespace AlimentandoEsperanzas.Controllers
             using (var package = new OfficeOpenXml.ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("Donaciones");
-                worksheet.Cells.LoadFromCollection(donations, true);
+                worksheet.Cells[1, 1].Value = "Amount";
+                worksheet.Cells[1, 2].Value = "Date";
+                worksheet.Cells[1, 3].Value = "Comments";
+                worksheet.Cells[1, 4].Value = "Category";
+                worksheet.Cells[1, 5].Value = "Donation Type";
+                worksheet.Cells[1, 6].Value = "Donor";
+                worksheet.Cells[1, 7].Value = "Payment Method";
+
+                // Cargar datos en las celdas
+                int row = 2;
+                foreach (var donation in donations)
+                {
+                    worksheet.Cells[row, 1].Value = donation.Amount;
+                    worksheet.Cells[row, 2].Value = donation.Date.ToString(); // Convertir a cadena si es necesario
+                    worksheet.Cells[row, 3].Value = donation.Comments;
+                    worksheet.Cells[row, 4].Value = donation.Category.Category1;
+                    worksheet.Cells[row, 5].Value = donation.DonationType.DonationType1;
+                    worksheet.Cells[row, 6].Value = $"{donation.Donor.Name} {donation.Donor.LastName} - {donation.Donor.IdNumber}";
+                    worksheet.Cells[row, 7].Value = donation.PaymentMethod.PaymentMethod1;
+                    row++;
+                }
 
                 // Guardar el archivo en memoria
                 var stream = new MemoryStream();
