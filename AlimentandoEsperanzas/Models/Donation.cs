@@ -24,6 +24,7 @@ public partial class Donation
 
     [Required(ErrorMessage = "Este dato es requerido")]
     [DisplayName("Fecha")]
+    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime Date { get; set; }
 
     [Required(ErrorMessage = "Este dato es requerido")]
